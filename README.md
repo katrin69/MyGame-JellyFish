@@ -1,4 +1,4 @@
 # example-game-katrin
 
 Hello bitch
-I dont love potato 
+I love potato 
