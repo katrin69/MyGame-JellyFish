@@ -96,6 +96,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Exceptionshehe
+# Exceptions
 !*.dll
 !*.obj
