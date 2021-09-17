@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RGAddForce : MonoBehaviour
+public class RBAddForce : MonoBehaviour
 {
     public float forceMult = 200;
     private Rigidbody rb;
