@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveTransform : MonoBehaviour
+public class TransformTramslate : MonoBehaviour
 {
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime;
+        transform.Translate(Vector3.forward * Time.deltaTime);
     }
 }
