@@ -6,7 +6,16 @@ public class BulletLight : MonoBehaviour
 {
     private float bulletForce = 24f;
     [SerializeField] private Rigidbody rb;
-    public float Timer = 5;
+    public float Timer = 3;
+
+    private void Update()
+    {
+        Timer -= Time.deltaTime;
+        if (Timer < 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -19,9 +28,6 @@ public class BulletLight : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else if (Timer < 0)
-        {
-            gameObject.SetActive(false);
-        }
+        
     }
 }
