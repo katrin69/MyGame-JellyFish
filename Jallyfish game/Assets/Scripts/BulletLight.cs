@@ -6,8 +6,9 @@ public class BulletLight : MonoBehaviour
 {
     private float bulletForce = 24f;
     [SerializeField] private Rigidbody rb;
-    public float Timer = 3;
-   // public Transform firePoint;
+    private float Timer;
+    public float defaultTime = 10f;
+    // public Transform firePoint;
 
     private void Update()
     {
@@ -16,6 +17,11 @@ public class BulletLight : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        Timer = defaultTime;
     }
 
     private void FixedUpdate()

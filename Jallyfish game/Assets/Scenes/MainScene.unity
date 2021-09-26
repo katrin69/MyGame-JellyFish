@@ -559,6 +559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134918922}
+  - component: {fileID: 1134918921}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -566,6 +567,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1134918921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134918920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022aa9be09c7d154fa1b01a56a13b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theEnemy: {fileID: 5302641808997960721, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+  TerrainMask:
+    serializedVersion: 2
+    m_Bits: 64
+  xPos: 0
+  yPos: 100
+  zPos: 0
+  enemyCount: 0
+  distance: 200
 --- !u!4 &1134918922
 Transform:
   m_ObjectHideFlags: 0

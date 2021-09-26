@@ -7,13 +7,14 @@ public class EnemyInstantiate : MonoBehaviour
     public GameObject theEnemy;
     public LayerMask TerrainMask;
     public float xPos;
-    public float yPos = -100f;
+    public float yPos = 200f;
     public float zPos;
     public float enemyCount;
 
     //Никита любит Лёшу
 
     public float distance = 200f;
+    List<Ray> dabugRays = new List<Ray>();
 
     private void Awake()
     {
@@ -28,13 +29,10 @@ public class EnemyInstantiate : MonoBehaviour
 
     private void Update()
     {
-        Ray ray = new Ray(transform.position, -Vector3.up);
-        Debug.DrawRay(ray.origin, ray.direction * distance);
-
-        if (Physics.Raycast(ray,distance, TerrainMask))
-        {
-
-        }
+       // foreach (var ray in dabugRays)
+       // {
+       //     Debug.DrawRay(ray.origin, ray.direction * distance);
+       // }
     }
 
     
@@ -45,9 +43,21 @@ public class EnemyInstantiate : MonoBehaviour
         {
             xPos = Random.Range(-12, 200);
             zPos = Random.Range(-12, 200);
-            Instantiate(theEnemy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(0.2f);
-            enemyCount++;
+
+            Vector3 pos = new Vector3(xPos, yPos, zPos);
+            Ray ray = new Ray(pos, Vector3.down);
+            dabugRays.Add(ray);
+
+            if (Physics.Raycast(ray, out var hitInfo, distance, TerrainMask))
+            {
+                pos = hitInfo.point;
+                pos.y += 20f;
+                Instantiate(theEnemy, pos, Quaternion.identity);
+                yield return new WaitForSeconds(0.2f);
+                enemyCount++;
+            }
+
+            
         }
     }
 }
