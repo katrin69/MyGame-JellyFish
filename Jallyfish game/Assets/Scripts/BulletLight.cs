@@ -7,6 +7,7 @@ public class BulletLight : MonoBehaviour
     private float bulletForce = 24f;
     [SerializeField] private Rigidbody rb;
     public float Timer = 3;
+   // public Transform firePoint;
 
     private void Update()
     {
@@ -20,6 +21,8 @@ public class BulletLight : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = Vector3.forward * bulletForce;
+        //rb.AddForce(Vector3.forward * bulletForce);
+        // rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
