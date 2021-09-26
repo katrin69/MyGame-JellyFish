@@ -73,8 +73,7 @@ GameObject:
   - component: {fileID: 5216332769885702575}
   - component: {fileID: 5216332770618898069}
   - component: {fileID: 5216332770618898068}
-  - component: {fileID: 4918667378715444173}
-  - component: {fileID: -4544662805775896813}
+  - component: {fileID: -1366667675073738919}
   m_Layer: 0
   m_Name: BulletLight
   m_TagString: Untagged
@@ -255,7 +254,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.278958, y: 1.0530138, z: 0.83967686}
   m_Center: {x: 0.27796412, y: 1.5120351, z: 0.08016169}
---- !u!114 &4918667378715444173
+--- !u!114 &-1366667675073738919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,19 +263,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5216332769896663073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f758942d6f8ec354e89b787919ee2585, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f38c5acf25848c4fb6a73fc5cafd96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToSpawn: 5
---- !u!114 &-4544662805775896813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5216332769896663073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511b6ec0fa466af4fa3c29a408b44ef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  rb: {fileID: 5216332770618898069}
+  firePoint: {fileID: 0}

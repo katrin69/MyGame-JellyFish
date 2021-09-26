@@ -28,8 +28,16 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+        // GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        // rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
+        GameObject bullet = ObjectPooler.instance.GetPooledObject();
+
+        if (bullet != null)
+        {
+            bullet.transform.position = firePoint.position;
+            bullet.SetActive(true);
+        }
     }
 }
