@@ -18,6 +18,7 @@ public class BulletLight : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    //Никита любит Лёшу
 
     private void OnEnable()
     {

@@ -7,7 +7,7 @@ public class ObjectPooler : MonoBehaviour
     public static ObjectPooler instance;
 
     private List<GameObject> pooledObject = new List<GameObject>();
-    private int amountToPool = 20;
+    //private int amountToPool = 20;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -29,6 +29,7 @@ public class ObjectPooler : MonoBehaviour
         //     pooledObject.Add(obj); // Добавляет в список
         //  }
     }
+    //Никита любит Лёшу
 
     public GameObject GetPooledObject()
     {

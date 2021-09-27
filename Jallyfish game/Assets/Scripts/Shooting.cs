@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public float bulletForce = 20f;
 
-
+    //Никита любит Лёшу
 
     void Update()
     {
