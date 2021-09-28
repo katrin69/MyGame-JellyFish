@@ -51,7 +51,7 @@ public class EnemyInstantiate : MonoBehaviour
             if (Physics.Raycast(ray, out var hitInfo, distance, TerrainMask))
             {
                 pos = hitInfo.point;
-                pos.y += 20f;
+                pos.y += 5f;
                 Instantiate(theEnemy, pos, Quaternion.identity);
                 yield return new WaitForSeconds(0.2f);
                 enemyCount++;
