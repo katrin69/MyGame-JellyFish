@@ -43,7 +43,6 @@ public class ObjectPooler : MonoBehaviour
             }
         }
         GameObject gm = createObject();
-        pooledObject.Add(gm);
         return gm;
     }
 
