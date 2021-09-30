@@ -39,17 +39,17 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    //Если Акула сталкивается с Медузой
+    private void OnCollisionEnter(Collision collision)
     {
-        //способ 1
-        // vector3 targetdirection = player.position - transform.position;
-        //if (targetdirection.magnitude > 0.5f) // если расстояние больше 0.5
-        //{
-        //    transform.lookat(player);
-        //    rb.velocity = targetdirection.normalized * movespeed; // то задаем объекту скорость по направлению к конечной точке
-        //}
-
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //Обращаемся к Медузе
+            collision.gameObject.GetComponent<PlayerHealth>().RecountHp(-1);
+            print("Никита любит Лёшу");
+        }
     }
+
 
 
 }

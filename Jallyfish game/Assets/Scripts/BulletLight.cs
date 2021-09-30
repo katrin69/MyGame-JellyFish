@@ -12,16 +12,6 @@ public class BulletLight : MonoBehaviour
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
 
-     //Объект со скриптом бара
-    public GameObject barObject;
-    public HealthBar healthBarScript;
-
-    private void Start()
-    {
-        barObject = GameObject.Find("Bar");//Находим бар
-        healthBarScript = barObject.GetComponent<HealthBar>(); //Получаем бар с найденного объекта
-    }
-
     private void Update() // Время после которого молния исчезает
     {
         Timer -= Time.deltaTime;
@@ -54,7 +44,7 @@ public class BulletLight : MonoBehaviour
             //Получаем скрипт EnemyHealth с объекта коллизии
             EnemyHealth healthScript = collision.transform.GetComponent<EnemyHealth>();
 
-            if (healthScript && healthBarScript)
+            if (healthScript)
             {
                 healthScript.health -= damage;  //Делаем урон врагу
 
@@ -62,11 +52,7 @@ public class BulletLight : MonoBehaviour
                 {
                     healthScript.health = 0;
                 }
-                //Отправляем в бар инормацию об хп и хп максимальном врага
-                healthBarScript.health = healthScript.health;
-                healthBarScript.healthMax = healthScript.healthMax;
-                //Показывавем бар
-                healthBarScript.showBar = true;
+               
             }
             else
             {
