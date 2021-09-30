@@ -39,8 +39,7 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rb.velocity = Vector3.forward * bulletForce;
-        transform.Translate(dir * bulletForce);
+       rb.velocity = Vector3.forward * bulletForce; //движение молнии
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -37,7 +37,8 @@ public class Shooting : MonoBehaviour
 
         if (bullet != null)
         {
-            bullet.transform.position = firePoint.position;
+           // bullet.transform.position = firePoint.position;
+            bullet.transform.rotation = firePoint.rotation;
             bullet.SetActive(true);
         }
     }
