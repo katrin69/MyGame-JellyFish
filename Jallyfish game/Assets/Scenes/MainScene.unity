@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -321,7 +321,7 @@ MonoBehaviour:
   moveSpeed: 8
   rb: {fileID: 481811560}
   cam: {fileID: 963194227}
-  JellyfishModel: {fileID: 0}
+  JellyfishModel: {fileID: 1627095099}
   TerrainMask:
     serializedVersion: 2
     m_Bits: 0
@@ -345,7 +345,7 @@ Transform:
   - {fileID: 1627095100}
   - {fileID: 2024699823}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -438,7 +438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -555,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1134918921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627095099 stripped
 GameObject:
@@ -620,6 +620,63 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &1695049560
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 54.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.40328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302641808997960721, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_Name
+      value: Enemy shark
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
 --- !u!1 &2024699822
 GameObject:
   m_ObjectHideFlags: 0

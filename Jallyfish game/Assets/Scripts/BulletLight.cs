@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BulletLight : MonoBehaviour
 {
-    private float bulletForce = 24f;
-    [SerializeField] private Rigidbody rb;
-    private float Timer;
-    public float defaultTime = 10f;
-    // public Transform firePoint;
+    private float bulletForce = 24f; //сила пули
+    [SerializeField] private Rigidbody rb; //тело пули
+    private float Timer; //таймер после которого пуля исчезает
+    public float defaultTime = 8f;
 
     private void Update()
     {

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float bulletForce = 20f;
+    public GameObject bulletPrefab; //молния
+    public Transform firePoint; //место от куда стрелять
+    public float bulletForce = 20f; //скорость движения молнии
+
 
     //Никита любит Лёшу
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2")) //если нажата кнопка то стрелять
         {
             Shoot();
         }
@@ -26,7 +27,7 @@ public class Shooting : MonoBehaviour
 
     }
 
-    void Shoot()
+    void Shoot() //метод стрельбы
     {
         // GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         // Rigidbody rb = bullet.GetComponent<Rigidbody>();

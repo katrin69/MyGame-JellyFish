@@ -33,7 +33,6 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        Debug.Log(pooledObject.Count);
         for (int i = 0; i < pooledObject.Count; i++)//Пока i меньше числа молний в списке и если Молния не активна то возращать Молнию
                                                     // вернуть ноль
         {
