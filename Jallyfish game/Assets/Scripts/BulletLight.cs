@@ -7,6 +7,7 @@ public class BulletLight : MonoBehaviour
     private float bulletForce = 24f; //сила пули
     [SerializeField] private Rigidbody rb; //тело пули
     public int damage; //Величина урона
+    public Vector3 dir;
 
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
@@ -38,7 +39,8 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector3.forward * bulletForce;
+        //rb.velocity = Vector3.forward * bulletForce;
+        transform.Translate(dir * bulletForce);
     }
 
     private void OnCollisionEnter(Collision collision)
