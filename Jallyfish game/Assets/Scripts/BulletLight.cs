@@ -6,10 +6,22 @@ public class BulletLight : MonoBehaviour
 {
     private float bulletForce = 24f; //сила пули
     [SerializeField] private Rigidbody rb; //тело пули
+    public int damage; //Величина урона
+
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
 
-    private void Update()
+     //Объект со скриптом бара
+    public GameObject barObject;
+    public HealthBar healthBarScript;
+
+    private void Start()
+    {
+        barObject = GameObject.Find("Bar");//Находим бар
+        healthBarScript = barObject.GetComponent<HealthBar>(); //Получаем бар с найденного объекта
+    }
+
+    private void Update() // Время после которого молния исчезает
     {
         Timer -= Time.deltaTime;
         if (Timer < 0)
@@ -27,15 +39,40 @@ public class BulletLight : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = Vector3.forward * bulletForce;
-        //rb.AddForce(Vector3.forward * bulletForce);
-        // rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        gameObject.SetActive(false); //удаляем молнию
+
+        //Отправляет сообщение в лог с тегом врага
+        Debug.Log(collision.transform.tag);
+
         if (collision.gameObject.CompareTag("Shark"))
         {
-            gameObject.SetActive(false);
+            //Получаем скрипт EnemyHealth с объекта коллизии
+            EnemyHealth healthScript = collision.transform.GetComponent<EnemyHealth>();
+
+            if (healthScript && healthBarScript)
+            {
+                healthScript.health -= damage;  //Делаем урон врагу
+
+                if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
+                {
+                    healthScript.health = 0;
+                }
+                //Отправляем в бар инормацию об хп и хп максимальном врага
+                healthBarScript.health = healthScript.health;
+                healthBarScript.healthMax = healthScript.healthMax;
+                //Показывавем бар
+                healthBarScript.showBar = true;
+            }
+            else
+            {
+
+                Debug.Log("No scripts");
+            }
+            Destroy(collision.gameObject);//Удаляем объект
         }
         
     }

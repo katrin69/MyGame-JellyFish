@@ -267,4 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5216332770618898069}
+  damage: 0
   defaultTime: 5
+  barObject: {fileID: 0}
+  healthBarScript: {fileID: 0}
