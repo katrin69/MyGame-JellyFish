@@ -10,12 +10,12 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         curHp = maxHp;
-        print(curHp);
+        print(curHp); 
     }
 
     public void RecountHp(int deltaHp) //принимает поло и отрец. Метод пересчитывает 
     {
-        curHp =+ deltaHp;
+        curHp += deltaHp;
         print(curHp);
         if (curHp <=0)
         {
