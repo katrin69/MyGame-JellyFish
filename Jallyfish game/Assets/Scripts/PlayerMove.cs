@@ -56,13 +56,13 @@ public class PlayerMove : MonoBehaviour
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
-
+       
+        //поворот медузы на мышку
         MouseRay = cam.ScreenPointToRay(Input.mousePosition); //создаст луч который будет использовать экран камеры
         float hitDist = 0.0f; //расстояние попадание на землю
         Plane playerPlane = new Plane(Vector3.up, transform.position);
-       
 
-        if (playerPlane.Raycast(MouseRay, out hitDist) && Input.GetMouseButton(0))
+       if (playerPlane.Raycast(MouseRay, out hitDist) && Input.GetMouseButton(0))
         {
             Vector3 targetPoint = MouseRay.GetPoint(hitDist); //Возвращает точку в единицах измерения вдоль луча. hitDist расстояние попадания
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position); //расщёт повора цели
@@ -72,51 +72,19 @@ public class PlayerMove : MonoBehaviour
         }
 
         //поворачивался по направлению движения
-        transform.rotation = Quaternion.Lerp(transform.rotation/*начальная точка*/, Quaternion.LookRotation(movement)/*куда хотим смотреть */, Time.deltaTime * rotationSpeed);
+        if (movement.magnitude > Mathf.Abs(0.5f))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation/*начальная точка*/, 
+                                 Quaternion.LookRotation(movement)/*куда хотим смотреть */,
+                                 Time.deltaTime * rotationSpeed);
 
-        //if (Vector3.Angle(Vector3.forward, movement) > 1f || Vector3.Angle(Vector3.forward, movement) == 0)
-        //{
-        //    Vector3 direct = Vector3.RotateTowards(transform.forward, movement, moveSpeed, 0.0f);
-        //    transform.rotation = Quaternion.LookRotation(direct);
-        //}
+        }
+      
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //двигаемся
-
-        //Vector3 targetDirection = mousePos - transform.position; // считаем направление от себя то конечной точки
-        //float angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg-90 ;
-        //transform.eulerAngles = new Vector3(transform.rotation.x,  angle, transform.rotation.z);
-
-
-        //if (Input.GetMouseButton(0)) // Проверяем, нажата ли левая кнопка мышки
-        //{
-        //    MouseRay = cam.ScreenPointToRay(Input.mousePosition); // Берем луч из камеры относительно позиции мышки
-
-        //    int results = Physics.RaycastNonAlloc(MouseRay, CastResults, 500, TerrainMask); // Делаем каст по лучу
-
-        //    if (results > 0)
-        //    {
-        //        TargetPosition = CastResults[0].point + Vector3.up * Height; // Если результатов >1 то в конечную позицию записываем точку, куда мышка кликнула
-        //    }
-
-        //    Vector3 targetDirection = TargetPosition - transform.position; // считаем направление от себя то конечной точки
-
-        //    var angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg;// находим угол
-        //    transform.eulerAngles = new Vector3(transform.rotation.x, -angle, transform.rotation.z); // задаём угол
-        //}
-
-
-
-        //VerticalOffset = Mathf.Sin(Time.realtimeSinceStartup) / VerticalDumpening; // Считаем вертикальное отклонение по синусу от времени, получаем плавное изменение величины от -1 до 1
-
-        //PositionOffset = JellyfishModel.transform.position; // берем позицию модели медузки
-        //PositionOffset.y += VerticalOffset; // добавляем ей текущее вертикальное отклонение
-        //JellyfishModel.transform.position = PositionOffset; // возвращаем отклонение обратно в медузку - получаем плавные колебания вверх-вниз
-
-
-
 
     }
 
