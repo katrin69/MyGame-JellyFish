@@ -401,7 +401,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481811557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68c53d9c1eb6a944cab74a6d0c104ed9, type: 3}
   m_Name: 
@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  rotationSpeed: 5
   rb: {fileID: 481811560}
   cam: {fileID: 963194227}
   JellyfishModel: {fileID: 1627095099}
@@ -487,7 +488,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481811557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3ddb5899fbfcd44e9ea5ae366977570, type: 3}
   m_Name: 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5f; // Скорость движения   
+    public float rotationSpeed = 5f; // Скорость поворота   
+
 
     public Rigidbody rb; // 
 
@@ -55,22 +57,23 @@ public class PlayerMove : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
 
-        MouseRay = cam.ScreenPointToRay(Input.mousePosition); //создаст луч который будет использовать экрна камеры
-        float hitDist = 0.0f;
+        MouseRay = cam.ScreenPointToRay(Input.mousePosition); //создаст луч который будет использовать экран камеры
+        float hitDist = 0.0f; //расстояние попадание на землю
         Plane playerPlane = new Plane(Vector3.up, transform.position);
+       
 
-        if (playerPlane.Raycast(MouseRay,out hitDist))
+        if (playerPlane.Raycast(MouseRay, out hitDist) && Input.GetMouseButton(0))
         {
-            Vector3 targetPoint = MouseRay.GetPoint(hitDist);
-            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-            targetRotation.x = 0;
+            Vector3 targetPoint = MouseRay.GetPoint(hitDist); //Возвращает точку в единицах измерения вдоль луча. hitDist расстояние попадания
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position); //расщёт повора цели
+            targetRotation.x = 0; // чтобы мы не повернули ее непо той оси
             targetRotation.z = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.deltaTime);
-
         }
 
+        //поворачивался по направлению движения
+        transform.rotation = Quaternion.Lerp(transform.rotation/*начальная точка*/, Quaternion.LookRotation(movement)/*куда хотим смотреть */, Time.deltaTime * rotationSpeed);
 
-        ////Движение по кругу
         //if (Vector3.Angle(Vector3.forward, movement) > 1f || Vector3.Angle(Vector3.forward, movement) == 0)
         //{
         //    Vector3 direct = Vector3.RotateTowards(transform.forward, movement, moveSpeed, 0.0f);
@@ -82,9 +85,9 @@ public class PlayerMove : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //двигаемся
 
-        Vector3 targetDirection = mousePos - transform.position; // считаем направление от себя то конечной точки
-        float angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg-90 ;
-        transform.eulerAngles = new Vector3(transform.rotation.x,  angle, transform.rotation.z);
+        //Vector3 targetDirection = mousePos - transform.position; // считаем направление от себя то конечной точки
+        //float angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg-90 ;
+        //transform.eulerAngles = new Vector3(transform.rotation.x,  angle, transform.rotation.z);
 
 
         //if (Input.GetMouseButton(0)) // Проверяем, нажата ли левая кнопка мышки
