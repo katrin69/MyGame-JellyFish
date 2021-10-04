@@ -13,7 +13,7 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2")) //если нажата кнопка то стрелять
+        if (Input.GetButtonDown("Fire1")) //если нажата кнопка то стрелять
         {
             Shoot();
         }

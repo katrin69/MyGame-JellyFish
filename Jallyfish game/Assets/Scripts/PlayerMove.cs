@@ -12,7 +12,8 @@ public class PlayerMove : MonoBehaviour
 
     public GameObject JellyfishModel; // ћоделька медузки
 
-    Vector3 movement;
+    Vector3 movement; //напрвление перса
+    Vector3 mousePos;
 
     public Ray MouseRay;               // Ћуч, вдоль которого мы пускаем RayCast
     public RaycastHit[] CastResults;   // –езультаты RayCast
@@ -54,49 +55,66 @@ public class PlayerMove : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
 
-        //ƒвижение по кругу
-        if (Vector3.Angle(Vector3.forward,movement)>1f|| Vector3.Angle(Vector3.forward,movement) ==0)
+        MouseRay = cam.ScreenPointToRay(Input.mousePosition); //создаст луч который будет использовать экрна камеры
+        float hitDist = 0.0f;
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+
+        if (playerPlane.Raycast(MouseRay,out hitDist))
         {
-            Vector3 direct = Vector3.RotateTowards(transform.forward, movement, moveSpeed, 0.0f);
-            transform.rotation = Quaternion.LookRotation(direct);
+            Vector3 targetPoint = MouseRay.GetPoint(hitDist);
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+            targetRotation.x = 0;
+            targetRotation.z = 0;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.deltaTime);
+
         }
+
+
+        ////ƒвижение по кругу
+        //if (Vector3.Angle(Vector3.forward, movement) > 1f || Vector3.Angle(Vector3.forward, movement) == 0)
+        //{
+        //    Vector3 direct = Vector3.RotateTowards(transform.forward, movement, moveSpeed, 0.0f);
+        //    transform.rotation = Quaternion.LookRotation(direct);
+        //}
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)) // ѕровер€ем, нажата ли лева€ кнопка мышки
-        {
-            MouseRay = cam.ScreenPointToRay(Input.mousePosition); // Ѕерем луч из камеры относительно позиции мышки
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //двигаемс€
 
-            int results = Physics.RaycastNonAlloc(MouseRay, CastResults, 500, TerrainMask); // ƒелаем каст по лучу
+        Vector3 targetDirection = mousePos - transform.position; // считаем направление от себ€ то конечной точки
+        float angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg-90 ;
+        transform.eulerAngles = new Vector3(transform.rotation.x,  angle, transform.rotation.z);
 
-            if (results > 0)
-            {
-                TargetPosition = CastResults[0].point + Vector3.up * Height; // ≈сли результатов >1 то в конечную позицию записываем точку, куда мышка кликнула
-            }
-        }
 
-        Vector3 targetDirection = TargetPosition - transform.position; // считаем направление от себ€ то конечной точки
+        //if (Input.GetMouseButton(0)) // ѕровер€ем, нажата ли лева€ кнопка мышки
+        //{
+        //    MouseRay = cam.ScreenPointToRay(Input.mousePosition); // Ѕерем луч из камеры относительно позиции мышки
 
-        if (targetDirection.magnitude > 0.5f) // если рассто€ние больше 0.5
-        {
-            rb.velocity = targetDirection.normalized * moveSpeed; // то задаем объекту скорость по направлению к конечной точке
-        }
-        else
-        {
-            rb.velocity = ZeroVelocity; // если мы р€дом с конечно точкой - сбрасываем скорость в 0
-        }
+        //    int results = Physics.RaycastNonAlloc(MouseRay, CastResults, 500, TerrainMask); // ƒелаем каст по лучу
 
-        VerticalOffset = Mathf.Sin(Time.realtimeSinceStartup) / VerticalDumpening; // —читаем вертикальное отклонение по синусу от времени, получаем плавное изменение величины от -1 до 1
+        //    if (results > 0)
+        //    {
+        //        TargetPosition = CastResults[0].point + Vector3.up * Height; // ≈сли результатов >1 то в конечную позицию записываем точку, куда мышка кликнула
+        //    }
+
+        //    Vector3 targetDirection = TargetPosition - transform.position; // считаем направление от себ€ то конечной точки
+
+        //    var angle = Mathf.Atan2(targetDirection.z, targetDirection.x) * Mathf.Rad2Deg;// находим угол
+        //    transform.eulerAngles = new Vector3(transform.rotation.x, -angle, transform.rotation.z); // задаЄм угол
+        //}
+
+
+
+        //VerticalOffset = Mathf.Sin(Time.realtimeSinceStartup) / VerticalDumpening; // —читаем вертикальное отклонение по синусу от времени, получаем плавное изменение величины от -1 до 1
 
         //PositionOffset = JellyfishModel.transform.position; // берем позицию модели медузки
         //PositionOffset.y += VerticalOffset; // добавл€ем ей текущее вертикальное отклонение
         //JellyfishModel.transform.position = PositionOffset; // возвращаем отклонение обратно в медузку - получаем плавные колебани€ вверх-вниз
 
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        //rb.transform.LookAt(mousePos);
-        //Vector3 lookDir = mousePos - rb.position;
-        // transform.LookAt(transform.position + lookDir);
+
+
+
     }
 
 }

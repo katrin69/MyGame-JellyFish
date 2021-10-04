@@ -34,10 +34,17 @@ public class BulletLight : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            return; //ничего не делает. Выходит из метода
+        }
+
+
         gameObject.SetActive(false); //удаляем молнию
 
         //Отправляет сообщение в лог с тегом врага
         Debug.Log(collision.transform.tag);
+
 
         if (collision.gameObject.CompareTag("Shark"))
         {
@@ -52,7 +59,7 @@ public class BulletLight : MonoBehaviour
                 {
                     healthScript.health = 0;
                 }
-               
+
             }
             else
             {
@@ -61,6 +68,7 @@ public class BulletLight : MonoBehaviour
             }
             Destroy(collision.gameObject);//Удаляем объект
         }
+        
         
     }
 }

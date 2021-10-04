@@ -38,10 +38,11 @@ public class ObjectPooler : MonoBehaviour
         {
             if (!pooledObject[i].activeInHierarchy) //Определяет, активен ли игровой объект в Сцене
             {
-                return pooledObject[i];//возращает обькут Молния
+                return pooledObject[i];//возращает объект Молния
             }
         }
         GameObject gm = createObject();
+        pooledObject.Add(gm);
         return gm;
     }
 
