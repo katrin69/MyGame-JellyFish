@@ -460,12 +460,6 @@ MonoBehaviour:
   TerrainMask:
     serializedVersion: 2
     m_Bits: 64
-  VerticalOffset: 0
-  VerticalDumpening: 50
-  PositionOffset: {x: 0, y: 0, z: 0}
-  TargetPosition: {x: 0, y: 0, z: 0}
-  ZeroVelocity: {x: 0, y: 0, z: 0}
-  Height: 0
 --- !u!4 &481811562
 Transform:
   m_ObjectHideFlags: 0

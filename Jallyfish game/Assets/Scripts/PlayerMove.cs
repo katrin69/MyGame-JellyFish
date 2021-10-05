@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5f; // Скорость движения   
     public float rotationSpeed = 5f; // Скорость поворота   
-    public float distToGround = 1f; //Дистанция до земли
+    public float distToGround; //Дистанция до земли
 
 
     public Rigidbody rb; // 
@@ -60,7 +60,13 @@ public class PlayerMove : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
 
-        
+        //Ray isGR = new Ray(transform.position, -Vector3.up);
+        //Debug.DrawRay(isGR.origin, isGR.direction * distToGround);
+
+        //if (Physics.Raycast(isGR,distToGround,TerrainMask))
+        //{
+            
+        //}
     }
 
     private void FixedUpdate()
@@ -100,15 +106,16 @@ public class PlayerMove : MonoBehaviour
     void GroundChexk()
     {
         Ray isGround = new Ray(transform.position, Vector3.down);
-        
 
-        if (Physics.Raycast(isGround, out var hitInfo, distToGround*10f, TerrainMask)) //луч,точка,дистанция до земли,земля
+
+        if (Physics.Raycast(isGround, out var hitInfo, distToGround * 10f, TerrainMask)) //луч,точка,дистанция до земли,земля
         {
+
             Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green); //показывает луч
             //создаём новую переменую Разница . Точка где луч пересекат землю y + дистанция до земли минус позиция по y
-            var dif = (hitInfo.point.y + distToGround) - transform.position.y; 
+            var dif = (hitInfo.point.y + distToGround) - transform.position.y;
             //Направление перса равно вверх умножить на разницу
-            movement = Vector3.up * dif; 
+            movement = Vector3.up * dif;
 
         }
 
