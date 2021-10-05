@@ -19,23 +19,23 @@ public class PlayerMove : MonoBehaviour
 
     public Ray MouseRay;               // Луч, вдоль которого мы пускаем RayCast
 
-    public RaycastHit[] CastResults;   // Результаты RayCast
+   // public RaycastHit[] CastResults;   // Результаты RayCast
 
     public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
 
-    [Space(10)]
-    public float VerticalOffset;        // Вертикальное отклонение от текущей позиции
+   // [Space(10)]
+   // public float VerticalOffset;        // Вертикальное отклонение от текущей позиции
 
-    [Range(1, 100)]
-    public float VerticalDumpening = 10;  // Коэффициент ослабления вертикальных колебаний
+   // [Range(1, 100)]
+   // public float VerticalDumpening = 10;  // Коэффициент ослабления вертикальных колебаний
 
-    public Vector3 PositionOffset;      // Общее отклонение от текущей позиции
+    //public Vector3 PositionOffset;      // Общее отклонение от текущей позиции
 
-    public Vector3 TargetPosition;      // Позиция, в которую нужно прийти
+    //public Vector3 TargetPosition;      // Позиция, в которую нужно прийти
 
-    public Vector3 ZeroVelocity = Vector3.zero;  // Прст нол
+    //public Vector3 ZeroVelocity = Vector3.zero;  // Прст нол
 
-    public float Height;    // Исходная высота медузки над песком
+    //public float Height;    // Исходная высота медузки над песком
 
     private void Awake()
     {
@@ -45,12 +45,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {                       // наша позиция - вектор вниз - результат - дальность каста - фильтр 
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 10, TerrainMask)) // Делаем каст под себя
-        {
-            Height = (hit.point - transform.position).magnitude; // записываем расстояние от медузки до песка
-        }
+        //if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 10, TerrainMask)) // Делаем каст под себя
+        //{
+        //    Height = (hit.point - transform.position).magnitude; // записываем расстояние от медузки до песка
+        //}
 
-        TargetPosition = transform.position; // Записываем текущую позицию как конечную
+        //TargetPosition = transform.position; // Записываем текущую позицию как конечную
     }
 
     void Update()
@@ -104,14 +104,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Physics.Raycast(isGround, out var hitInfo, distToGround*10f, TerrainMask)) //луч,точка,дистанция до земли,земля
         {
-            Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green);
-            // transform.position = hitInfo.point; //хуйня которая делает точку 
-            //var newPos = new Vector3(hitInfo.point.x, hitInfo.point.y + distToGround, hitInfo.point.z); // а это должна быть высота медузы относильно земли
+            Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green); //показывает луч
+            //создаём новую переменую Разница . Точка где луч пересекат землю y + дистанция до земли минус позиция по y
             var dif = (hitInfo.point.y + distToGround) - transform.position.y; 
-            movement += Vector3.up * dif; 
+            //Направление перса равно вверх умножить на разницу
+            movement = Vector3.up * dif; 
 
-
-           // rb.MovePosition(newPos);
         }
 
     }
