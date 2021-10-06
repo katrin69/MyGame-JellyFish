@@ -59,17 +59,9 @@ public class PlayerMove : MonoBehaviour
 
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
+  }
 
-        //Ray isGR = new Ray(transform.position, -Vector3.up);
-        //Debug.DrawRay(isGR.origin, isGR.direction * distToGround);
-
-        //if (Physics.Raycast(isGR,distToGround,TerrainMask))
-        //{
-            
-        //}
-    }
-
-    private void FixedUpdate()
+    private void FixedUpdate() 
     {
 
         //поворот медузы на мышку

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     int curHp; //текущее количество жизней
-    int maxHp = 6; //максимальное количество жизней
+    int maxHp = 10; //максимальное количество жизней
 
     private void Start()
     {

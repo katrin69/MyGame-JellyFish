@@ -29,10 +29,6 @@ public class Shooting : MonoBehaviour
 
     void Shoot() //לועמה סענוכüבû
     {
-        // GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        // Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        // rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-
         GameObject bullet = ObjectPooler.instance.GetPooledObject();
 
         if (bullet != null)
