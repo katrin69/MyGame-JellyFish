@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ddb5899fbfcd44e9ea5ae366977570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reastartDelay: 2
 --- !u!1 &493285753
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,9 +596,9 @@ RectTransform:
   m_Father: {fileID: 44236548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 292}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -45}
   m_SizeDelta: {x: 700, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493285756
@@ -1173,7 +1174,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1134918921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,7 +1978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1867130647}
   - component: {fileID: 1867130648}
-  - component: {fileID: 1867130649}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2017,19 +2017,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867130646}
   m_CullTransparentMesh: 1
---- !u!114 &1867130649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867130646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8f24038786cfe46b6bb85dbfc13255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsText: {fileID: 0}
 --- !u!1 &1920469638
 GameObject:
   m_ObjectHideFlags: 0
