@@ -1,4 +1,4 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     int maxHp = 10; //максимальное количество жизней
     public float reastartDelay = 4f;//задержка перезапуска
 
+
     private void Start()
     {
         curHp = maxHp;
@@ -21,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     public void RecountHp(int deltaHp) //принимает поло и отрец. ћетод пересчитывает 
     {
         curHp += deltaHp;
-        print(curHp);
+
         PlayerHealthBar.instance.SetValue(curHp / (float)maxHp);
         if (curHp <= 0)
         {
@@ -31,7 +32,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void Restart() //метод загружает сцены с перезапруском
-    { 
+    {
         SceneManager.LoadScene(1);
     }
+
 }

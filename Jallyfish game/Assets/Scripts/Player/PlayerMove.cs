@@ -19,25 +19,8 @@ public class PlayerMove : MonoBehaviour
 
     public Ray MouseRay;               // Луч, вдоль которого мы пускаем RayCast
 
-   // public RaycastHit[] CastResults;   // Результаты RayCast
-
     public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
-
-   // [Space(10)]
-   // public float VerticalOffset;        // Вертикальное отклонение от текущей позиции
-
-   // [Range(1, 100)]
-   // public float VerticalDumpening = 10;  // Коэффициент ослабления вертикальных колебаний
-
-    //public Vector3 PositionOffset;      // Общее отклонение от текущей позиции
-
-    //public Vector3 TargetPosition;      // Позиция, в которую нужно прийти
-
-    //public Vector3 ZeroVelocity = Vector3.zero;  // Прст нол
-
-    //public float Height;    // Исходная высота медузки над песком
-
-    private void Awake()
+ private void Awake()
     {
 
         TerrainMask = LayerMask.GetMask("Terrain");     // Создаем фильтр по слою Terrain
