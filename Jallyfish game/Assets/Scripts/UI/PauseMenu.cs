@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -22,17 +24,23 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void Resume()
+    public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f; //скорость игры восстанавливается
         GameIsPause = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);//Позволит вызывать меню паузы.Меню появляется во время паузы
         Time.timeScale = 0f; //все замрёт кроме мышки
         GameIsPause = true;
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f; //должен убирать баг 
+        SceneManager.LoadScene("MainMenu");
     }
 }
