@@ -47,6 +47,7 @@ public class EnemyAttack : MonoBehaviour
             //Обращаемся к Медузе
             collision.gameObject.GetComponent<PlayerHealth>().RecountHp(-1);
             print("Никита любит Лёшу");
+
         }
     }
 

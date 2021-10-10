@@ -20,21 +20,13 @@ public class PlayerMove : MonoBehaviour
     public Ray MouseRay;               // Луч, вдоль которого мы пускаем RayCast
 
     public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
+
  private void Awake()
     {
 
         TerrainMask = LayerMask.GetMask("Terrain");     // Создаем фильтр по слою Terrain
     }
 
-    private void Start()
-    {                       // наша позиция - вектор вниз - результат - дальность каста - фильтр 
-        //if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 10, TerrainMask)) // Делаем каст под себя
-        //{
-        //    Height = (hit.point - transform.position).magnitude; // записываем расстояние от медузки до песка
-        //}
-
-        //TargetPosition = transform.position; // Записываем текущую позицию как конечную
-    }
 
     void Update()
     {
@@ -66,7 +58,7 @@ public class PlayerMove : MonoBehaviour
         //поворачивался по направлению движения
         if (movement.magnitude > Mathf.Abs(0.5f))
         {
-            Quaternion lookRotation = Quaternion.LookRotation(movement);
+            Quaternion lookRotation = Quaternion.LookRotation(movement);//расщёт повора цели
 
             lookRotation.x = 0; // чтобы мы не повернули ее непо той оси
             lookRotation.z = 0;

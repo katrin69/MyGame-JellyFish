@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler instance;
+    public static ObjectPooler instance; //создаём пулер
 
-    private List<GameObject> pooledObject = new List<GameObject>();
-    //private int amountToPool = 20;
+    private List<GameObject> pooledObject = new List<GameObject>(); //создаём лист
 
     [SerializeField] private GameObject bulletPrefab;
 
-    private Transform BulletParent;
+    private Transform BulletParent; //берём позицию пулей
 
     private void Awake()
     {
@@ -20,21 +19,11 @@ public class ObjectPooler : MonoBehaviour
             instance = this;
         }
 
-        GameObject bullets = new GameObject();
-        bullets.name = "Bullets_Nya";
-        BulletParent = bullets.transform;
+        GameObject bullets = new GameObject(); //Новый игровой обьект
+        bullets.name = "Bullets_Nya"; //название папки
+        BulletParent = bullets.transform; //присваеваем позицию пулей в папку
     }
 
-
-    private void Start()
-    {
-        // for (int i = 0; i < amountToPool; i++) //Пока i меньше чем 20 создавать Молнию и добавлять в Список
-        //  {
-        //     GameObject obj = Instantiate(bulletPrefab); //создаёт Молнию
-        //     obj.SetActive(false); //Активирует/деактивирует игровой объект в зависимости от заданного значения
-        //     pooledObject.Add(obj); // Добавляет в список
-        //  }
-    }
     //Никита любит Лёшу
 
     public GameObject GetPooledObject()

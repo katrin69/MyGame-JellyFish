@@ -70,43 +70,4 @@ public class BulletLight : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if (collision.gameObject.CompareTag("Player"))
-        //{
-        //    return; //ничего не делает. Выходит из метода
-        //}
-
-
-        //gameObject.SetActive(false); //удаляем молнию
-
-        ////Отправляет сообщение в лог с тегом врага
-        //Debug.Log(collision.transform.tag);
-
-
-        //if (collision.gameObject.CompareTag("Shark"))
-        //{
-        //    //Получаем скрипт EnemyHealth с объекта коллизии
-        //    EnemyHealth healthScript = collision.transform.GetComponent<EnemyHealth>();
-
-        //    if (healthScript)
-        //    {
-        //        healthScript.health -= damage;  //Делаем урон врагу
-
-        //        if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
-        //        {
-        //            healthScript.health = 0;
-        //        }
-
-        //    }
-        //    else
-        //    {
-
-        //        Debug.Log("No scripts");
-        //    }
-        //    Destroy(collision.gameObject);//Удаляем объект
-        //}
-        
-        
-    }
 }
