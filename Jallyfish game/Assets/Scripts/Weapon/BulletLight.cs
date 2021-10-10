@@ -29,12 +29,12 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-      rb.velocity = Vector3.forward * bulletForce; //движение молнии
+       rb.velocity = transform.forward * bulletForce; //движение молнии
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             return; //ничего не делает. Выходит из метода
         }
@@ -43,13 +43,13 @@ public class BulletLight : MonoBehaviour
         gameObject.SetActive(false); //удаляем молнию
 
         //Отправляет сообщение в лог с тегом врага
-        Debug.Log(collision.transform.tag);
+        Debug.Log(other.transform.tag);
 
 
-        if (collision.gameObject.CompareTag("Shark"))
+        if (other.gameObject.CompareTag("Shark"))
         {
             //Получаем скрипт EnemyHealth с объекта коллизии
-            EnemyHealth healthScript = collision.transform.GetComponent<EnemyHealth>();
+            EnemyHealth healthScript = other.transform.GetComponent<EnemyHealth>();
 
             if (healthScript)
             {
@@ -66,8 +66,46 @@ public class BulletLight : MonoBehaviour
 
                 Debug.Log("No scripts");
             }
-            Destroy(collision.gameObject);//Удаляем объект
+            Destroy(other.gameObject);//Удаляем объект
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.gameObject.CompareTag("Player"))
+        //{
+        //    return; //ничего не делает. Выходит из метода
+        //}
+
+
+        //gameObject.SetActive(false); //удаляем молнию
+
+        ////Отправляет сообщение в лог с тегом врага
+        //Debug.Log(collision.transform.tag);
+
+
+        //if (collision.gameObject.CompareTag("Shark"))
+        //{
+        //    //Получаем скрипт EnemyHealth с объекта коллизии
+        //    EnemyHealth healthScript = collision.transform.GetComponent<EnemyHealth>();
+
+        //    if (healthScript)
+        //    {
+        //        healthScript.health -= damage;  //Делаем урон врагу
+
+        //        if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
+        //        {
+        //            healthScript.health = 0;
+        //        }
+
+        //    }
+        //    else
+        //    {
+
+        //        Debug.Log("No scripts");
+        //    }
+        //    Destroy(collision.gameObject);//Удаляем объект
+        //}
         
         
     }

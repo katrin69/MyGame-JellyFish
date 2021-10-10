@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216332769896453375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5216332769896780709}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216332769896478049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5216332769896780709}
@@ -88,15 +88,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216332769896663073}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 49.65, y: 9.1, z: 15.73}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5216332769896738087}
   - {fileID: 5216332769896769815}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &5216332769887349393
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   EndPosition: {x: 0, y: 0, z: 0}
   Generations: 6
   Duration: 0.03
-  ChaosFactor: 0.15
+  ChaosFactor: 0
   ManualMode: 0
   Rows: 1
   Columns: 1
@@ -249,11 +249,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216332769896663073}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.278958, y: 1.0530138, z: 0.83967686}
-  m_Center: {x: 0.27796412, y: 1.5120351, z: 0.08016169}
+  m_Size: {x: 0.3, y: 0.3, z: 4}
+  m_Center: {x: 0, y: 0, z: 2}
 --- !u!114 &-8069677114748241115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +268,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5216332770618898069}
   damage: 0
+  dir: {x: 0, y: 0, z: 0}
   defaultTime: 5
-  barObject: {fileID: 0}
-  healthBarScript: {fileID: 0}

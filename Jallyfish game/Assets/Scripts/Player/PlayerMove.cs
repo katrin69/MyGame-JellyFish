@@ -66,8 +66,13 @@ public class PlayerMove : MonoBehaviour
         //поворачивался по направлению движения
         if (movement.magnitude > Mathf.Abs(0.5f))
         {
+            Quaternion lookRotation = Quaternion.LookRotation(movement);
+
+            lookRotation.x = 0; // чтобы мы не повернули ее непо той оси
+            lookRotation.z = 0;
+
             transform.rotation = Quaternion.Lerp(transform.rotation/*начальная точка*/,
-                                 Quaternion.LookRotation(movement)/*куда хотим смотреть */,
+                                 lookRotation/*куда хотим смотреть */,
                                  Time.deltaTime * rotationSpeed);
 
         }
