@@ -48,25 +48,26 @@ public class BulletLight : MonoBehaviour
 
         if (other.gameObject.CompareTag("Shark"))
         {
-            //Получаем скрипт EnemyHealth с объекта коллизии
-            EnemyHealth healthScript = other.transform.GetComponent<EnemyHealth>();
+            ////Получаем скрипт EnemyHealth с объекта коллизии
+            //EnemyHealth healthScript = other.transform.GetComponent<EnemyHealth>();
 
-            if (healthScript)
-            {
-                healthScript.health -= damage;  //Делаем урон врагу
+            //if (healthScript)
+            //{
+            //    healthScript.health -= damage;  //Делаем урон врагу
 
-                if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
-                {
-                    healthScript.health = 0;
-                }
+            //    if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
+            //    {
+            //        healthScript.health = 0;
+            //    }
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-                Debug.Log("No scripts");
-            }
-            Destroy(other.gameObject);//Удаляем объект
+            //    Debug.Log("No scripts");
+            //}
+
+            Destroy(other.gameObject,5f);//Удаляем объект
         }
     }
 

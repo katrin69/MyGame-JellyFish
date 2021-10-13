@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +13,7 @@ public class EnemyHealth : MonoBehaviour
     {
         //’п становитс€ максимальным при старте
         health = healthMax;
+        Debug.Log(health);
     }
+
 }
