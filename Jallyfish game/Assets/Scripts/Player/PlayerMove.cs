@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
         movement.z = Input.GetAxis("Vertical");
   }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
 
         //поворот медузы на мышку
@@ -72,6 +72,16 @@ public class PlayerMove : MonoBehaviour
         //Ходьба
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //двигаемся
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Sea"))
+        {
+            rb.AddForce(Vector3.down * 100f);
+            print("СУША БЛЯ");
+
+        }
     }
 
 
