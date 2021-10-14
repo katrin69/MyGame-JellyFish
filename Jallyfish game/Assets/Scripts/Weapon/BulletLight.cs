@@ -6,8 +6,11 @@ public class BulletLight : MonoBehaviour
 {
     private float bulletForce = 24f; //сила пули
     [SerializeField] private Rigidbody rb; //тело пули
-    public int damage; //Величина урона
+    [SerializeField] float damageEnemy = 1f; //Величина урона
+
     public Vector3 dir;
+
+
 
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
@@ -29,7 +32,7 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-       rb.velocity = transform.forward * bulletForce; //движение молнии
+        rb.velocity = transform.forward * bulletForce; //движение молнии
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,25 +52,9 @@ public class BulletLight : MonoBehaviour
         if (other.gameObject.CompareTag("Shark"))
         {
             ////Получаем скрипт EnemyHealth с объекта коллизии
-            //EnemyHealth healthScript = other.transform.GetComponent<EnemyHealth>();
-
-            //if (healthScript)
-            //{
-            //    healthScript.health -= damage;  //Делаем урон врагу
-
-            //    if (healthScript.health < 0) //Если хп стало меньше нуля, то ставим 0
-            //    {
-            //        healthScript.health = 0;
-            //    }
-
-            //}
-            //else
-            //{
-
-            //    Debug.Log("No scripts");
-            //}
-
-            Destroy(other.gameObject,5f);//Удаляем объект
+            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            //переда1м урон
+            enemyHealthScript.DeductHealth(damageEnemy);
         }
     }
 

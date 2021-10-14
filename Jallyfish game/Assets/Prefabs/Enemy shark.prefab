@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113b4c50b43d6cd4e9c0b750fa214289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 4
   howClose: 0
 --- !u!114 &-4792947932980444921
 MonoBehaviour:
@@ -1074,8 +1074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc797f6ab918044ab8f6c6243f5da62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  healthMax: 0
+  enemyHealth: 2
+  enemyHealthMax: 2
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0
