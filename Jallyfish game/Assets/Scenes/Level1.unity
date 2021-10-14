@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c53d9c1eb6a944cab74a6d0c104ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5216332769896663073, guid: 766530b5a77fd474b8fba6e602d8b5e9, type: 3}
+  bulletPrefab: {fileID: 5216332769896663073, guid: a4638eb06b2991145ac78c2065910768, type: 3}
   firePoint: {fileID: 2024699823}
   bulletForce: 20
 --- !u!136 &481811559
@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb49fb1dff6e9d14d957375720130d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5216332769896663073, guid: 766530b5a77fd474b8fba6e602d8b5e9, type: 3}
+  bulletPrefab: {fileID: 333563675596249096, guid: 233447e485fff824e9cc6a3817b1a1ba, type: 3}
 --- !u!1 &2139357879
 GameObject:
   m_ObjectHideFlags: 0
