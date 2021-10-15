@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    //броня
+    int curArmor; //текущее количество жизней
+    int maxArmor = 4; //максимальное количество жизней
+
     //жизнь
     int curHp; //текущее количество жизней
     int maxHp = 10; //максимальное количество жизней
@@ -16,15 +20,29 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        curArmor = maxArmor;
+        print("БРОНЯ " + curArmor);
+
         curHp = maxHp;
         print("ЖИЗНЬ " + curHp);
     }
 
 
+    public void RecountArmorp(int deltaArmor) //принимает поло и отрец. Метод пересчитывает 
+    {
+        curArmor += deltaArmor;
+        print("БРОНЯ " + curArmor);
+        PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor);
+        if (curArmor <= 0)
+        {
+            print("БРОНИ БОЛЬШЕ НЕТ");
+        }
+    }
+
     public void RecountHp(int deltaHp) //принимает поло и отрец. Метод пересчитывает 
     {
         curHp += deltaHp;
-
+        print("ЖИЗНЬ " + curHp);
         PlayerHealthBar.instance.SetValue(curHp / (float)maxHp);
         if (curHp <= 0)
         {
