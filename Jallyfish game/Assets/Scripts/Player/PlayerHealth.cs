@@ -8,16 +8,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    //жизнь
     int curHp; //текущее количество жизней
     int maxHp = 10; //максимальное количество жизней
-    public float reastartDelay = 4f;//задержка перезапуска
+    public float reastartDelay = 2f;//задержка перезапуска
 
 
     private void Start()
     {
         curHp = maxHp;
-        print(curHp);
+        print("∆»«Ќ№ " + curHp);
     }
+
 
     public void RecountHp(int deltaHp) //принимает поло и отрец. ћетод пересчитывает 
     {
@@ -31,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Restart() //метод загружает сцены с перезапруском
+    void Restart() //метод загружает сцену Game Over
     {
         SceneManager.LoadScene(1);
     }
