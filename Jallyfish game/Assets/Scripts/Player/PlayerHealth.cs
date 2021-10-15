@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     //броня
-    int curArmor; //текущее количество жизней
+   public int curArmor; //текущее количество жизней
     int maxArmor = 4; //максимальное количество жизней
 
     //жизнь
