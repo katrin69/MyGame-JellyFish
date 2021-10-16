@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     //броня
-   public int curArmor; //текущее количество жизней
+    public float curArmor; //текущее количество жизней
     int maxArmor = 4; //максимальное количество жизней
 
     //жизнь
-    int curHp; //текущее количество жизней
+    float curHp; //текущее количество жизней
     int maxHp = 10; //максимальное количество жизней
     public float reastartDelay = 2f;//задержка перезапуска
 
@@ -27,19 +27,50 @@ public class PlayerHealth : MonoBehaviour
         print("ЖИЗНЬ " + curHp);
     }
 
-
-    public void RecountArmorp(int deltaArmor) //принимает поло и отрец. Метод пересчитывает 
+    public void RecountArmorp(float deltaArmor) //принимает поло и отрец. Метод пересчитывает 
     {
+        // curArmor = 4;
+        // deltaArmor = -10;
+
+        float damage_HP = deltaArmor;
+
+        // curArmor = 4;
+        // deltaArmor = -10;
+        // damage_HP = -10;
+
+        damage_HP += curArmor;
+
+        // curArmor = 4;
+        // deltaArmor = -10;
+        // damage_HP = -6;
+
         curArmor += deltaArmor;
-        print("БРОНЯ " + curArmor);
+
+        // curArmor = -6;
+        // deltaArmor = -10;
+        // damage_HP = -6;
+
+        if (curArmor < 0)
+        {
+            curArmor = 0;
+        }
+
         PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor);
-        if (curArmor <= 0)
+
+        // curArmor = 0;
+        // deltaArmor = -10;
+        // damage_HP = -6;
+
+        print("БРОНЯ " + curArmor);
+       
+        if (damage_HP < 0)
         {
             print("БРОНИ БОЛЬШЕ НЕТ");
+            RecountHp(damage_HP);
         }
     }
 
-    public void RecountHp(int deltaHp) //принимает поло и отрец. Метод пересчитывает 
+    public void RecountHp(float deltaHp) //принимает поло и отрец. Метод пересчитывает 
     {
         curHp += deltaHp;
         print("ЖИЗНЬ " + curHp);

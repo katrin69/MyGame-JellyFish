@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class EnemyInstantiate : MonoBehaviour
     public float zPos;
     public float enemyCount;
 
-    //������ ����� ˸��
+    //Íèêèòà ëþáèò Ë¸øó
 
     public float distance = 200f;
     List<Ray> dabugRays = new List<Ray>();
@@ -52,7 +52,7 @@ public class EnemyInstantiate : MonoBehaviour
             {
                 pos = hitInfo.point;
                 pos.y += 5f;
-                Instantiate(theEnemy, pos, Quaternion.identity);
+                Instantiate(theEnemy, pos, Quaternion.identity); //вместо этого обратиться к \рм
                 yield return new WaitForSeconds(0.2f);
                 enemyCount++;
             }
