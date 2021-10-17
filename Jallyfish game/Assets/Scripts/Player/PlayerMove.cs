@@ -21,9 +21,9 @@ public class PlayerMove : MonoBehaviour
 
     //выносливость
     [SerializeField] Slider sliderStanina; //достаём наш слайдер
-    [SerializeField] float currentStamina;
-    [SerializeField] float maxValueStamina;
-    [SerializeField] float minValueStamina;
+    [SerializeField] float currentStamina; //текущая выносливость
+    [SerializeField] float maxValueStamina; //максимальная выносливость булет по умолчанию
+    [SerializeField] float minValueStamina; //
     //  [SerializeField] float staminaReturn = 4f;
     [Space]
     [Space]
@@ -34,18 +34,22 @@ public class PlayerMove : MonoBehaviour
     public float distToGround; //Дистанция до земли
     
     //мыш и луч
-    public Ray MouseRay;               // Луч, вдоль которого мы пускаем RayCast
-    public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
+    public Ray MouseRay;         // Луч, вдоль которого мы пускаем RayCast
+    public LayerMask TerrainMask;// Фильтр по которому мы отсеиваем все, кроме песка
+    public LayerMask SeaMask;    // Фильтр по которому мы отсеиваем все, кроме Моря
+
 
     private void Awake()
     {
 
         TerrainMask = LayerMask.GetMask("Terrain");     // Создаем фильтр по слою Terrain
+        SeaMask = LayerMask.GetMask("Sea");     // Создаем фильтр по слою Sea
+
     }
 
     private void Start()
     {
-        realSpeed = moveSpeed;
+        realSpeed = moveSpeed; //задаём скорость
 
         sliderStanina.maxValue = maxValueStamina;
         sliderStanina.minValue = minValueStamina;
@@ -116,8 +120,7 @@ public class PlayerMove : MonoBehaviour
     {
         Ray isGround = new Ray(transform.position, Vector3.down);
 
-
-        if (Physics.Raycast(isGround, out var hitInfo, distToGround * 10f, TerrainMask)) //луч,точка,дистанция до земли,земля
+       if (Physics.Raycast(isGround, out var hitInfo, distToGround * 10f, TerrainMask)) //луч,точка,дистанция до земли,земля
         {
 
             Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green); //показывает луч
@@ -134,16 +137,32 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            realSpeed = fastSpeed; //когда кнопка зажата то скорость будет быстрее
-            currentStamina -=  Time.deltaTime * 10f; 
+            realSpeed = fastSpeed; //когда кнопка зажата то скорость будет быстреe
+            currentStamina -= Time.deltaTime * 10f; // когжа нажато отнимает
+            if (currentStamina <= 0)
+            {
+                realSpeed = moveSpeed;
+            }
         }
         else
         {
             realSpeed = moveSpeed; //когда кнопка не жата то скорость становится прежней
-            currentStamina += Time.deltaTime /2f;
+            currentStamina += Time.deltaTime / 0.6f; //когда не нажато повышается
         }
     }
 
+    private void StaminaChecked()
+    {
+        if (currentStamina <= minValueStamina)
+        {
+            currentStamina = minValueStamina;
+        }
+
+        if (currentStamina >= maxValueStamina)
+        {
+            currentStamina = maxValueStamina;
+        }
+    }
     //private void Stamina()
     //{
     //    if (maxValueStamina > 100f)
@@ -153,20 +172,8 @@ public class PlayerMove : MonoBehaviour
     //    staminaSlider.value = currentStamina;
     //}
 
-    private void StaminaChecked()
-    {
-        if (currentStamina <= minValueStamina)
-        {
-            currentStamina = minValueStamina;
-        }
 
-        if(currentStamina >= maxValueStamina)
-        {
-            currentStamina = maxValueStamina;
-        }
-    }
 
-   
 }
 
 
