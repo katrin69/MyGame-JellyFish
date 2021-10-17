@@ -115,7 +115,7 @@ public class PlayerMove : MonoBehaviour
 
     void FastSpeed() //метод который переключает скорость
     {
-        PlayerFastSpeedBar.instance.SetValue( moveSpeed/(float)realSpeed);
+        
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
