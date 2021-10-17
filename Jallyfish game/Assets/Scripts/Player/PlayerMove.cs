@@ -1,28 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerMove : MonoBehaviour
 {
+    //скорость
     public float moveSpeed = 15f; // Скорость движения   
-    public float fastSpeed = 25f; // Скорость при ускореении   
+    public float fastSpeed = 25f; // Скорость при ускореении
     private float realSpeed; // Текущее значение скорости . Либо обычная либо увеличенная
-
-
-    public float rotationSpeed = 5f; // Скорость поворота   
-    public float distToGround; //Дистанция до земли
-
-
+    Vector3 movement; //напрвление перса
+   
+    public Camera cam;
+    public GameObject JellyfishModel; // Моделька медузки
     public Rigidbody rb; // 
 
-    public Camera cam;
+    [Space]
+    [Space]
 
-    public GameObject JellyfishModel; // Моделька медузки
+    //выносливость
+    [SerializeField] Slider sliderStanina; //достаём наш слайдер
+    [SerializeField] float currentStamina;
+    [SerializeField] float maxValueStamina;
+    [SerializeField] float minValueStamina;
+    //  [SerializeField] float staminaReturn = 4f;
+    [Space]
+    [Space]
 
-    Vector3 movement; //напрвление перса
 
+    //поворот
+    public float rotationSpeed = 5f; // Скорость поворота   
+    public float distToGround; //Дистанция до земли
+    
+    //мыш и луч
     public Ray MouseRay;               // Луч, вдоль которого мы пускаем RayCast
-
     public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
 
     private void Awake()
@@ -34,11 +46,16 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         realSpeed = moveSpeed;
+
+        sliderStanina.maxValue = maxValueStamina;
+        sliderStanina.minValue = minValueStamina;
+        currentStamina = maxValueStamina;
     }
 
 
     void Update()
     {
+        sliderStanina.value = currentStamina;
         GroundChexk();
 
         movement.x = Input.GetAxis("Horizontal");
@@ -47,6 +64,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        StaminaChecked();
         FastSpeed(); //метод для ускорения
 
         //поворот медузы на мышку
@@ -81,17 +99,16 @@ public class PlayerMove : MonoBehaviour
 
         //Ходьба
         rb.MovePosition(rb.position + movement * realSpeed * Time.fixedDeltaTime); //двигаемся
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Sea"))
         {
-           
             print("СУША БЛЯ");
-
         }
+
     }
 
 
@@ -115,17 +132,41 @@ public class PlayerMove : MonoBehaviour
 
     void FastSpeed() //метод который переключает скорость
     {
-        
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            realSpeed = fastSpeed;
+            realSpeed = fastSpeed; //когда кнопка зажата то скорость будет быстрее
+            currentStamina -=  Time.deltaTime * 10f; 
         }
         else
         {
-            realSpeed = moveSpeed;
+            realSpeed = moveSpeed; //когда кнопка не жата то скорость становится прежней
+            currentStamina += Time.deltaTime /2f;
         }
     }
+
+    //private void Stamina()
+    //{
+    //    if (maxValueStamina > 100f)
+    //    {
+    //        maxValueStamina = 100f; //чтобы больше 100 не поднимался
+    //    }
+    //    staminaSlider.value = currentStamina;
+    //}
+
+    private void StaminaChecked()
+    {
+        if (currentStamina <= minValueStamina)
+        {
+            currentStamina = minValueStamina;
+        }
+
+        if(currentStamina >= maxValueStamina)
+        {
+            currentStamina = maxValueStamina;
+        }
+    }
+
+   
 }
 
 
