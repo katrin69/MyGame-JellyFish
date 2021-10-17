@@ -9,46 +9,46 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     //броня
-    public float curArmor; //текущее количество жизней
-    int maxArmor = 4; //максимальное количество жизней
+    float curArmor; //текущее количество жизней
+    float maxArmor = 4; //максимальное количество жизней
 
     //жизнь
     float curHp; //текущее количество жизней
-    int maxHp = 10; //максимальное количество жизней
+    float maxHp = 10; //максимальное количество жизней
     public float reastartDelay = 2f;//задержка перезапуска
 
 
     private void Start()
     {
         curArmor = maxArmor;
-        print("БРОНЯ " + curArmor);
+        print("ЩИТ " + curArmor);
 
         curHp = maxHp;
         print("ЖИЗНЬ " + curHp);
     }
 
     public void RecountArmorp(float deltaArmor) //принимает поло и отрец. Метод пересчитывает 
-    {
+     {
         // curArmor = 4;
-        // deltaArmor = -10;
+        // deltaArmor = -1;
 
-        float damage_HP = deltaArmor;
-
-        // curArmor = 4;
-        // deltaArmor = -10;
-        // damage_HP = -10;
-
-        damage_HP += curArmor;
+        float damage_HP = deltaArmor; //создаём переменную куда помещаем урон -1
 
         // curArmor = 4;
-        // deltaArmor = -10;
-        // damage_HP = -6;
+        // deltaArmor = -1;
+        // damage_HP = -1;
+
+        damage_HP += curArmor; //к этой еременной прибавляем броню 
+
+        // curArmor = 4;
+        // deltaArmor = -1;
+        // damage_HP = 3;
 
         curArmor += deltaArmor;
 
-        // curArmor = -6;
-        // deltaArmor = -10;
-        // damage_HP = -6;
+        // curArmor = 3;
+        // deltaArmor = -1;
+        // damage_HP = 3;
 
         if (curArmor < 0)
         {
@@ -57,9 +57,6 @@ public class PlayerHealth : MonoBehaviour
 
         PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor);
 
-        // curArmor = 0;
-        // deltaArmor = -10;
-        // damage_HP = -6;
 
         print("БРОНЯ " + curArmor);
        

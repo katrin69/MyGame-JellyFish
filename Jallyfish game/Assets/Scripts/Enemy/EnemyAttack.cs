@@ -48,15 +48,6 @@ public class EnemyAttack : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealth>().RecountArmorp(-1);
 
 
-            //int curArmor = GetComponent<PlayerHealth>().curArmor;
-            ////Обращаемся к Медузе к здоровью
-            //if (curArmor <=0)
-            //{
-            //    collision.gameObject.GetComponent<PlayerHealth>().RecountHp(-1);
-            //    print("Никита любит Лёшу");
-            //}
-            
-
         }
     }
 
