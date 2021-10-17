@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Скорость движения   
+    public float moveSpeed = 15f; // Скорость движения   
+    public float fastSpeed = 25f; // Скорость при ускореении   
+    private float realSpeed; // Текущее значение скорости . Либо обычная либо увеличенная
+
+
     public float rotationSpeed = 5f; // Скорость поворота   
     public float distToGround; //Дистанция до земли
 
@@ -21,10 +25,15 @@ public class PlayerMove : MonoBehaviour
 
     public LayerMask TerrainMask;       // Фильтр по которому мы отсеиваем все, кроме песка
 
- private void Awake()
+    private void Awake()
     {
 
         TerrainMask = LayerMask.GetMask("Terrain");     // Создаем фильтр по слою Terrain
+    }
+
+    private void Start()
+    {
+        realSpeed = moveSpeed;
     }
 
 
@@ -34,10 +43,11 @@ public class PlayerMove : MonoBehaviour
 
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
-  }
+    }
 
     private void FixedUpdate()
     {
+        FastSpeed(); //метод для ускорения
 
         //поворот медузы на мышку
         MouseRay = cam.ScreenPointToRay(Input.mousePosition); //создаст луч который будет использовать экран камеры
@@ -70,15 +80,15 @@ public class PlayerMove : MonoBehaviour
         }
 
         //Ходьба
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //двигаемся
-
+        rb.MovePosition(rb.position + movement * realSpeed * Time.fixedDeltaTime); //двигаемся
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Sea"))
         {
-            rb.AddForce(Vector3.down * 100f);
+           
             print("СУША БЛЯ");
 
         }
@@ -101,6 +111,20 @@ public class PlayerMove : MonoBehaviour
 
         }
 
+    }
+
+    void FastSpeed() //метод который переключает скорость
+    {
+        PlayerFastSpeedBar.instance.SetValue( moveSpeed/(float)realSpeed);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            realSpeed = fastSpeed;
+        }
+        else
+        {
+            realSpeed = moveSpeed;
+        }
     }
 }
 
