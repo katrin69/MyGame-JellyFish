@@ -7,8 +7,6 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab; //молния
     public Transform firePoint; //место от куда стрелять
     public float bulletForce = 20f; //скорость движения молнии
-    public float forceImpact = 2f; //сила удара
-
     //Никита любит Лёшу
 
     void Update()
