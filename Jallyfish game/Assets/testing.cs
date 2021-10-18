@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class testing : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private LevelWindow levelWindow;
+
+    private void Awake()
     {
-        
+        Levels levels = new Levels();
+        Debug.Log(levels.GetLevel()); //печатает текущий уровень
+        //добавляем опыт
+        levels.AddExperience(50);
+        Debug.Log(levels.GetLevel()); //печатает текущий уровень
+
+        levels.AddExperience(60);
+        Debug.Log(levels.GetLevel()); //печатает текущий уровень
+
+
+        levelWindow.SetLevelSystem(levels); //отобразит результат работы уровней
     }
 }
