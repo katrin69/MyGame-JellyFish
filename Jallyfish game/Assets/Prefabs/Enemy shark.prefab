@@ -1074,8 +1074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc797f6ab918044ab8f6c6243f5da62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 2
-  enemyHealthMax: 2
+  enemyHealth: 0
+  enemyHealthMax: 8
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0
