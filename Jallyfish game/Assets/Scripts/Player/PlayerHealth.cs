@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void RecountArmorp(float deltaArmor) //принимает поло и отрец. Метод пересчитывает 
-     {
+    {
         // curArmor = 4;
         // deltaArmor = -1;
 
@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
 
 
         print("БРОНЯ " + curArmor);
-       
+
         if (damage_HP < 0)
         {
             print("БРОНИ БОЛЬШЕ НЕТ");
@@ -82,6 +82,13 @@ public class PlayerHealth : MonoBehaviour
     void Restart() //метод загружает сцену Game Over
     {
         SceneManager.LoadScene(1);
+    }
+
+    //метод увеличивающий здоровье
+    public void IncreaseHealth(int level)
+    {
+        maxHp += (curHp * 0.01f) * ((100f - level) * 0.1f);
+        curHp = maxHp;
     }
 
 }
