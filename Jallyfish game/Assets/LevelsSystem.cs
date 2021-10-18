@@ -9,9 +9,22 @@ public class LevelsSystem : MonoBehaviour
     public int level; //текущий уровень
     public float currentXp; //опыт который есть в настоящее время
     public float requiredXp; //опыт необходимый для достижения следющего уровня
+    public Text levelText;
 
-    private float lerpTimer;
-    private float delayTimer;
+    [Header("Multipliers")]
+    [Range(1f, 300f)]
+    public float additionMultiplier = 300f;
+    [Range(2f, 4f)]
+    public float powerMultiplier = 2f;
+    [Range(7f, 14f)]
+    public float divisionMultiplier = 7f;
+
+    private void Start()
+    {
+        requiredXp = CalculateRequireXp();
+        levelText.text = "" + level; //отображает левел
+
+    }
 
     private void Update()
     {
@@ -35,8 +48,36 @@ public class LevelsSystem : MonoBehaviour
     {
         level++;
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
-        GetComponent<PlayerHealth>().IncreaseHealth(level); //увеличиваем здоровьен
+        GetComponent<PlayerHealth>().IncreaseHealth(level); //увеличиваем здоровьен когда переходит на новый уровень
+        requiredXp = CalculateRequireXp();
+        levelText.text = "" + level; //отображает левел
+
+    }
+
+    //вычисление требуемого опыта
+    private int CalculateRequireXp()
+    {
+        int solveForRequiredXp = 0;
+        for (int levelCycle = 1; levelCycle <= level; levelCycle++)
+        {
+            solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
+        }
+        return solveForRequiredXp / 4;
+    }
+
+
+    public void GainExperienceScalable(float xpGained, int passedLevel)
+    {
+        if (passedLevel < level)
+        {
+            float multiplier = 1 + (level - passedLevel) * 0.01f;
+            currentXp += xpGained * multiplier;
+        }
+        else
+        {
+            currentXp += xpGained;
+        }
     }
 }
-   
+
 

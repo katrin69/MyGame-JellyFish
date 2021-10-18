@@ -893,6 +893,10 @@ MonoBehaviour:
   level: 1
   currentXp: 0
   requiredXp: 130
+  levelText: {fileID: 1963413121}
+  additionMultiplier: 300
+  powerMultiplier: 2
+  divisionMultiplier: 7
 --- !u!1 &493285753
 GameObject:
   m_ObjectHideFlags: 0

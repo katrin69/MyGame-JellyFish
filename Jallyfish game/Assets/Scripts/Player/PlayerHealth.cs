@@ -84,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+
     //метод увеличивающий здоровье
     public void IncreaseHealth(int level)
     {
