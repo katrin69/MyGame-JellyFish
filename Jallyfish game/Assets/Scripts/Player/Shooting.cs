@@ -16,21 +16,22 @@ public class Shooting : MonoBehaviour
             Shoot();
         }
 
-
-        //  if (Input.GetMouseButton(1))
-        //  {
-        //      GameObject newBullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        //     newBullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletForce;
-        //  }
-
     }
 
     void Shoot() //метод стрельбы
     {
-        GameObject bullet = ObjectPooler.instance.GetPooledObject();
+        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //достаём пулю из пула
 
-        if (bullet != null)
+        if (bullet != null) //если пуля не пуста то 
         {
+            LevelsSystem levelSystem = GetComponent<LevelsSystem>(); // достаём наши левлы
+
+            if (levelSystem != null) //если наш левл не пуст то 
+            {
+                BulletLight bulletLight = bullet.GetComponent<BulletLight>(); //достаём пулю
+                bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+            }
+
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);

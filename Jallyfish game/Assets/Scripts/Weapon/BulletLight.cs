@@ -15,6 +15,8 @@ public class BulletLight : MonoBehaviour
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
 
+    private LevelsSystem ShooterLevelSystem; //брём систему уровней
+
     private void Update() // Время после которого молния исчезает
     {
         Timer -= Time.deltaTime;
@@ -35,6 +37,12 @@ public class BulletLight : MonoBehaviour
         rb.velocity = transform.forward * bulletForce; //движение молнии
     }
 
+    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //система левлов на сохранение
+    {
+        ShooterLevelSystem = shooterLevelSystem;
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -49,12 +57,12 @@ public class BulletLight : MonoBehaviour
         Debug.Log(other.transform.tag);
 
 
-        if (other.gameObject.CompareTag("Shark"))
+        if (other.gameObject.CompareTag("Shark")) //если пуля столкнулась с Акулой
         {
-            ////Получаем скрипт EnemyHealth с объекта коллизии
+            ////Получаем скрипт здоровья акулы
             EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
-            //переда1м урон
-            enemyHealthScript.DeductHealth(damageEnemy);
+            //передаём урон
+            enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
         }
     }
 

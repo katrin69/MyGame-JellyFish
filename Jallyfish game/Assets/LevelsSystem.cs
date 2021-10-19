@@ -25,23 +25,14 @@ public class LevelsSystem : MonoBehaviour
         levelText.text = "" + level; //отображает левел
 
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            GainExperienceFlatRate(20);
-        }
-        if (currentXp >= requiredXp)
-        {
-            LevelUp();
-        }
-    }
-
-    //функция для получения опыта
-    public void GainExperienceFlatRate(float xpGained)
+ 
+    public void GainExperienceFlatRate(float xpGained)//метод для получения опыта
     {
         currentXp += xpGained;
+        if (currentXp >= requiredXp)
+        {
+            LevelUp(); // повышает опыт
+        }
     }
 
     public void LevelUp()
