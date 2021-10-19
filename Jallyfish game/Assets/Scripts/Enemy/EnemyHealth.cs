@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     public float enemyHealth ;
     public float enemyHealthMax = 8f;
 
+    public EnemyHealthBar healthBar;
+
 
     void Start()
     {
@@ -19,7 +21,8 @@ public class EnemyHealth : MonoBehaviour
     public void DeductHealth(float deductHealth) //Вычитает жизни
     {
         enemyHealth -= deductHealth;
-        EnemyHealthBar.instance.SetValue(enemyHealth / (float)enemyHealthMax);
+        // EnemyHealthBar.instance.SetValue(enemyHealth / (float)enemyHealthMax);
+        healthBar.SetValue(enemyHealth / (float)enemyHealthMax);
 
         if (enemyHealth <=0)
         {

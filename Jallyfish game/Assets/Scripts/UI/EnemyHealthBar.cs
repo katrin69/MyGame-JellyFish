@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public static EnemyHealthBar instance { get; private set; }
+   // public EnemyHealthBar instance { get; private set; }
     public Image mask; //Картинка
     float originalSize; //исходный размер маски
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    //private void Awake()
+    //{
+    //    instance = this;
+    //}
     private void Start()
     {
         originalSize = mask.rectTransform.rect.width; //присваем размер из значений ширины маски

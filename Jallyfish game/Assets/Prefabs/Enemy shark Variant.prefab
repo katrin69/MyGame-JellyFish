@@ -362,6 +362,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4792947932980444921, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2054331963}
+    - target: {fileID: -4792947932980444921, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 2054331963}
     - target: {fileID: 4818029226429322923, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -408,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5302641808997960721, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
       propertyPath: m_Name
-      value: Enemy shark
+      value: Enemy shark Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5302641808997960721, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
       propertyPath: m_IsActive
