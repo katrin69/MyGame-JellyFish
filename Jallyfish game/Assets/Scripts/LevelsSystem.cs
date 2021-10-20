@@ -23,22 +23,24 @@ public class LevelsSystem : MonoBehaviour
     {
         requiredXp = CalculateRequireXp();
         levelText.text = "" + level; //отображает левел
-                                     // Load();
+        Load();
 
-        if (!PlayerPrefs.HasKey("currentXp"))
-        {
-            PlayerPrefs.SetFloat("currentXp", 0);
-        }
-        else
-        {
-            currentXp = PlayerPrefs.GetFloat("currentXp");
-        }
+        //if (!PlayerPrefs.HasKey("currentXp"))
+        //{
+        //    PlayerPrefs.SetFloat("currentXp", 0);
+        //}
+        //else
+        //{
+        //    currentXp = PlayerPrefs.GetFloat("currentXp");
+        //}
 
     }
 
     public void GainExperienceFlatRate(float xpGained)//метод для получения опыта
     {
         currentXp += xpGained;
+        Save();
+
         if (currentXp >= requiredXp)
         {
             LevelUp(); // повышает опыт
@@ -52,7 +54,6 @@ public class LevelsSystem : MonoBehaviour
         GetComponent<PlayerHealth>().IncreaseHealth(level); //увеличиваем здоровьен когда переходит на новый уровень
         requiredXp = CalculateRequireXp();
         levelText.text = "" + level; //отображает левел
-      //  Save();
 
     }
 
@@ -83,22 +84,22 @@ public class LevelsSystem : MonoBehaviour
 
 
 
-    //public void Save() //метод сохранения сохраняет переменные
-    //{
-    //    PlayerPrefs.SetFloat("currentXp", currentXp);
-      
-    //    PlayerPrefs.Save(); //сохраняет данные на диск
-    //}
+    public void Save() //метод сохранения сохраняет переменные
+    {
+        PlayerPrefs.SetFloat("currentXp", currentXp);
 
-    //public void Load() //метод загрузки делает проверку
-    //{
-    //    if (PlayerPrefs.HasKey("currentXp")) //существует ли ключ с таким именем
-    //    {
-    //        currentXp = PlayerPrefs.GetFloat("currentXp"); //если да то переменная получает сохранённое 
-    //    }
-       
-       
-    //}
+        PlayerPrefs.Save(); //сохраняет данные на диск
+    }
+
+    public void Load() //метод загрузки делает проверку
+    {
+        if (PlayerPrefs.HasKey("currentXp")) //существует ли ключ с таким именем
+        {
+            currentXp = PlayerPrefs.GetFloat("currentXp"); //если да то переменная получает сохранённое 
+        }
+
+
+    }
 }
 
 
