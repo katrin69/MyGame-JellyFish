@@ -25,14 +25,6 @@ public class LevelsSystem : MonoBehaviour
         levelText.text = "" + level; //отображает левел
         Load();
 
-        //if (!PlayerPrefs.HasKey("currentXp"))
-        //{
-        //    PlayerPrefs.SetFloat("currentXp", 0);
-        //}
-        //else
-        //{
-        //    currentXp = PlayerPrefs.GetFloat("currentXp");
-        //}
 
     }
 
