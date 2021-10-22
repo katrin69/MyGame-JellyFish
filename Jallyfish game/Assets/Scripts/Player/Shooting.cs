@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
 
         if (bullet != null) //если пуля не пуста то 
         {
-            LevelsSystem levelSystem = GetComponent<LevelsSystem>(); // достаём наши левлы
+            LevelsSystem levelSystem = GetComponent<LevelsSystem>(); // достаём наши левлы ссылочный тип
 
             if (levelSystem != null) //если наш левл не пуст то 
             {
