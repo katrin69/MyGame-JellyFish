@@ -3145,9 +3145,12 @@ PrefabInstance:
       propertyPath: sliderStanina
       value: 
       objectReference: {fileID: 1131526850}
+<<<<<<< HEAD
     - target: {fileID: 6308240869213989159, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 1623578493109263717, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
+=======
+>>>>>>> main
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
