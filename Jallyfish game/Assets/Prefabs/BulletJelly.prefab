@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8757119046098878676}
   - component: {fileID: 7946070211489864799}
   - component: {fileID: 7946070211489864798}
-  - component: {fileID: 5696211585200320370}
+  - component: {fileID: -4085926637072231281}
   m_Layer: 0
   m_Name: BulletJelly
   m_TagString: Untagged
@@ -114,7 +114,7 @@ CapsuleCollider:
   m_Height: 2.306678
   m_Direction: 1
   m_Center: {x: 0.00000013281601, y: 2.6649194, z: 0}
---- !u!114 &5696211585200320370
+--- !u!114 &-4085926637072231281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
