@@ -863,6 +863,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550718392}
   m_CullTransparentMesh: 1
+--- !u!198 &562543732 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6911463674011278550, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+  m_PrefabInstance: {fileID: 6308240868016365207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2465,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1767211610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6308240867534586610, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+  m_PrefabInstance: {fileID: 6308240868016365207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1767211618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767211610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515379bc07f8fbc44bf37e9d76fdb4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletFart: {fileID: 562543732}
 --- !u!1 &1783403597
 GameObject:
   m_ObjectHideFlags: 0
@@ -8412,11 +8435,32 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
+    - target: {fileID: 6725723500256356508, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911463657674119872, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911463674011278550, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911463674011278550, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911463674011278550, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6911463674011278550, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 80
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4568417758896663113, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
 --- !u!1001 &8362859356493171533
 PrefabInstance:
