@@ -3088,7 +3088,7 @@ PrefabInstance:
     - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 5216332769896663073, guid: 766530b5a77fd474b8fba6e602d8b5e9, type: 3}
+      objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
     - target: {fileID: 6308240867534586610, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_Name
       value: Jellyfish
@@ -3152,6 +3152,6 @@ PrefabInstance:
     - target: {fileID: 6308240869213989159, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 5216332769896663073, guid: 766530b5a77fd474b8fba6e602d8b5e9, type: 3}
+      objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
