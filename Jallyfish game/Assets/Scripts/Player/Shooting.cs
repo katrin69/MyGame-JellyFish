@@ -31,6 +31,11 @@ public class Shooting : MonoBehaviour
                 BulletLight bulletLight = bullet.GetComponent<BulletLight>(); //достаём пулю
                 bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
             }
+            else
+            {
+                BulletJelly bulletLight = bullet.GetComponent<BulletJelly>(); //достаём пулю
+                bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+            }
 
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = transform.rotation;
