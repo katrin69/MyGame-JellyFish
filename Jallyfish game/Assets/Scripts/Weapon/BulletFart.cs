@@ -19,11 +19,6 @@ public class BulletFart : MonoBehaviour
         Attack();
     }
 
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //система левлов на сохранение
-    {
-        ShooterLevelSystem = shooterLevelSystem;
-
-    }
 
     public void Attack()
     {
