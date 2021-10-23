@@ -1568,6 +1568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy shark
       objectReference: {fileID: 0}
+    - target: {fileID: 5302641808997960721, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 663b768517b5c42408661e3d1625ddef, type: 3}
 --- !u!1 &1158020082
@@ -1855,7 +1859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2454933172228073496, guid: fec9fbe8c47625748b0cb00c71d82713, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2979830554692317858, guid: fec9fbe8c47625748b0cb00c71d82713, type: 3}
       propertyPath: m_RootOrder
@@ -3779,7 +3783,7 @@ PrefabInstance:
       objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
     - target: {fileID: 6725723500256356508, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6911463657674119872, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: playOnAwake
