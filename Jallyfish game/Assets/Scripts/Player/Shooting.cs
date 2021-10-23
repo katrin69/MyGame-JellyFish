@@ -33,9 +33,14 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                BulletJelly bulletLight = bullet.GetComponent<BulletJelly>(); //достаём пулю
-                bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+                BulletJelly bulletJelly = bullet.GetComponent<BulletJelly>(); //достаём пулю
+                bulletJelly.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
             }
+            //if (levelSystem != null)
+            //{
+            //    BulletJellyHoming bulletJellyHoming = bullet.GetComponent<BulletJellyHoming>(); //достаём пулю
+            //    bulletJellyHoming.SetShooterLevelsSystem(levelSystem);
+            //}
 
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = transform.rotation;
