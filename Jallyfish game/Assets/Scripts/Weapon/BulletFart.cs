@@ -10,7 +10,7 @@ public class BulletFart : MonoBehaviour
 
     private void Start()
     {
-        _bulletFart = GetComponent<ParticleSystem>();
+       // _bulletFart = GetComponent<ParticleSystem>();
 
     }
 
