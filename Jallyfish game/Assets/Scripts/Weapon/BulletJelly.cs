@@ -50,12 +50,7 @@ public class BulletJelly : MonoBehaviour
             return; //ничего не делает. Выходит из метода
         }
 
-
         gameObject.SetActive(false); //удаляем молнию
-
-        //Отправляет сообщение в лог с тегом врага
-        Debug.Log(other.transform.tag);
-
 
         if (other.gameObject.CompareTag("Shark")) //если пуля столкнулась с Акулой
         {

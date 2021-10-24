@@ -10,8 +10,6 @@ public class BulletLight : MonoBehaviour
 
     public Vector3 dir;
 
-
-
     private float Timer; //таймер после которого пуля исчезает
     public float defaultTime = 8f;
 
@@ -49,10 +47,8 @@ public class BulletLight : MonoBehaviour
         {
             return; //ничего не делает. Выходит из метода
         }
-        gameObject.SetActive(false); //удаляем молнию
 
-        //Отправляет сообщение в лог с тегом врага
-        Debug.Log(other.transform.tag);
+        gameObject.SetActive(false); //удаляем молнию
 
         if (other.gameObject.CompareTag("Shark")) //если пуля столкнулась с Акулой
         {
