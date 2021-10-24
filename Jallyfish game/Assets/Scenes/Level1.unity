@@ -1511,7 +1511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1156767229
 PrefabInstance:
@@ -2614,25 +2614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 88172736}
---- !u!1 &1767211610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6308240867534586610, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
-  m_PrefabInstance: {fileID: 6308240868016365207}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1767211618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767211610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 515379bc07f8fbc44bf37e9d76fdb4c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletFart: {fileID: 562543732}
-  damageEnemy: 4
 --- !u!1 &1783403597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,7 +3254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001655304
 GameObject:
@@ -3713,6 +3694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
+      propertyPath: _bulletFart
+      value: 
+      objectReference: {fileID: 562543732}
     - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
