@@ -6,16 +6,24 @@ using UnityEngine;
 public class BulletJellyHoming : MonoBehaviour
 {
     [SerializeField] float damageEnemy = 3f; //¬еличина урона
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 14f;
     Transform target; //Ќаша цель 
     private Rigidbody rb;
 
-    //private Vector3 target;
-    //Transform enemy;
+    //таймер после которого пул€ исчезает
+    private float Timer; 
+    public float defaultTime = 8f;
+
+    //ƒвижкник по кругу
+    public float angle = 0; // угол 
+    public float radius = 0.5f; // радиус
+    public bool isCircle = false; // условие движени€ по кругу
+    public float speed = 1f;
+    public Vector3 cachedCenter;// запоминать свое нахождение и делать его центром окружности
 
     private LevelsSystem ShooterLevelSystem; //брЄм систему уровней
 
-
+  
     private void Start()
     {
         //1
@@ -31,26 +39,51 @@ public class BulletJellyHoming : MonoBehaviour
 
     private void Update()
     {
+        FoundEnemy();
+
         //2
         //transform.position = Vector3.MoveTowards(transform.position, enemy.position , bulletSpeed * Time.deltaTime); //перемещаемс€ к таргеты с опр скорость
+        Timer -= Time.deltaTime; // ¬рем€ после которого молни€ исчезает
+        if (Timer < 0)
+        {
+            gameObject.SetActive(false);
+        }
 
-        
     }
-
-
-    //1
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        Vector3 targetdirection = target.position - transform.position;
-        transform.LookAt(target);
-        rb.velocity = targetdirection.normalized * bulletSpeed;
+        Timer = defaultTime;
     }
+
 
     public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //система левлов на сохранение
     {
         ShooterLevelSystem = shooterLevelSystem;
 
     }
+
+    public void FoundEnemy()
+    {
+        if (target.gameObject.CompareTag("Shark"))
+        {
+            Vector3 targetdirection = target.position - transform.position;
+            transform.LookAt(target);
+            rb.velocity = targetdirection.normalized * bulletSpeed;
+        }
+        else
+        {
+            var dx = Mathf.Cos(angle) * radius;
+            var dz = Mathf.Sin(angle) * radius;
+
+   //????        transform.position = cachedCenter + new Vector3(dx, 0, dz);
+
+            angle += Time.deltaTime * speed;
+            if (angle >= 360f)
+                angle -= 360f;
+        }
+  
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
