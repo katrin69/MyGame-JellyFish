@@ -84,7 +84,7 @@ public class Shooting : MonoBehaviour
             if (levelSystem != null) //если наш левл не пуст то 
             {
                 BulletJellyHoming bulletLight = bullet.GetComponent<BulletJellyHoming>(); //достаём пулю
-                bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+                bulletLight.Initialize(transform, levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
             }
 
             bullet.transform.position = firePoint.position;

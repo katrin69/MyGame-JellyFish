@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1139976653173543485}
   - component: {fileID: 7834620883229453722}
   - component: {fileID: 1866636760312036613}
-  - component: {fileID: 7080520193682423093}
-  - component: {fileID: 4407063014585825091}
-  - component: {fileID: 3883122001269038974}
+  - component: {fileID: 3635502772613936398}
+  - component: {fileID: 7817265678825562917}
+  - component: {fileID: 1579650121438525010}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Player
@@ -67,56 +67,43 @@ CapsuleCollider:
   m_Height: 3.4
   m_Direction: 1
   m_Center: {x: 0, y: -0.84000003, z: -0.08419019}
---- !u!114 &7080520193682423093
+--- !u!114 &3635502772613936398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4713226434334809543}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7adda1ecf6048343b7a96db23f1b42b, type: 3}
+  m_Script: {fileID: 11500000, guid: 852067452ebbf784cac6bcff436404e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  rotationSpeed: 5
+--- !u!114 &7817265678825562917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713226434334809543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eef247a20b144c48b0ad16441c549d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1579650121438525010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713226434334809543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001c4af3e0ded834bb1aff387ae10d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   distToGround: 5
-  rb: {fileID: 7834620883229453722}
-  cam: {fileID: 0}
-  JellyfishModel: {fileID: 7053106322410341486}
-  TerrainMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &4407063014585825091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4713226434334809543}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c53d9c1eb6a944cab74a6d0c104ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5216332769896663073, guid: a4638eb06b2991145ac78c2065910768, type: 3}
-  firePoint: {fileID: 6491035195090063915}
-  bulletForce: 20
---- !u!114 &3883122001269038974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4713226434334809543}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ddb5899fbfcd44e9ea5ae366977570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curArmor: 0
-  reastartDelay: 2
 --- !u!1 &5901885157683535589
 GameObject:
   m_ObjectHideFlags: 0

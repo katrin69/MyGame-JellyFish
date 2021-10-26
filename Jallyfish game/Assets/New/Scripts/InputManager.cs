@@ -6,10 +6,17 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     //Ивенты с направлениями нажатий
-    public event Action dirNorth;
-    public event Action dirSouth;
-    public event Action dirWest;
-    public event Action dirEast;
+    public event Action dirNorthStart;
+    public event Action dirNorthEnd;
+
+    public event Action dirSouthStart;
+    public event Action dirSouthEnd;
+
+    public event Action dirWestStart;
+    public event Action dirWestEnd;
+
+    public event Action dirEastStart;
+    public event Action dirEastEnd;
 
     //стрельба
     public event Action shoot;
@@ -19,35 +26,67 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W)) //если нажато W и dirNorth не пустое то dirNorth ивент
+        if (Input.GetKeyDown(KeyCode.W)) //если нажато W и dirNorth не пустое то dirNorth ивент
         {
-            if (dirNorth != null)
+            if (dirNorthStart != null)
             {
-                dirNorth();
+                dirNorthStart();
             }
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.W)) //если нажато W и dirNorth не пустое то dirNorth ивент
         {
-            if (dirSouth != null)
+            if (dirNorthEnd != null)
             {
-                dirSouth();
+                dirNorthEnd();
             }
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if (dirWest != null)
+            if (dirSouthStart != null)
             {
-                dirWest();
+                dirSouthStart();
             }
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.S))
         {
-            if (dirEast != null)
+            if (dirSouthEnd != null)
             {
-                dirEast();
+                dirSouthEnd();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (dirWestStart != null)
+            {
+                dirWestStart();
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            if (dirWestEnd != null)
+            {
+                dirWestEnd();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (dirEastStart != null)
+            {
+                dirEastStart();
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            if (dirEastEnd != null)
+            {
+                dirEastEnd();
             }
         }
 
