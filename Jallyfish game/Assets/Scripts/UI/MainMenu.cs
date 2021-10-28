@@ -1,4 +1,4 @@
- using System.Collections;
+п»ї using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    //метод запускается из кнопки поэтому public
-    public void OpenScene(int index) //в качесве аргумента индекс сцены которую хотим загрузить
+    //РјРµС‚РѕРґ Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РёР· РєРЅРѕРїРєРё РїРѕСЌС‚РѕРјСѓ public
+    public void OpenScene(int index) //РІ РєР°С‡РµСЃРІРµ Р°СЂРіСѓРјРµРЅС‚Р° РёРЅРґРµРєСЃ СЃС†РµРЅС‹ РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёРј Р·Р°РіСЂСѓР·РёС‚СЊ
     {
         SceneManager.LoadScene(index);
     }
@@ -15,6 +15,6 @@ public class MainMenu : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
-        Debug.Log("Exit!");
+        Debug.Log("Exit!"); //РІС‹С…РѕРґ Р±РёС‚С‡
     }
 }

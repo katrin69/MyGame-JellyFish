@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    //look
+    //посмотри
     //этот скрипт для контролля камеры
 
     private Camera Camera; //вообще впринципе камера
@@ -53,6 +55,6 @@ public class CameraManager : MonoBehaviour
             result = true;
         }
 
-        return result;
+        return result; //вот это детка
     }
 }
