@@ -1,17 +1,17 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-   // public Transform player; //Наша медуза
-    public float moveSpeed = 10f; // Скорость движения
+   // public Transform player;
+    public float moveSpeed = 10f; // СЃРєРѕСЂРѕСЃС‚СЊ РІСЂР°РіР°
     private Rigidbody rb;
 
 
 
-    private float dis; //расстояние между Акулой и Медузой
-    public float howClose; //насколько Акула близка к Медузе
+    private float dis; 
+    public float howClose; 
     private Transform player;
 
     void Start()
@@ -24,10 +24,10 @@ public class EnemyAttack : MonoBehaviour
     {
         //dis = Vector3.Distance(player.position, transform.position);
         Vector3 targetdirection = player.position - transform.position;
-        if (targetdirection.magnitude > 0.5f) // если расстояние больше 0.5
+        if (targetdirection.magnitude > 0.5f) // РµСЃР»Рё СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµРЅСЊС€Рµ С‚Рѕ 
         {
             transform.LookAt(player);
-            rb.velocity = targetdirection.normalized * moveSpeed; // то задаем объекту скорость по направлению к конечной точке
+            rb.velocity = targetdirection.normalized * moveSpeed; // РїРѕРІРѕСЂР°С‡РёРІР°РµРјСЃСЏ Рё РґРІРёР¶РµРјСЃСЏ Рє РјРµРґСѓР·Рµ
         }
 
 
@@ -39,12 +39,12 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    //Если Акула сталкивается с Медузой
+    //Г…Г±Г«ГЁ ГЂГЄГіГ«Г  Г±ГІГ Г«ГЄГЁГўГ ГҐГІГ±Гї Г± ГЊГҐГ¤ГіГ§Г®Г©
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Обращаемся к Медузе к броне
+            //ГЋГЎГ°Г Г№Г ГҐГ¬Г±Гї ГЄ ГЊГҐГ¤ГіГ§ГҐ ГЄ ГЎГ°Г®Г­ГҐ
             collision.gameObject.GetComponent<PlayerHealth>().RecountArmorp(-1);
 
 
