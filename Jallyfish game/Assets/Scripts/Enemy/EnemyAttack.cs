@@ -39,12 +39,12 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    //Åñëè Àêóëà ñòàëêèâàåòñÿ ñ Ìåäóçîé
+    //если сталкиваемся с медузой
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Îáðàùàåìñÿ ê Ìåäóçå ê áðîíå
+            //отнимаем жизнь у медузы
             collision.gameObject.GetComponent<PlayerHealth>().RecountArmorp(-1);
 
 

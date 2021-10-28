@@ -1,29 +1,29 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject bulletPrefab; //молния
-    public Transform firePoint; //место от куда стрелять
-    public float bulletForce = 20f; //скорость движения молнии
+    public GameObject bulletPrefab; //Р±РµСЂС‘Рј РїСѓР»СЋ
+    public Transform firePoint; //РјРµСЃС‚Рѕ РѕС‚ РєСѓРґР° СЃС‚СЂРµР»СЏС‚СЊ
+    public float bulletForce = 20f; //СЃРєРѕСЂРѕСЃС‚СЊ РїСѓР»Рё
                                     
 
-    LevelsSystem levelSystem;
+    LevelsSystem levelSystem; //СЃРёСЃС‚РµРјР° Р»СЌРІР»РѕРІ
 
-    //для большого пука
+    //РґР»СЏ Р±РѕР»СЊС€РѕРіРѕ РїСѓРєР°
     [SerializeField] ParticleSystem _bulletFart;
-    [SerializeField] float damageEnemyFart = 4f; //Величина урона
+    [SerializeField] float damageEnemyFart = 4f; //СѓСЂРѕРЅ
 
 
     private void Start()
     {
-       levelSystem = GetComponent<LevelsSystem>(); // достаём наши левлы ссылочный тип
+       levelSystem = GetComponent<LevelsSystem>(); // Р±РµСЂС‘Рј СЃРёСЃС‚РµРјСѓ Р»СЌРІР»РѕРІ
 
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) //если нажата кнопка то стрелять
+        if (Input.GetButtonDown("Fire1")) //
         {
 
             ShootBulletHoming();
@@ -39,17 +39,17 @@ public class Shooting : MonoBehaviour
 
     }
 
-    void ShootBulletLight() //стреляю молниями
+    void ShootBulletLight() //СѓРґР°СЂ РјРѕР»РЅРёРё
     {
-        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //достаём пулю из пула
+        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //Р±РµСЂС‘Рј РїСѓР»СЋ РёР· РїСѓР»Р°
 
-        if (bullet != null) //если пуля не пуста то 
+        if (bullet != null) //РµСЃР»Рё РїСѓР»СЏ РЅРµ РїСѓСЃС‚Р°
         {
 
-            if (levelSystem != null) //если наш левл не пуст то 
+            if (levelSystem != null) //Рё СЃРёСЃС‚РµРјР° Р»СЌРІР»РѕРІ РЅРµ РїСѓСЃС‚Р°
             {
-                BulletLight bulletLight = bullet.GetComponent<BulletLight>(); //достаём пулю
-                bulletLight.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+                BulletLight bulletLight = bullet.GetComponent<BulletLight>(); //С‚Рѕ Р±РµСЂС‘Рј СЃРєСЂРёРїС‚ РїСѓР»Рё
+                bulletLight.SetShooterLevelsSystem(levelSystem);  //Рё РјРµС‚РѕРґ РёР· Р»СЌРІР»РѕРІ
             }
 
             bullet.transform.position = firePoint.position;
@@ -59,14 +59,18 @@ public class Shooting : MonoBehaviour
     }
 
 
-    void ShootBulletJelly() //стреляю медузами
+    void ShootBulletJelly() //РјРµС‚РѕРґ РїСѓР»Рё РјРµРґСѓР·Р°
     {
-        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //достаём пулю из пула
+        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //Р±РµСЂС‘Рј РїСѓР»СЋ РёР· РїСѓР»Р°
 
-        if (levelSystem != null)
+        if (bullet != null) //РµСЃР»Рё РїСѓР»СЏ РЅРµ РїСѓСЃС‚Р°
         {
-            BulletJelly bulletJelly = bullet.GetComponent<BulletJelly>(); //достаём пулю
-            bulletJelly.SetShooterLevelsSystem(levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+            if (levelSystem != null)//Рё СЃРёСЃС‚РµРјР° Р»СЌРІР»РѕРІ РЅРµ РїСѓСЃС‚Р°
+            {
+                BulletJelly bulletJelly = bullet.GetComponent<BulletJelly>(); //С‚Рѕ Р±РµСЂС‘Рј СЃРєСЂРёРїС‚ РїСѓР»Рё
+                bulletJelly.SetShooterLevelsSystem(levelSystem);  //Рё РјРµС‚РѕРґ РёР· Р»СЌРІР»РѕРІ
+            }
+
         }
         bullet.transform.position = firePoint.position;
         bullet.transform.rotation = transform.rotation;
@@ -74,17 +78,17 @@ public class Shooting : MonoBehaviour
     }
 
 
-    void ShootBulletHoming() //самонаводящиеся
+    void ShootBulletHoming() //Р‘РѕР»СЊС€РѕР№ РџСѓРє
     {
-        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //достаём пулю из пула
+        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //Г¤Г®Г±ГІГ ВёГ¬ ГЇГіГ«Гѕ ГЁГ§ ГЇГіГ«Г 
 
-        if (bullet != null) //если пуля не пуста то 
+        if (bullet != null) //ГҐГ±Г«ГЁ ГЇГіГ«Гї Г­ГҐ ГЇГіГ±ГІГ  ГІГ® 
         {
 
-            if (levelSystem != null) //если наш левл не пуст то 
+            if (levelSystem != null) //ГҐГ±Г«ГЁ Г­Г Гё Г«ГҐГўГ« Г­ГҐ ГЇГіГ±ГІ ГІГ® 
             {
-                BulletJellyHoming bulletLight = bullet.GetComponent<BulletJellyHoming>(); //достаём пулю
-                bulletLight.Initialize(transform, levelSystem);  //отдаёт систему левла на сохранение когда выпускает пулю
+                BulletJellyHoming bulletLight = bullet.GetComponent<BulletJellyHoming>(); //Г¤Г®Г±ГІГ ВёГ¬ ГЇГіГ«Гѕ
+                bulletLight.Initialize(transform, levelSystem);  //Г®ГІГ¤Г ВёГІ Г±ГЁГ±ГІГҐГ¬Гі Г«ГҐГўГ«Г  Г­Г  Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐ ГЄГ®ГЈГ¤Г  ГўГ»ГЇГіГ±ГЄГ ГҐГІ ГЇГіГ«Гѕ
             }
 
             bullet.transform.position = firePoint.position;
@@ -94,7 +98,7 @@ public class Shooting : MonoBehaviour
     }
 
 
-    public void ShootFart() //Большой Пук
+    public void ShootFart() //ГЃГ®Г«ГјГёГ®Г© ГЏГіГЄ
     {
         _bulletFart.Play();
 
@@ -105,9 +109,9 @@ public class Shooting : MonoBehaviour
             {
                 if (levelSystem != null)
                 {
-                    ////Получаем скрипт здоровья акулы
+                    ////ГЏГ®Г«ГіГ·Г ГҐГ¬ Г±ГЄГ°ГЁГЇГІ Г§Г¤Г®Г°Г®ГўГјГї Г ГЄГіГ«Г»
                     EnemyHealth enemyHealthScript = c.transform.GetComponent<EnemyHealth>();
-                    //передаём урон
+                    //ГЇГҐГ°ГҐГ¤Г ВёГ¬ ГіГ°Г®Г­
                     enemyHealthScript.DeductHealth(damageEnemyFart, levelSystem);
 
                 }

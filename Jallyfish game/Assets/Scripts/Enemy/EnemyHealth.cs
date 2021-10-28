@@ -1,38 +1,38 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    //Хп врага
+    //РҐР  РІСЂР°РіР°
     public float enemyHealth ;
     public float enemyHealthMax = 8f;
-    public float ExperienceToGain = 20f; //опыт который нужно преобрести
-    public EnemyHealthBar healthBar; //достаём скрипт в баром
+    public float ExperienceToGain = 20f; //РѕРїС‹С‚
+    public EnemyHealthBar healthBar; //Р±Р°СЂ РІСЂР°РіР°
 
 
     void Start()
     {
-        //Хп становится максимальным при старте
+        //Р·Р°РґР°С‘Рј Р¶РёР·РЅСЊ РІСЂР°РіР°
         enemyHealth = enemyHealthMax;
     }
 
-    public void DeductHealth(float deductHealth,LevelsSystem killrLevelSystem) //Вычитает жизни . Принимает левлы
+    public void DeductHealth(float deductHealth,LevelsSystem killrLevelSystem) //РїРµСЂРµРґР°С‘Рј СѓСЂРѕРЅ Рё СЃРёСЃС‚РµРјСѓ Р»СЌРІР»РѕРІ
     {
         enemyHealth -= deductHealth;
-        healthBar.SetValue(enemyHealth / (float)enemyHealthMax); //меняем его в момент получения урона
+        healthBar.SetValue(enemyHealth / (float)enemyHealthMax); 
 
-        if (enemyHealth <=0) //если здоровье у акулы меньше 0 то 
+        if (enemyHealth <=0) //РµСЃР»Рё Р¶РёР·РЅРё РєРѕРЅС‡РёР»РёСЃСЊ 
         {
-            killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //срабатывает метод который повышает опыт и принимает 20
-            deadEnemy(); //если жизней 0 то удаляяем
+            killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //РїРµСЂРµРґР°С‘Рј РѕРїС‹С‚ РІ СЃРёСЃС‚РµРјСѓ Р»СЌРІР»РѕРІ
+            deadEnemy(); //СѓР±РёРІР°РµРј РІСЂР°РіР°
 
         }
        
     }
 
-    void deadEnemy() //удаляем
+    void deadEnemy() //РјРµС‚РѕРґ СЃРјРµСЂС‚Рё РІСЂР°РіР°
     {
         Destroy(gameObject);
     }

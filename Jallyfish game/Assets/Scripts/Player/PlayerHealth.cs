@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,37 +8,34 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    //броня
-    float curArmor; //текущее количество жизней
-    float maxArmor = 4; //максимальное количество жизней
+    //С‰РёС‚
+    float curArmor; //С‚РµРєСѓС‰РёР№ С‰РёС‚
+    float maxArmor = 4; //РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ С‰РёС‚
 
-    //жизнь
-    float curHp; //текущее количество жизней
-    float maxHp = 10; //максимальное количество жизней
-    public float reastartDelay = 2f;//задержка перезапуска
+    //Р·РґРѕСЂРѕРІСЊРµ
+    float curHp; //С‚РµРєСѓС‰РµРµ Р·РґРѕСЂРѕРІСЊРµ
+    float maxHp = 10; //РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ
+    public float reastartDelay = 2f;//СѓРјРёСЂР°РµС‚ СЃ РїР°СѓР·РѕР№
 
 
     private void Start()
     {
         curArmor = maxArmor;
-        print("ЩИТ " + curArmor);
-
         curHp = maxHp;
-        print("ЖИЗНЬ " + curHp);
     }
 
-    public void RecountArmorp(float deltaArmor) //принимает поло и отрец. Метод пересчитывает 
+    public void RecountArmorp(float deltaArmor) //РѕС‚РЅРёРјР°РµС‚ С‰РёС‚
     {
         // curArmor = 4;
         // deltaArmor = -1;
 
-        float damage_HP = deltaArmor; //создаём переменную куда помещаем урон -1
+        float damage_HP = deltaArmor;
 
         // curArmor = 4;
         // deltaArmor = -1;
         // damage_HP = -1;
 
-        damage_HP += curArmor; //к этой еременной прибавляем броню 
+        damage_HP += curArmor; 
 
         // curArmor = 4;
         // deltaArmor = -1;
@@ -55,37 +52,35 @@ public class PlayerHealth : MonoBehaviour
             curArmor = 0;
         }
 
-        PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor);
+        PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor); //РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РІ Р±Р°СЂ
 
-
-        print("БРОНЯ " + curArmor);
 
         if (damage_HP < 0)
         {
-            print("БРОНИ БОЛЬШЕ НЕТ");
+            print("Р©РёС‚Р° Р±РѕР»СЊС€Рµ РЅРµС‚");
             RecountHp(damage_HP);
         }
     }
 
-    public void RecountHp(float deltaHp) //принимает поло и отрец. Метод пересчитывает 
+    public void RecountHp(float deltaHp) //РћС‚РЅРёРјР°РµС‚ Р·РґРѕСЂРѕРІСЊРµ
     {
         curHp += deltaHp;
-        print("ЖИЗНЬ " + curHp);
+        print("РћСЃС‚Р°Р»РѕСЃСЊ Р¶РёР·РЅРµР№ " + curHp);
         PlayerHealthBar.instance.SetValue(curHp / (float)maxHp);
         if (curHp <= 0)
         {
-            Invoke(nameof(Restart), reastartDelay); //задержка перезапуска
-            print("СМЕРТЬ");
+            Invoke(nameof(Restart), reastartDelay); 
+            print("РЎРњР•Р РўР¬");
         }
     }
 
-    void Restart() //метод загружает сцену Game Over
+    void Restart() //Г¬ГҐГІГ®Г¤ Г§Г ГЈГ°ГіГ¦Г ГҐГІ Г±Г¶ГҐГ­Гі Game Over
     {
         SceneManager.LoadScene(1);
     }
 
 
-    //метод увеличивающий здоровье
+    //
     public void IncreaseHealth(int level)
     {
         maxHp += (curHp * 0.01f) * ((100f - level) * 0.1f);
