@@ -4,41 +4,39 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    //look
-    //посмотри
     //этот скрипт для контролля камеры
 
     private Camera Camera; //вообще впринципе камера
-    private Transform Target; //ññûëêà íà òî ÷åìó ìû áóäåì ñëåäîâàòü,èãðîê
-    private Vector3 offset = new Vector3(0,20,-15); //âîçìîæíîñòü ñìåùàòü êàìåðó ïî òð¸ì îñÿì
-    private float smoothSpeed = 1f; //êàê áûñòðî êàìåðà áóäåò ïðèâÿçûâàòü ê öåëè,ðåãóëèðîâàòü ïëàâíîñòü
+    private Transform Target; //Наш игрок
+    private Vector3 offset = new Vector3(0,20,-15); //место где камера стоит
+    private float smoothSpeed = 1f; //движение камеры за игроком
 
-    private LayerMask GroundLayerMask;
-    private int GroundRaycastCount;
-    private RaycastHit[] GroundRaycastResults = new RaycastHit[1];
+    private LayerMask GroundLayerMask; //Наш песок
+    private int GroundRaycastCount; 
+    private RaycastHit[] GroundRaycastResults = new RaycastHit[1]; //Масик луча
 
     private void Awake()
     {
         GroundLayerMask = LayerMask.GetMask("Terrain");
     }
 
-    public void Initialize(Camera camera, Transform target)
+    public void Initialize(Camera camera, Transform target) //метод создания камеры и игрока в камере
     {
         Camera = camera;
         Target = target;
 
-        //чтобы при включении камера была ок
+        //чтобы при включении камера была ок а не появлялась хер знает от куда
         Camera.transform.position = Target.position + offset;
         Camera.transform.LookAt(Target);
     }
 
     private void FixedUpdate()
     {
-        Vector3 desirePosition = Target.position + offset;
+        Vector3 desirePosition = Target.position + offset; //желаемая позиция 
         Vector3 smoothedPosition = Vector3.Lerp(Camera.transform.position, desirePosition, smoothSpeed * Time.deltaTime);
         Camera.transform.position = smoothedPosition;
 
-        Camera.transform.LookAt(Target);
+        Camera.transform.LookAt(Target); //смотрит на игрока
     }
 
     public bool GetGroundPoint(Vector3 mousePosition, out Vector3 groundPoint) //точка кликанья мышки
@@ -51,7 +49,7 @@ public class CameraManager : MonoBehaviour
 
         if (GroundRaycastCount != 0)
         {
-            groundPoint = GroundRaycastResults[0].point; //потмо заполняется значением первым в массиве результатов 
+            groundPoint = GroundRaycastResults[0].point; //потом заполняется значением первым в массиве результатов 
             result = true;
         }
 

@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class TestManager : MonoBehaviour
 {
-    //обьект который отвечает за то чтобы на текущей сцене было все ок \проверяет как все работает
+    //обьект который отвечает за то чтобы на текущей сцене было все ок и проверяет как все работает
 
     public Root Root; //берём Root
     public Camera Camera;
 
-    public Transform SpawnObject;
+    public Transform SpawnObject; //место появления
 
     private SceneLoadingManager SceneLoadingManager; //скрипт с загрузкой сцен
-    private InputManager InputManager;
-    private ResourceManager ResourceManager;
-    private CameraManager CameraManager;
+    private InputManager InputManager; //скрипт с управлением
+    private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
+    private CameraManager CameraManager; //скрипт с камерой
 
-    private UnitManager UnitManager;
+    private UnitManager UnitManager; //скрипт через который проходит управление персонажем
 
+    //управление направления
     private Vector3 WestDirection = Vector3.left;
     private Vector3 NorthDirection = Vector3.forward;
 
@@ -26,28 +27,38 @@ public class TestManager : MonoBehaviour
     private void Awake()
     {
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
-        InputManager = Root.GetInputManager();
+        InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
-        InputManager.dirSouthStart += InputManager_dirSouthStart; //
+        //движение перса
+        InputManager.dirSouthStart += InputManager_dirSouthStart; 
         InputManager.dirNorthStart += InputManager_dirNorthStart;
+
         InputManager.dirEastStart += InputManager_dirEastStart;
         InputManager.dirWestStart += InputManager_dirWestStart;
 
         InputManager.dirSouthEnd += InputManager_dirSouthEnd;
         InputManager.dirNorthEnd += InputManager_dirNorthEnd;
+
         InputManager.dirEastEnd += InputManager_dirEastEnd;
         InputManager.dirWestEnd += InputManager_dirWestEnd;
 
+
+        //стрельба
         InputManager.shoot += InputManager_shoot;
         InputManager.positionMouse += InputManager_positionMouse;
 
+        //присваеваем метод из root который получает скрипт с ресурсами(вкула медуза пуля)
         ResourceManager = Root.GetResourceManager();
 
+        //создаём обьект медуза . ResourceManager вызывает метод через который мы получаем обьект
         GameObject jellyFish = ResourceManager.GetObjectInstance(EObjectType.Jellyfish);
+        //передаём ей место появления
         jellyFish.transform.position = SpawnObject.position;
         jellyFish.SetActive(true);
+        //добавляем в медузу управление
         UnitManager = jellyFish.GetComponent<UnitManager>();
 
+        //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
         CameraManager = Root.GetCameraManager();
         CameraManager.Initialize(Camera, jellyFish.transform);
     }
@@ -57,6 +68,7 @@ public class TestManager : MonoBehaviour
         CurrentMousePosition = mousePosition;
     }
 
+    //стрельба
     private void InputManager_shoot()
     {
         if (CameraManager.GetGroundPoint(CurrentMousePosition, out Vector3 groundPoint))
@@ -65,9 +77,10 @@ public class TestManager : MonoBehaviour
         }
     }
 
+
+    //ходьба
     private void InputManager_dirWestStart()
     {
-        //Debug.Log("DIR WEST");
         UnitManager.ChangeMovementDirection(WestDirection);
     }
 
@@ -76,9 +89,9 @@ public class TestManager : MonoBehaviour
         UnitManager.ChangeMovementDirection(-WestDirection);
     }
 
+
     private void InputManager_dirEastStart()
     {
-        //Debug.Log("DIR EAST");
         UnitManager.ChangeMovementDirection(-WestDirection);
     }
 
@@ -87,9 +100,9 @@ public class TestManager : MonoBehaviour
         UnitManager.ChangeMovementDirection(WestDirection);
     }
 
+
     private void InputManager_dirNorthStart()
     {
-        //Debug.Log("DIR NORTH");
         UnitManager.ChangeMovementDirection(NorthDirection);
     }
 
@@ -98,9 +111,9 @@ public class TestManager : MonoBehaviour
         UnitManager.ChangeMovementDirection(-NorthDirection);
     }
 
+
     private void InputManager_dirSouthStart()
     {
-        //Debug.Log("DIR SOUTH");
         UnitManager.ChangeMovementDirection(-NorthDirection);
     }
 

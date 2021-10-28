@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    //движение персонажа
     //Ивенты с направлениями нажатий
     public event Action dirNorthStart;
     public event Action dirNorthEnd;
@@ -33,7 +34,6 @@ public class InputManager : MonoBehaviour
                 dirNorthStart();
             }
         }
-
         if (Input.GetKeyUp(KeyCode.W)) //если нажато W и dirNorth не пустое то dirNorth ивент
         {
             if (dirNorthEnd != null)
@@ -41,6 +41,8 @@ public class InputManager : MonoBehaviour
                 dirNorthEnd();
             }
         }
+
+
 
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -58,6 +60,8 @@ public class InputManager : MonoBehaviour
             }
         }
 
+
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (dirWestStart != null)
@@ -73,6 +77,8 @@ public class InputManager : MonoBehaviour
                 dirWestEnd();
             }
         }
+
+
 
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -90,7 +96,9 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0)) //Стреляние
         {
             if (shoot != null)
             {

@@ -11,9 +11,9 @@ public class Root : MonoBehaviour
     private Transform ManagerParent; //для папки
 
     private SceneLoadingManager SceneLoadingManager; //скрипт со сценами
-    private InputManager InputManager;
-    private ResourceManager ResourceManager;
-    private CameraManager CameraManager;
+    private InputManager InputManager; //скрипт с движением игрока
+    private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
+    private CameraManager CameraManager; //скрипт с камерой
 
     private Transform GetManagerParent()
     {
@@ -33,17 +33,12 @@ public class Root : MonoBehaviour
         if (SceneLoadingManager == null) //если сцен нету то ...
         {
             CreateManager("Scene Manager", out SceneLoadingManager);
-
-            //GameObject gameObject = new GameObject(); //создаём обьект 
-            //gameObject.name = "Scene Manager"; //его название
-            //gameObject.transform.SetParent(GetManagerParent());  //сеём в папку
-            //SceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>(); // записываем туда наш менеджер сцен
         }
 
         return SceneLoadingManager;
     }
 
-    public InputManager GetInputManager()
+    public InputManager GetInputManager() //метод получения управление персом
     {
         if (InputManager == null)
         {
@@ -53,7 +48,7 @@ public class Root : MonoBehaviour
         return InputManager;
     }
 
-    public ResourceManager GetResourceManager()
+    public ResourceManager GetResourceManager() //метод получения ресурсами
     {
         if (ResourceManager == null)
         {
@@ -62,7 +57,7 @@ public class Root : MonoBehaviour
 
         return ResourceManager;
     }
-    public CameraManager GetCameraManager()
+    public CameraManager GetCameraManager() //метод получения камеры
     {
         if (CameraManager == null)
         {
@@ -72,6 +67,7 @@ public class Root : MonoBehaviour
         return CameraManager;
     }
 
+    //дженерик
     private void CreateManager<ManagerType>(string name, out ManagerType manager, GameObject prefab = null) where ManagerType : MonoBehaviour
     {
         GameObject gameObject;

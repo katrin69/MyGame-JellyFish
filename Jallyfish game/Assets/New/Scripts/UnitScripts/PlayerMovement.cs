@@ -6,18 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     //будет отвечать за все передвижение
 
-    //ñêîðîñòü
-    private float moveSpeed = 15f; // Ñêîðîñòü äâèæåíèÿ   
-    private float fastSpeed = 25f; // Ñêîðîñòü ïðè óñêîðååíèè
-    private float realSpeed; // Òåêóùåå çíà÷åíèå ñêîðîñòè . Ëèáî îáû÷íàÿ ëèáî óâåëè÷åííàÿ
+    //ходьба
+    private float moveSpeed = 15f; // 
+    private float fastSpeed = 25f; // 
+    private float realSpeed; // 
 
-    private Rigidbody rb; // 
+    private Rigidbody rb;
 
     private Vector3 HorizontalMovement;
     private float HorizontalMovementAcceleration = 0.1f;
 
+    //поворот
     private Quaternion LookRotation = Quaternion.identity;
-    private float rotationSpeed = 5f; // Ñêîðîñòü ïîâîðîòà  
+    private float rotationSpeed = 5f;  
 
     private void Awake()
     {
@@ -26,12 +27,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        realSpeed = moveSpeed; //çàäà¸ì ñêîðîñòü
+        realSpeed = moveSpeed;
     }
 
     private void Update()
-    {   //направление со скоростью
+    {   //направление со скоростью плавное . Наша медуза и точка умноженная на скорость и  ускорение
         rb.velocity = Vector3.Lerp(rb.velocity, HorizontalMovement.normalized * realSpeed, HorizontalMovementAcceleration);
+        //поворот плавный
         transform.rotation = Quaternion.Lerp(transform.rotation, LookRotation, Time.deltaTime * rotationSpeed);
     }
 
@@ -42,20 +44,20 @@ public class PlayerMovement : MonoBehaviour
         transform.position = position;
     }
 
-    public void ChangeMovementDirection(Vector3 direction)
+    public void ChangeMovementDirection(Vector3 direction) //изменения направления движения 
     {   //мы задаём направление
-        HorizontalMovement += direction;
+        HorizontalMovement += direction; //эта точка равна направлению вектор
 
         if (HorizontalMovement != Vector3.zero)
         {
-            ChangeLookingPoint(HorizontalMovement);
+            ChangeLookingPoint(HorizontalMovement); //передаём в метод точку если она не ноль
         }
     }
 
-    public void ChangeLookingPoint(Vector3 point)
+    public void ChangeLookingPoint(Vector3 point) //смотрим на точку
     {
-        LookRotation = Quaternion.LookRotation(point); //ðàñù¸ò ïîâîðà öåëè
-        LookRotation.x = 0; // ÷òîáû ìû íå ïîâåðíóëè åå íåïî òîé îñè
+        LookRotation = Quaternion.LookRotation(point);  
+        LookRotation.x = 0; //блочит по этим осям
         LookRotation.z = 0;        
     }
 }

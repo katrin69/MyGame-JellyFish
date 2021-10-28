@@ -6,8 +6,8 @@ public class UnitManager : MonoBehaviour
 {
     //будет отвечать на связь твоего перса со всеми внутренними системами 
 
-    private PlayerMovement PlayerMovementScript;
-    private GroundChecker GroundChecker;
+    private PlayerMovement PlayerMovementScript; //скрипт со скоростью 
+    private GroundChecker GroundChecker;//скрипт с лучём
 
     private void Awake()
     {
@@ -19,15 +19,14 @@ public class UnitManager : MonoBehaviour
     {
         float difference = GroundChecker.CheckGround();
         PlayerMovementScript.SetVerticalPosition(difference);
-        //PlayerMovementScript.ChangeMovementDirection(Vector3.up * difference);
     }
 
-    public void ChangeMovementDirection(Vector3 direction)
+    public void ChangeMovementDirection(Vector3 direction) //метод принимает направление и передаёт в скрипт 
     { 
         PlayerMovementScript.ChangeMovementDirection(direction);
     }
 
-    public void ChangeLookingPoint(Vector3 point)
+    public void ChangeLookingPoint(Vector3 point) //метод принимает точку и передаёт в скрипт
     {
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }

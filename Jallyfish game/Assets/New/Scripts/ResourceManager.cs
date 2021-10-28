@@ -13,6 +13,7 @@ public class ResourceManager : MonoBehaviour
 
     private Dictionary<GameObject, EObjectType> InstantiatedObjects = new Dictionary<GameObject, EObjectType>(); //словарь всех обьектов который были сделаны через \рм с указанием типа
 
+
     public GameObject GetObjectInstance(EObjectType objectType) //метод через который мы получаем обьект опр типа  
     {
         GameObject objectToReturn; //обьект который будет возвращен

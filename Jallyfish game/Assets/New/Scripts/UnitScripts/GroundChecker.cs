@@ -1,12 +1,12 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
-    public float distToGround = 5f; //Дистанция до земли
+    public float distToGround = 5f; //РјРµС‚Рѕ РґРѕ Р·РµРјР»Рё
 
-    private LayerMask TerrainMask;// Фильтр по которому мы отсеиваем все, кроме песка
+    private LayerMask TerrainMask;//РЅР°С€ РїРµСЃРѕРє
 
     private void Awake()
     {
@@ -18,10 +18,9 @@ public class GroundChecker : MonoBehaviour
         Ray isGround = new Ray(transform.position, Vector3.down);
         float verticalPosition = 0;
 
-        if (Physics.Raycast(isGround, out var hitInfo, distToGround * 10f, TerrainMask)) //луч,точка,дистанция до земли,земля
+        if (Physics.Raycast(isGround, out var hitInfo, distToGround * 10f, TerrainMask)) //Р»СѓС‡ РґРѕ РїРµСЃРєР°
         {
-            Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green); //показывает луч
-            //создаём новую переменую Разница . Точка где луч пересекат землю y + дистанция до земли минус позиция по y
+            Debug.DrawRay(isGround.origin, isGround.direction * distToGround, Color.green); //СЂРёСЃСѓРµС‚ Р»СѓС‡
 
             verticalPosition = hitInfo.point.y + distToGround;
         }
