@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     //скорость
-    public float moveSpeed = 15f; // Скорость движения   
+    public float moveSpeed = 15f; // Скорость движения  МЕДУЗЫ медузы медуза ахаха
     public float fastSpeed = 25f; // Скорость при ускореении
     private float realSpeed; // Текущее значение скорости . Либо обычная либо увеличенная
     Vector3 movement; //напрвление перса
