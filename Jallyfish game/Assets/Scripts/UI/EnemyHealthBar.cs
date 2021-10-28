@@ -5,26 +5,26 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public Image mask; //Картинка
-    float originalSize; //исходный размер маски
+    public Image mask; 
+    float originalSize; 
 
-    private Camera mainCamera; //вытаскиваем камеру
+    private Camera mainCamera; 
 
     private void Start()
     {
-        originalSize = mask.rectTransform.rect.width; //присваем размер из значений ширины маски
-        mainCamera = Camera.main; //вытаскиваем камеру
+        originalSize = mask.rectTransform.rect.width; 
+        mainCamera = Camera.main; 
     }
 
     private void Update()
     {
-        if (mainCamera != null) //если камера НЕ пуста то бар смотрит на камеру
+        if (mainCamera != null) 
         {
             transform.LookAt(mainCamera.transform);
         }
     }
 
-    public void SetValue(float value) //будем менять в моент получения урона
+    public void SetValue(float value) 
     {
         mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }

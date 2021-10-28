@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPause = false; //при старте паузы нет
+    public static bool GameIsPause = false; //РјРµРЅСЋ РЅРµ РІРєР»СЋС‡РµРЅРѕ
     public GameObject pauseMenuUI;
 
     void Update()
@@ -27,20 +27,20 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; //скорость игры восстанавливается
+        Time.timeScale = 1f; 
         GameIsPause = false;
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);//Позволит вызывать меню паузы.Меню появляется во время паузы
-        Time.timeScale = 0f; //все замрёт кроме мышки
+        pauseMenuUI.SetActive(true);//РјРµРЅСЋ РІРєР»СЋС‡РµРЅРѕ
+        Time.timeScale = 0f; 
         GameIsPause = true;
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1f; //должен убирать баг 
+        Time.timeScale = 1f; //РїРµСЂРµС…РѕРґ РІ РєР»Р°РІРЅРѕРµ РјРµРЅСЋ
         SceneManager.LoadScene("MainMenu");
     }
 }

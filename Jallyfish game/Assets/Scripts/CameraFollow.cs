@@ -1,11 +1,11 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; //ссылка на то чему мы будем следовать,игрок
-    public Vector3 offset; //возможность смещать камеру по трём осям
+    public Transform target; //РЅР°С€Р°Р» РјРµРґСѓР·Р°
+    public Vector3 offset; //СЃРјРµС‰РµРЅРёРµ
 
-    public float smoothSpeed = 0.125f; //как быстро камера будет привязывать к цели,регулировать плавность
+    public float smoothSpeed = 0.125f; //РїР»Р°РІРЅС‹Р№ РїРѕРґРїР»С‹РІ
 
     private void FixedUpdate()
     {

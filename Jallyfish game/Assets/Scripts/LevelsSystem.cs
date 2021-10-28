@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class LevelsSystem : MonoBehaviour
 {
-    public int level; //текущий уровень
-    public float currentXp; //опыт который есть в настоящее время
-    public float requiredXp; //опыт необходимый для достижения следющего уровня
+    public int level; //СѓСЂРѕРІРµРЅСЊ
+    public float currentXp; //С‚РµРєСѓС‰РёР№ РѕРїС‹С‚
+    public float requiredXp; //РЅРµРѕР±С…РѕРґРёРјС‹Р№ РѕРїС‹С‚
     public Text levelText;
 
     [Header("Multipliers")]
@@ -22,34 +22,34 @@ public class LevelsSystem : MonoBehaviour
     private void Start()
     {
         requiredXp = CalculateRequireXp();
-        levelText.text = "" + level; //отображает левел
+        levelText.text = "" + level;
         Load();
 
 
     }
 
-    public void GainExperienceFlatRate(float xpGained)//метод для получения опыта
+    public void GainExperienceFlatRate(float xpGained)//РЅР°Р±РёСЂР°РЅРёРµ РѕРїС‹С‚Р°  РїСЂРёРЅРёРјР°РµС‚ С‡РёСЃР»Рѕ РєРѕС‚РѕСЂРѕРµ РїСЂРёР±Р°РІР»СЏРµС‚СЃСЏ Рє С‚РµРєСѓС‰РµРјСѓ РѕРїС‹С‚Сѓ
     {
         currentXp += xpGained;
-        Save();
+        Save(); 
 
         if (currentXp >= requiredXp)
         {
-            LevelUp(); // повышает опыт
+            LevelUp(); //РїРѕРІС‹С€Р°РµС‚ РѕРїС‹С‚
         }
     }
 
-    public void LevelUp()
+    public void LevelUp() //РјРµС‚РѕРґ РїРѕРІС‹С€Р°РµС‚ РѕРїС‹С‚
     {
         level++;
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
-        GetComponent<PlayerHealth>().IncreaseHealth(level); //увеличиваем здоровьен когда переходит на новый уровень
+        GetComponent<PlayerHealth>().IncreaseHealth(level); 
         requiredXp = CalculateRequireXp();
-        levelText.text = "" + level; //отображает левел
+        levelText.text = "" + level;
 
     }
 
-    //вычисление требуемого опыта
+    //РјРµС‚РѕРґ РІС‹СЃС‡РёС‚С‹РІР°РµС‚ РѕРїС‹С‚
     private int CalculateRequireXp()
     {
         int solveForRequiredXp = 0;
@@ -75,19 +75,19 @@ public class LevelsSystem : MonoBehaviour
     }
 
 
-
-    public void Save() //метод сохранения сохраняет переменные
+    //СЃРѕС…СЂР°РЅРµРЅРёРµ РЅРµ РѕС‡РµРЅСЊ
+    public void Save() 
     {
         PlayerPrefs.SetFloat("currentXp", currentXp);
 
-        PlayerPrefs.Save(); //сохраняет данные на диск
+        PlayerPrefs.Save(); 
     }
 
-    public void Load() //метод загрузки делает проверку
+    public void Load() 
     {
-        if (PlayerPrefs.HasKey("currentXp")) //существует ли ключ с таким именем
+        if (PlayerPrefs.HasKey("currentXp")) 
         {
-            currentXp = PlayerPrefs.GetFloat("currentXp"); //если да то переменная получает сохранённое 
+            currentXp = PlayerPrefs.GetFloat("currentXp"); 
         }
 
 

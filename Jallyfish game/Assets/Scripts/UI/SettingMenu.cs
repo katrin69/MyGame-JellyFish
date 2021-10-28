@@ -1,42 +1,42 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 
-
 public class SettingMenu : MonoBehaviour
 {
+    //Рј РµРЅСЋ РЅР°СЃС‚СЂРѕРµРє
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
 
-    Resolution[] resolutions;//массив с разрешением жкрана
+    Resolution[] resolutions;//СЂР°Р·СЂРµС€РµРЅРёРµ РјР°СЃРёРІ
 
     private void Start()
     {
-        resolutions = Screen.resolutions; //перемнная равная разрешения экрана
+        resolutions = Screen.resolutions; 
 
-        resolutionDropdown.ClearOptions(); //очищает опции
+        resolutionDropdown.ClearOptions(); 
 
-        List<string> options = new List<string>(); //список вариантов разрешений
+        List<string> options = new List<string>(); //РѕРїС†РёРё
 
         int currentResolutionIndex = 0;
 
-        for (int i = 0; i < resolutions.Length; i++) //перебираем каждый элемент в массиве разрешений
+        for (int i = 0; i < resolutions.Length; i++)  //СЂР°Р·СЂРµС€РµРЅРёРµ
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height; //из них создаём строку отображающую разрешение
-            options.Add(option); //добавляем в список
+            string option = resolutions[i].width + " x " + resolutions[i].height; 
+            options.Add(option);
 
             if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height) //если текущее разрешение равно нашему разрешению , то устанавливаем его
+                resolutions[i].height == Screen.currentResolution.height) 
             {
                 currentResolutionIndex = i;
             }
         }
-        resolutionDropdown.AddOptions(options); //после цикла добавим наш список опций в раскрывающееся меню разрешений
+        resolutionDropdown.AddOptions(options); 
         resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue(); //отобразить значение
+        resolutionDropdown.RefreshShownValue(); 
     }
 
     public void SetResolution(int resolutionIndex)
@@ -45,19 +45,19 @@ public class SettingMenu : MonoBehaviour
         Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
     }
 
-    //Звук
+    //Р“СЂРѕРјРєРѕСЃС‚СЊ
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
     }
 
-    //Качество
+    //РљР°С‡РµСЃС‚РІРѕ
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    //Полноэкран режим
+    //РџРѕР»РЅС‹Р№ СЌРєСЂР°РЅ
     public void SetFullscreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;

@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +32,7 @@ public class PlayerStaminaBar : MonoBehaviour
         }
         else
         {
-            Debug.Log("Выносливость кончилась");
+            Debug.Log("Р©РёС‚Р° РЅРµС‚");
         }
     }
 }

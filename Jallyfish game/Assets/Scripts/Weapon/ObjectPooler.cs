@@ -1,16 +1,16 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler instance; //создаём пулер
+    public static ObjectPooler instance; //СЃРѕР·РґР°РЅРёРµ РїСѓР»Р°
 
-    private List<GameObject> pooledObject = new List<GameObject>(); //создаём лист
+    private List<GameObject> pooledObject = new List<GameObject>(); //СЃРїРёСЃРѕРє
 
     [SerializeField] private GameObject bulletPrefab;
 
-    private Transform BulletParent; //берём позицию пулей
+    private Transform BulletParent; //РїР°РїРєР°
 
     private void Awake()
     {
@@ -19,21 +19,19 @@ public class ObjectPooler : MonoBehaviour
             instance = this;
         }
 
-        GameObject bullets = new GameObject(); //Новый игровой обьект
-        bullets.name = "Bullets_Nya"; //название папки
-        BulletParent = bullets.transform; //присваеваем позицию пулей в папку
+        GameObject bullets = new GameObject(); //СЃРѕР·РґР°С‘Рј РїР°РїРєСѓ
+        bullets.name = "Bullets_Nya"; 
+        BulletParent = bullets.transform; 
     }
 
-    //Никита любит Лёшу
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < pooledObject.Count; i++)//Пока i меньше числа молний в списке и если Молния не активна то возращать Молнию
-                                                    // вернуть ноль
+        for (int i = 0; i < pooledObject.Count; i++)// РїРѕРєР° i РјРµРЅСЊС€Рµ С‡РёСЃР»Р° РїСѓР»РµР№ РІ Р±Р°СЃРёРєРµ
         {
-            if (!pooledObject[i].activeInHierarchy) //Определяет, активен ли игровой объект в Сцене
+            if (!pooledObject[i].activeInHierarchy) 
             {
-                return pooledObject[i];//возращает объект Молния
+                return pooledObject[i]; //РІРѕР·СЂР°С‰Р°РµРј РїСѓР»СЋ
             }
         }
         GameObject gm = createObject();
@@ -43,12 +41,11 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject createObject()
     {
-        GameObject obj = Instantiate(bulletPrefab); //создаёт Молнию
+        GameObject obj = Instantiate(bulletPrefab); 
         obj.transform.SetParent(BulletParent);
-        obj.SetActive(false); //Активирует/деактивирует игровой объект в зависимости от заданного значения
+        obj.SetActive(false);
         return obj;
 
-        //GenericMethod<GameObject, Transform, Transform>();
     }
 
     public void GenericMethod<First, Second, Third>()

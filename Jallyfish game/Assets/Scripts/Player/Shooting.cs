@@ -78,17 +78,17 @@ public class Shooting : MonoBehaviour
     }
 
 
-    void ShootBulletHoming() //Большой Пук
+    void ShootBulletHoming() //Самонаводящееся пуля
     {
-        GameObject bullet = ObjectPooler.instance.GetPooledObject(); //äîñòà¸ì ïóëþ èç ïóëà
+        GameObject bullet = ObjectPooler.instance.GetPooledObject(); ///берём пулю из пула
 
-        if (bullet != null) //åñëè ïóëÿ íå ïóñòà òî 
+        if (bullet != null) // если пуля не пуста
         {
 
-            if (levelSystem != null) //åñëè íàø ëåâë íå ïóñò òî 
+            if (levelSystem != null) //и система лэвлов не пуста
             {
-                BulletJellyHoming bulletLight = bullet.GetComponent<BulletJellyHoming>(); //äîñòà¸ì ïóëþ
-                bulletLight.Initialize(transform, levelSystem);  //îòäà¸ò ñèñòåìó ëåâëà íà ñîõðàíåíèå êîãäà âûïóñêàåò ïóëþ
+                BulletJellyHoming bulletLight = bullet.GetComponent<BulletJellyHoming>(); //то берём скрипт пули
+                bulletLight.Initialize(transform, levelSystem);  //и метод из лэвлов
             }
 
             bullet.transform.position = firePoint.position;
@@ -98,7 +98,7 @@ public class Shooting : MonoBehaviour
     }
 
 
-    public void ShootFart() //Áîëüøîé Ïóê
+    public void ShootFart() //Большой пук
     {
         _bulletFart.Play();
 
@@ -109,9 +109,9 @@ public class Shooting : MonoBehaviour
             {
                 if (levelSystem != null)
                 {
-                    ////Ïîëó÷àåì ñêðèïò çäîðîâüÿ àêóëû
+                    //скрипт врагов
                     EnemyHealth enemyHealthScript = c.transform.GetComponent<EnemyHealth>();
-                    //ïåðåäà¸ì óðîí
+                    //урон + опыт
                     enemyHealthScript.DeductHealth(damageEnemyFart, levelSystem);
 
                 }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour
 {
     public static PlayerHealthBar instance { get; private set; }
-    public Image mask; //Картинка
-    float originalSize; //исходный размер маски
+    public Image mask; 
+    float originalSize; 
 
     private void Awake()
     {
@@ -15,10 +15,10 @@ public class PlayerHealthBar : MonoBehaviour
     }
     private void Start()
     {
-        originalSize = mask.rectTransform.rect.width; //присваем размер из значений ширины маски
+        originalSize = mask.rectTransform.rect.width; 
     }
 
-    public void SetValue(float value) //будем менять в моент получения урона
+    public void SetValue(float value) 
     {
         mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }

@@ -1,21 +1,21 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletLight : MonoBehaviour
 {
-    private float bulletForce = 24f; //сила пули
-    [SerializeField] private Rigidbody rb; //тело пули
-    [SerializeField] float damageEnemy = 1f; //Величина урона
+    private float bulletForce = 24f; //СЃРєРѕСЂРѕСЃС‚СЊ
+    [SerializeField] private Rigidbody rb; //С‚РµР»Рѕ
+    [SerializeField] float damageEnemy = 1f; //СѓСЂРѕРЅ
 
-    public Vector3 dir;
+    public Vector3 dir; //РЅР°РїСЂР°РІР»РµРЅРёРµ
 
-    private float Timer; //таймер после которого пуля исчезает
+    private float Timer; //С‚Р°Р№РјРµСЂ РёСЃС‡РµР·РЅРѕРІРµРЅРёСЏ
     public float defaultTime = 8f;
 
-    private LevelsSystem ShooterLevelSystem; //брём систему уровней
+    private LevelsSystem ShooterLevelSystem; //ГЎСЃРёСЃС‚РµРјР° Р»СЌРІР»РѕРІ
 
-    private void Update() // Время после которого молния исчезает
+    private void Update() 
     {
         Timer -= Time.deltaTime;
         if (Timer < 0)
@@ -23,7 +23,7 @@ public class BulletLight : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    //Никита любит Лёшу
+    //РќРёРєРёС‚Р° Р»СЋР±РёС‚ Р›С‘С€Сѓ
 
     private void OnEnable()
     {
@@ -32,10 +32,10 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.forward * bulletForce; //движение молнии
+        rb.velocity = transform.forward * bulletForce; //СЃРєРѕСЂРѕСЃС‚СЊ
     }
 
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //система левлов на сохранение
+    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //РїРµСЂРµРґР°С‡Р° Р»СЌРІР»РѕРІ
     {
         ShooterLevelSystem = shooterLevelSystem;
         
@@ -45,16 +45,16 @@ public class BulletLight : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            return; //ничего не делает. Выходит из метода
+            return;
         }
 
-        gameObject.SetActive(false); //удаляем молнию
+        gameObject.SetActive(false); 
 
-        if (other.gameObject.CompareTag("Shark")) //если пуля столкнулась с Акулой
+        if (other.gameObject.CompareTag("Shark")) 
         {
-            ////Получаем скрипт здоровья акулы
+            //РЎРєСЂРёРїС‚ Р°РєСѓР»С‹
             EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
-            //передаём урон
+            //СѓСЂРѕРЅ + РѕРїС‹С‚
             enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
         }
     }
