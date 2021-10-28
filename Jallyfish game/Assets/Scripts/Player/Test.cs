@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nani : MonoBehaviour
+public class Test : MonoBehaviour
 {
-    float kuraga = 5f; //это русский
+    public float kuraga = 5f; //сонный паралич
 }
