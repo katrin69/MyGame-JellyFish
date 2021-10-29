@@ -29,7 +29,7 @@ public class BulletJellyHoming : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(Transform jellyfishParent, LevelsSystem shooterLevelSystem) //ñèñòåìà ëåâëîâ íà ñîõðàíåíèå
+    public void Initialize(Transform jellyfishParent, LevelsSystem shooterLevelSystem) 
     {
         MotherJellyfish = jellyfishParent;
         ShooterLevelSystem = shooterLevelSystem;

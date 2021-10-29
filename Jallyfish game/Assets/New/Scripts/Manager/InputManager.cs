@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    //движение персонажа
+    //Сккрипт отвечает на движение . Стрельбу
+
     //Ивенты с направлениями нажатий
     public event Action dirNorthStart;
     public event Action dirNorthEnd;
@@ -22,11 +23,33 @@ public class InputManager : MonoBehaviour
     //стрельба
     public event Action shoot;
 
+    //ускорение
+    public event Action fastSpeedStart;
+    public event Action fastSpeedEnd;
+
     //движение мыши
     public event Action<Vector3> positionMouse;
 
     private void Update()
     {
+
+        //ускорение
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (fastSpeedStart != null)
+            {
+                fastSpeedStart();
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            if (fastSpeedEnd != null)
+            {
+                fastSpeedEnd();
+            }
+        }
+
+        //ходьба
         if (Input.GetKeyDown(KeyCode.W)) //если нажато W и dirNorth не пустое то dirNorth ивент
         {
             if (dirNorthStart != null)

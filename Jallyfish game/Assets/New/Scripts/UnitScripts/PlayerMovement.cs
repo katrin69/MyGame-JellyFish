@@ -7,9 +7,8 @@ public class PlayerMovement : MonoBehaviour
     //будет отвечать за все передвижение
 
     //ходьба
-    private float moveSpeed = 15f; // 
-    private float fastSpeed = 25f; // 
-    private float realSpeed; // 
+    private float moveSpeed = 15f;
+    private float realSpeed;
 
     private Rigidbody rb;
 
@@ -18,7 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     //поворот
     private Quaternion LookRotation = Quaternion.identity;
-    private float rotationSpeed = 5f;  
+    private float rotationSpeed = 5f;
+
+    //ускорение
+    private float fastSpeed = 25f;
+    private float currentStamina;
+    private float maxValueStamina;
+    private float minValueStamina;
 
     private void Awake()
     {
@@ -28,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         realSpeed = moveSpeed;
+
+        currentStamina = maxValueStamina;
     }
 
     private void Update()
@@ -56,8 +63,37 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeLookingPoint(Vector3 point) //смотрим на точку
     {
-        LookRotation = Quaternion.LookRotation(point);  
+        LookRotation = Quaternion.LookRotation(point);
         LookRotation.x = 0; //блочит по этим осям
-        LookRotation.z = 0;        
+        LookRotation.z = 0;
+    }
+
+
+    public void FastSpeed() //метод ускорения
+    {
+        realSpeed = fastSpeed; //если нажат Шифт то скоростт становится быстрой
+        currentStamina -= Time.deltaTime * 10f; // но лишь на время
+        if (currentStamina <= 0)
+        {
+            realSpeed = moveSpeed;
+        }
+         else
+        {
+            realSpeed = moveSpeed; //если шифт не нажат то скорость становится прежней
+            currentStamina += Time.deltaTime / 0.6f; //скорость возращается
+        }
+    }
+
+    public void StaminaChecked()
+    {
+        if (currentStamina <= minValueStamina)
+        {
+            currentStamina = minValueStamina;
+        }
+
+        if (currentStamina >= maxValueStamina)
+        {
+            currentStamina = maxValueStamina;
+        }
     }
 }

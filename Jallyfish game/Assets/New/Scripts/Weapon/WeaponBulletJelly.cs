@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletJelly : MonoBehaviour
+public class WeaponBulletJelly : MonoBehaviour
 {
+    //Пуля медуза с уроном 1
+    private float damageEnemy = 1f; //урон
     private float bulletForce = 24f; //скорость
-    [SerializeField] private Rigidbody rb; //тело
-    [SerializeField] float damageEnemy = 1f; //урон
+    private Rigidbody rb; //тело
 
-    public Vector3 dir;
-
-
-    private float Timer; //таймер исчезновения
+    //таймер
+    private float Timer;
     public float defaultTime = 8f;
-
-    private LevelsSystem ShooterLevelSystem; //лэвлы
 
     private void Update()
     {
@@ -24,7 +21,6 @@ public class BulletJelly : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    //Никита любит лёшу
 
     private void OnEnable()
     {
@@ -34,12 +30,6 @@ public class BulletJelly : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = transform.forward * bulletForce; //направление и скорость
-    }
-
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //передаёт лэвлы
-    {
-        ShooterLevelSystem = shooterLevelSystem;
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,11 +43,7 @@ public class BulletJelly : MonoBehaviour
 
         if (other.gameObject.CompareTag("Shark")) //если столкнулась с акулой
         {
-            //Скрипт здоровья акулы
-            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
-            //урон + опыт
-            enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
+            //урон акуле
         }
     }
-
 }

@@ -14,6 +14,7 @@ public class TestManager : MonoBehaviour
     private SceneLoadingManager SceneLoadingManager; //скрипт с загрузкой сцен
     private InputManager InputManager; //скрипт с управлением
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
+    private WeaponManager weaponManager; //скрипт с оружием
     private CameraManager CameraManager; //скрипт с камерой
 
     private UnitManager UnitManager; //скрипт через который проходит управление персонажем
@@ -29,8 +30,11 @@ public class TestManager : MonoBehaviour
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
         InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
+        //ускорение
+        InputManager.fastSpeedStart += InputManager_fastSpeedStart;
+
         //движение перса
-        InputManager.dirSouthStart += InputManager_dirSouthStart; 
+        InputManager.dirSouthStart += InputManager_dirSouthStart;
         InputManager.dirNorthStart += InputManager_dirNorthStart;
 
         InputManager.dirEastStart += InputManager_dirEastStart;
@@ -61,6 +65,7 @@ public class TestManager : MonoBehaviour
         //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
         CameraManager = Root.GetCameraManager();
         CameraManager.Initialize(Camera, jellyFish.transform);
+
     }
 
     private void InputManager_positionMouse(Vector3 mousePosition)
@@ -77,6 +82,11 @@ public class TestManager : MonoBehaviour
         }
     }
 
+    //ускорение
+    private void InputManager_fastSpeedStart
+    {
+
+    }
 
     //ходьба
     private void InputManager_dirWestStart()

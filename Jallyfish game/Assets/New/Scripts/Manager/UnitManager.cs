@@ -22,7 +22,7 @@ public class UnitManager : MonoBehaviour
     }
 
     public void ChangeMovementDirection(Vector3 direction) //метод принимает направление и передаёт в скрипт 
-    { 
+    {
         PlayerMovementScript.ChangeMovementDirection(direction);
     }
 
@@ -30,4 +30,6 @@ public class UnitManager : MonoBehaviour
     {
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }
+
+    //метод ускорение
 }
