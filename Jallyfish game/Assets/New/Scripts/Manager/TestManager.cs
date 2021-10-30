@@ -81,19 +81,19 @@ public class TestManager : MonoBehaviour
 
     private void InputManager_choosWeaponOne()
     {
-        UnitManager.choosWeaponOne();
+        UnitManager.ChoosWeaponOne();
     }
     private void InputManager_choosWeaponTwo()
     {
-        UnitManager.choosWeaponTwo();
+        UnitManager.ChoosWeaponTwo();
     }
     private void InputManager_choosWeaponThree()
     {
-        UnitManager.choosWeaponThree();
+        UnitManager.ChoosWeaponThree();
     }
     private void InputManager_choosWeaponFour()
     {
-        UnitManager.choosWeaponFour();
+        UnitManager.ChoosWeaponFour();
     }
     
 

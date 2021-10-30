@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponBulletLight : MonoBehaviour
+public class WeaponBulletLight : MonoBehaviour, IWeaponaBase
 {
     //Пуля молния с уроном 2
     private float damageEnemy = 2f; //урон
@@ -45,5 +45,10 @@ public class WeaponBulletLight : MonoBehaviour
         {
             //урон акуле
         }
+    }
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponBulletJelly : MonoBehaviour
+public class WeaponBulletJelly : MonoBehaviour, IWeaponaBase
 {
     //Пуля медуза с уроном 1
     private float damageEnemy = 1f; //урон
@@ -45,5 +45,10 @@ public class WeaponBulletJelly : MonoBehaviour
         {
             //урон акуле
         }
+    }
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
     }
 }

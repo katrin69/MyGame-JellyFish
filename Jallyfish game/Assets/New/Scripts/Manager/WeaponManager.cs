@@ -18,4 +18,5 @@ public class WeaponManager : MonoBehaviour
         WeaponFart = GetComponent<WeaponFart>();
     }
 
+
 }

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponFart : MonoBehaviour
+public class WeaponFart : MonoBehaviour, IWeaponaBase
 {
     //большой пук урон 4
 
     [SerializeField] ParticleSystem _bulletFart;
     private float damageEnemyFart = 4f; //урон
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 
     public void ShootFart()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponJellyHoming : MonoBehaviour
+public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
 {
     //Самонаводящееся медуза c уроном 3
     private float damageEnemy = 3f; //урон
@@ -129,5 +129,10 @@ public class WeaponJellyHoming : MonoBehaviour
         {
             //урон акуле
         }
+    }
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
     }
 }

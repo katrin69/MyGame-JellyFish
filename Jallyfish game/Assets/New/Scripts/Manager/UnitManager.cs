@@ -24,6 +24,22 @@ public class UnitManager : MonoBehaviour
     }
 
     //методы для выбора оружия
+    public void ChoosWeaponOne()
+    {
+        
+    }
+    public void ChoosWeaponTwo()
+    {
+
+    }
+    public void ChoosWeaponThree()
+    {
+
+    }
+    public void ChoosWeaponFour()
+    {
+
+    }
 
 
     //метод принимает направление и передаёт в скрипт 
