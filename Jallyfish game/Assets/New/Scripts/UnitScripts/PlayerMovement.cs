@@ -71,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void FastSpeed() //метод ускорения
     {
-        realSpeed = fastSpeed; //если нажат Шифт то скоростт становится быстрой
+        realSpeed = fastSpeed;
         currentStamina -= Time.deltaTime * 10f; // но лишь на время
         if (currentStamina <= 0)
         {
             realSpeed = moveSpeed;
         }
-         else
+        else
         {
             realSpeed = moveSpeed; //если шифт не нажат то скорость становится прежней
             currentStamina += Time.deltaTime / 0.6f; //скорость возращается
@@ -95,5 +95,15 @@ public class PlayerMovement : MonoBehaviour
         {
             currentStamina = maxValueStamina;
         }
+    }
+
+    public void fastSpeedStart()
+    {
+        realSpeed = fastSpeed;
+    }
+
+    public void fastSpeesEnd()
+    {
+        realSpeed = moveSpeed;
     }
 }

@@ -32,4 +32,14 @@ public class UnitManager : MonoBehaviour
     }
 
     //метод ускорение
+    public void fastSpeedStart() //вызываем метод
+    {
+        PlayerMovementScript.fastSpeedStart();
+    }
+
+    public void fastSpeesEnd()
+    {
+        PlayerMovementScript.fastSpeesEnd();
+
+    }
 }

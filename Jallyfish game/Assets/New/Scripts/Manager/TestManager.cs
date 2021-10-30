@@ -32,6 +32,8 @@ public class TestManager : MonoBehaviour
 
         //ускорение
         InputManager.fastSpeedStart += InputManager_fastSpeedStart;
+        InputManager.fastSpeedStart += InputManager_fastSpeedEnd;
+
 
         //движение перса
         InputManager.dirSouthStart += InputManager_dirSouthStart;
@@ -83,8 +85,13 @@ public class TestManager : MonoBehaviour
     }
 
     //ускорение
-    private void InputManager_fastSpeedStart
+    private void InputManager_fastSpeedStart()
     {
+        UnitManager.fastSpeedStart();
+    }
+    private void InputManager_fastSpeedEnd()
+    {
+        UnitManager.fastSpeesEnd();
 
     }
 
