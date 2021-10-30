@@ -100,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     public void fastSpeedStart()
     {
         realSpeed = fastSpeed;
+
     }
 
     public void fastSpeesEnd()

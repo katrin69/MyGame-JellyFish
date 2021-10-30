@@ -14,7 +14,6 @@ public class TestManager : MonoBehaviour
     private SceneLoadingManager SceneLoadingManager; //скрипт с загрузкой сцен
     private InputManager InputManager; //скрипт с управлением
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
-    private WeaponManager weaponManager; //скрипт с оружием
     private CameraManager CameraManager; //скрипт с камерой
 
     private UnitManager UnitManager; //скрипт через который проходит управление персонажем
@@ -30,22 +29,29 @@ public class TestManager : MonoBehaviour
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
         InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
+
+        //выбор оружия
+        InputManager.choosWeaponOne += InputManager_choosWeaponOne;
+        InputManager.choosWeaponTwo += InputManager_choosWeaponTwo;
+        InputManager.choosWeaponThree += InputManager_choosWeaponThree;
+        InputManager.choosWeaponFour += InputManager_choosWeaponFour;
+
         //ускорение
         InputManager.fastSpeedStart += InputManager_fastSpeedStart;
-        InputManager.fastSpeedStart += InputManager_fastSpeedEnd;
+        InputManager.fastSpeedEnd += InputManager_fastSpeedEnd;
 
 
         //движение перса
-        InputManager.dirSouthStart += InputManager_dirSouthStart;
         InputManager.dirNorthStart += InputManager_dirNorthStart;
-
-        InputManager.dirEastStart += InputManager_dirEastStart;
-        InputManager.dirWestStart += InputManager_dirWestStart;
-
-        InputManager.dirSouthEnd += InputManager_dirSouthEnd;
         InputManager.dirNorthEnd += InputManager_dirNorthEnd;
 
+        InputManager.dirSouthStart += InputManager_dirSouthStart;
+        InputManager.dirSouthEnd += InputManager_dirSouthEnd;
+
+        InputManager.dirWestStart += InputManager_dirWestStart;
         InputManager.dirEastEnd += InputManager_dirEastEnd;
+
+        InputManager.dirEastStart += InputManager_dirEastStart;
         InputManager.dirWestEnd += InputManager_dirWestEnd;
 
 
@@ -70,10 +76,34 @@ public class TestManager : MonoBehaviour
 
     }
 
+
+    //выбор оружия
+
+    private void InputManager_choosWeaponOne()
+    {
+        UnitManager.choosWeaponOne();
+    }
+    private void InputManager_choosWeaponTwo()
+    {
+        UnitManager.choosWeaponTwo();
+    }
+    private void InputManager_choosWeaponThree()
+    {
+        UnitManager.choosWeaponThree();
+    }
+    private void InputManager_choosWeaponFour()
+    {
+        UnitManager.choosWeaponFour();
+    }
+    
+
+
+    //позиция мыши
     private void InputManager_positionMouse(Vector3 mousePosition)
     {
         CurrentMousePosition = mousePosition;
     }
+
 
     //стрельба
     private void InputManager_shoot()
@@ -83,6 +113,7 @@ public class TestManager : MonoBehaviour
             UnitManager.ChangeLookingPoint(groundPoint);
         }
     }
+
 
     //ускорение
     private void InputManager_fastSpeedStart()
@@ -94,6 +125,7 @@ public class TestManager : MonoBehaviour
         UnitManager.fastSpeesEnd();
 
     }
+
 
     //ходьба
     private void InputManager_dirWestStart()

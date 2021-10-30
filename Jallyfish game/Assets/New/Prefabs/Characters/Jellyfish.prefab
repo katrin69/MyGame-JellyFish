@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3635502772613936398}
   - component: {fileID: 7817265678825562917}
   - component: {fileID: 1579650121438525010}
+  - component: {fileID: 7264600800034203826}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Player
@@ -105,6 +106,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distToGround: 5
+--- !u!114 &7264600800034203826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713226434334809543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c898aa18ad0f24d8d4075d330ad601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5901885157683535589
 GameObject:
   m_ObjectHideFlags: 0

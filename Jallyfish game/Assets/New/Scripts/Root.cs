@@ -14,6 +14,7 @@ public class Root : MonoBehaviour
     private InputManager InputManager; //скрипт с движением игрока
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
+    private WeaponManager WeaponManager; //скрипт с оружием
 
     private Transform GetManagerParent()
     {
@@ -26,6 +27,16 @@ public class Root : MonoBehaviour
         }
 
         return ManagerParent;
+    }
+
+    public WeaponManager GetWeaponManager()
+    {
+        if (WeaponManager == null) //если сцен нету то ...
+        {
+            CreateManager("Weapon Manager", out WeaponManager);
+        }
+
+        return WeaponManager;
     }
 
     public SceneLoadingManager GetSceneManager() //метод получения сцен

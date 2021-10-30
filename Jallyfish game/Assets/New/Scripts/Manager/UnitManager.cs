@@ -8,11 +8,13 @@ public class UnitManager : MonoBehaviour
 
     private PlayerMovement PlayerMovementScript; //скрипт со скоростью 
     private GroundChecker GroundChecker;//скрипт с лучём
+    private WeaponManager WeaponManager; //скрипит с видами оружия
 
     private void Awake()
     {
         PlayerMovementScript = GetComponent<PlayerMovement>();
         GroundChecker = GetComponent<GroundChecker>();
+        WeaponManager = GetComponent<WeaponManager>();
     }
 
     private void Update()
@@ -21,15 +23,21 @@ public class UnitManager : MonoBehaviour
         PlayerMovementScript.SetVerticalPosition(difference);
     }
 
-    public void ChangeMovementDirection(Vector3 direction) //метод принимает направление и передаёт в скрипт 
+    //методы для выбора оружия
+
+
+    //метод принимает направление и передаёт в скрипт 
+    public void ChangeMovementDirection(Vector3 direction) 
     {
         PlayerMovementScript.ChangeMovementDirection(direction);
     }
 
-    public void ChangeLookingPoint(Vector3 point) //метод принимает точку и передаёт в скрипт
+    //метод принимает точку и передаёт в скрипт
+    public void ChangeLookingPoint(Vector3 point) 
     {
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }
+
 
     //метод ускорение
     public void fastSpeedStart() //вызываем метод

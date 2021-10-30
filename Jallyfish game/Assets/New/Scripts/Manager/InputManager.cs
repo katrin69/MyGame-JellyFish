@@ -30,8 +30,45 @@ public class InputManager : MonoBehaviour
     //движение мыши
     public event Action<Vector3> positionMouse;
 
+    //выбор оружия
+    public event Action choosWeaponOne;
+    public event Action choosWeaponTwo;
+    public event Action choosWeaponThree;
+    public event Action choosWeaponFour;
+
     private void Update()
     {
+        //выбор оружия
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (choosWeaponOne != null)
+            {
+                choosWeaponOne();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (choosWeaponTwo != null)
+            {
+                choosWeaponTwo();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (choosWeaponThree != null)
+            {
+                choosWeaponThree();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (choosWeaponFour != null)
+            {
+                choosWeaponFour();
+            }
+        }
+
+
 
         //ускорение
         if (Input.GetKeyDown(KeyCode.LeftShift))
