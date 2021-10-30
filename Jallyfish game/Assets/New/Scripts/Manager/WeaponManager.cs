@@ -10,13 +10,37 @@ public class WeaponManager : MonoBehaviour
     private WeaponJellyHoming WeaponJellyHoming;
     private WeaponFart WeaponFart;
 
+    private IWeaponaBase activeWeapon;
+
     private void Awake()
     {
         WeaponBulletLight = GetComponent<WeaponBulletLight>();
         WeaponBulletJelly = GetComponent<WeaponBulletJelly>();
         WeaponJellyHoming = GetComponent<WeaponJellyHoming>();
         WeaponFart = GetComponent<WeaponFart>();
+        activeWeapon.Shoot();
     }
 
+    public void ChoosWeaponOne()
+    {
+        activeWeapon = WeaponBulletLight;
+    }
 
+    public void ChoosWeaponTwo()
+    {
+        activeWeapon = WeaponBulletJelly;
+
+    }
+
+    public void ChoosWeaponThree()
+    {
+        activeWeapon = WeaponJellyHoming;
+
+    }
+
+    public void ChoosWeaponFour()
+    {
+        activeWeapon = WeaponFart;
+
+    }
 }

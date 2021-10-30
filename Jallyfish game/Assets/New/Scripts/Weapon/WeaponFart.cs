@@ -11,11 +11,6 @@ public class WeaponFart : MonoBehaviour, IWeaponaBase
 
     public void Shoot()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void ShootFart()
-    {
         _bulletFart.Play();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 6f);
@@ -23,8 +18,9 @@ public class WeaponFart : MonoBehaviour, IWeaponaBase
         {
             if (c.gameObject.CompareTag("Shark"))
             {
-               //урон врагу
+                //урон врагу
             }
         }
     }
+
 }

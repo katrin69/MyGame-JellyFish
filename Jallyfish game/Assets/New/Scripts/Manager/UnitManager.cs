@@ -26,18 +26,21 @@ public class UnitManager : MonoBehaviour
     //методы для выбора оружия
     public void ChoosWeaponOne()
     {
-        
+        WeaponManager.ChoosWeaponOne();
     }
     public void ChoosWeaponTwo()
     {
+        WeaponManager.ChoosWeaponTwo();
 
     }
     public void ChoosWeaponThree()
     {
+        WeaponManager.ChoosWeaponThree();
 
     }
     public void ChoosWeaponFour()
     {
+        WeaponManager.ChoosWeaponFour();
 
     }
 
