@@ -67,7 +67,7 @@ public class ResourceManager : MonoBehaviour
             EObjectType objectType = InstantiatedObjects[gameObject];
 
             ObjectPool pool = Pools[objectType]; 
-            pool.ReturnToPool(gameObject); //идём в пулы и щем наш пул по этолму ьтпу 
+            pool.ReturnToPool(gameObject); //идём в пулы и щем наш пул по этолму типу 
         }
         else
         {

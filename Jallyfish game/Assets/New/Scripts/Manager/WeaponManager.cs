@@ -7,7 +7,7 @@ public class WeaponManager : MonoBehaviour
     //шарит за оружие
     public Transform firePoint;
 
-    public EWeapon currentWeapon;
+    public EWeapon currentWeapon; //текущее оружие
 
     private ResourceManager ResourceManager;
     private LevelsSystem LevelsSystem;
