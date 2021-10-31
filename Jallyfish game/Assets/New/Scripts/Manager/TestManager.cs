@@ -29,7 +29,6 @@ public class TestManager : MonoBehaviour
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
         InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
-
         //выбор оружия
         InputManager.choosWeaponOne += InputManager_choosWeaponOne;
         InputManager.choosWeaponTwo += InputManager_choosWeaponTwo;
@@ -39,7 +38,6 @@ public class TestManager : MonoBehaviour
         //ускорение
         InputManager.fastSpeedStart += InputManager_fastSpeedStart;
         InputManager.fastSpeedEnd += InputManager_fastSpeedEnd;
-
 
         //движение перса
         InputManager.dirNorthStart += InputManager_dirNorthStart;
@@ -53,7 +51,6 @@ public class TestManager : MonoBehaviour
 
         InputManager.dirEastStart += InputManager_dirEastStart;
         InputManager.dirWestEnd += InputManager_dirWestEnd;
-
 
         //стрельба
         InputManager.shoot += InputManager_shoot;
@@ -69,41 +66,39 @@ public class TestManager : MonoBehaviour
         jellyFish.SetActive(true);
         //добавляем в медузу управление
         UnitManager = jellyFish.GetComponent<UnitManager>();
+        UnitManager.Init(ResourceManager);
 
         //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
         CameraManager = Root.GetCameraManager();
         CameraManager.Initialize(Camera, jellyFish.transform);
-
     }
 
-
     //выбор оружия
-
     private void InputManager_choosWeaponOne()
     {
         UnitManager.ChoosWeaponOne();
     }
+
     private void InputManager_choosWeaponTwo()
     {
         UnitManager.ChoosWeaponTwo();
     }
+
     private void InputManager_choosWeaponThree()
     {
         UnitManager.ChoosWeaponThree();
     }
+
     private void InputManager_choosWeaponFour()
     {
         UnitManager.ChoosWeaponFour();
-    }
-    
-
+    } 
 
     //позиция мыши
     private void InputManager_positionMouse(Vector3 mousePosition)
     {
         CurrentMousePosition = mousePosition;
     }
-
 
     //стрельба
     private void InputManager_shoot()
@@ -112,20 +107,20 @@ public class TestManager : MonoBehaviour
         {
             UnitManager.ChangeLookingPoint(groundPoint);
         }
-    }
 
+        UnitManager.Shoot();
+    }
 
     //ускорение
     private void InputManager_fastSpeedStart()
     {
         UnitManager.fastSpeedStart();
     }
+
     private void InputManager_fastSpeedEnd()
     {
         UnitManager.fastSpeesEnd();
-
     }
-
 
     //ходьба
     private void InputManager_dirWestStart()
@@ -138,28 +133,23 @@ public class TestManager : MonoBehaviour
         UnitManager.ChangeMovementDirection(-WestDirection);
     }
 
-
     private void InputManager_dirEastStart()
     {
         UnitManager.ChangeMovementDirection(-WestDirection);
     }
-
     private void InputManager_dirEastEnd()
     {
         UnitManager.ChangeMovementDirection(WestDirection);
     }
 
-
     private void InputManager_dirNorthStart()
     {
         UnitManager.ChangeMovementDirection(NorthDirection);
     }
-
     private void InputManager_dirNorthEnd()
     {
         UnitManager.ChangeMovementDirection(-NorthDirection);
     }
-
 
     private void InputManager_dirSouthStart()
     {

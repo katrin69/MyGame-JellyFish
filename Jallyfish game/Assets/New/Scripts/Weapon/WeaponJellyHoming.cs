@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
+public class WeaponJellyHoming : MonoBehaviour
 {
     //Самонаводящееся медуза c уроном 3
     private float damageEnemy = 3f; //урон
-    private float bulletForce = 24f; //скорость
+    private float bulletSpeed = 15f; //скорость
     Transform target; //цель
     public float radius = 3.5f; //радиус
     private Rigidbody rb;
@@ -21,18 +20,24 @@ public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
 
     private Transform MotherJellyfish; //наша мама (игрок)
 
+    private LevelsSystem ShooterLevelSystem; //система лэвлов
+
+    private float RandomRevolvingSpeed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(Transform jellyfishParent)
+    public void Initialize(Transform jellyfishParent, LevelsSystem shooterLevelSystem)
     {
         MotherJellyfish = jellyfishParent;
+        ShooterLevelSystem = shooterLevelSystem;
     }
 
     private void OnEnable()
     {
+        RandomRevolvingSpeed = UnityEngine.Random.Range(-0.5f, 0.5f);
         Timer = defaultTime;
     }
 
@@ -42,7 +47,7 @@ public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
         {
             Vector3 targetdirection = target.position - transform.position;
             transform.LookAt(target);
-            rb.velocity = targetdirection.normalized * bulletForce;
+            rb.velocity = targetdirection.normalized * bulletSpeed;
         }
         else //иначе исчезаем через какое то вемя И нарезаем круг вокруг нашей медузы
         {
@@ -59,12 +64,12 @@ public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
             if (targetdirection.magnitude <= radius) //если длина вектора меньше или равно радиусу то создаём вектор kasatka
             {
                 Vector3 kasatka = Vector3.Cross(Vector3.up, targetdirection); //произведение двух векторов
-                rb.velocity = kasatka.normalized * bulletForce; //
+                rb.velocity = kasatka.normalized * bulletSpeed * RandomRevolvingSpeed; //
             }
             else
             {
                 transform.LookAt(MotherJellyfish); //иначе смотрит на игрока 
-                rb.velocity = targetdirection.normalized * bulletForce;
+                rb.velocity = targetdirection.normalized * bulletSpeed;
             }
         }
 
@@ -77,7 +82,7 @@ public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
 
         if (Timer < 0)
         {
-            gameObject.SetActive(false);
+            this.ReturnToPool();
         }
     }
 
@@ -111,28 +116,18 @@ public class WeaponJellyHoming : MonoBehaviour, IWeaponaBase
         }
     }
 
-    private void OnDisable()
-    {
-        target = null;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
-
-        gameObject.SetActive(false);
-
         if (other.gameObject.CompareTag("Shark")) //если столкнулась с акулой
         {
             //урон акуле
-        }
-    }
 
-    public void Shoot()
-    {
-        throw new System.NotImplementedException();
+            //скрипт акулы
+            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            //урон + опыт
+            enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
+
+            this.ReturnToPool();
+        }
     }
 }

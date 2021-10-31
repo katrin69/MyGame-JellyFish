@@ -23,27 +23,37 @@ public class UnitManager : MonoBehaviour
         PlayerMovementScript.SetVerticalPosition(difference);
     }
 
+    public void Init(ResourceManager resourceManager)
+    {
+        LevelsSystem levelsSystem = GetComponent<LevelsSystem>();
+        WeaponManager.Init(resourceManager, levelsSystem);
+    }
+
     //методы для выбора оружия
     public void ChoosWeaponOne()
     {
         WeaponManager.ChoosWeaponOne();
     }
+
     public void ChoosWeaponTwo()
     {
         WeaponManager.ChoosWeaponTwo();
-
     }
+
     public void ChoosWeaponThree()
     {
         WeaponManager.ChoosWeaponThree();
-
     }
+
     public void ChoosWeaponFour()
     {
         WeaponManager.ChoosWeaponFour();
-
     }
 
+    public void Shoot()
+    {
+        WeaponManager.Shoot();
+    }
 
     //метод принимает направление и передаёт в скрипт 
     public void ChangeMovementDirection(Vector3 direction) 
@@ -57,7 +67,6 @@ public class UnitManager : MonoBehaviour
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }
 
-
     //метод ускорение
     public void fastSpeedStart() //вызываем метод
     {
@@ -67,6 +76,5 @@ public class UnitManager : MonoBehaviour
     public void fastSpeesEnd()
     {
         PlayerMovementScript.fastSpeesEnd();
-
     }
 }

@@ -2,5 +2,8 @@ public enum EObjectType
 {
     Jellyfish,
     Shark,
-    Bullet,
+    BulletLight,
+    BulletJelly,
+    JellyHoming,
+    BulletFart
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponBulletJelly : MonoBehaviour, IWeaponaBase
+public class WeaponBulletJelly : MonoBehaviour
 {
     //Пуля медуза с уроном 1
     private float damageEnemy = 1f; //урон
@@ -13,12 +13,19 @@ public class WeaponBulletJelly : MonoBehaviour, IWeaponaBase
     private float Timer;
     public float defaultTime = 8f;
 
+    private LevelsSystem ShooterLevelSystem; //лэвлы
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         Timer -= Time.deltaTime;
         if (Timer < 0)
         {
-            gameObject.SetActive(false);
+            this.ReturnToPool();
         }
     }
 
@@ -34,21 +41,21 @@ public class WeaponBulletJelly : MonoBehaviour, IWeaponaBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
-
-        gameObject.SetActive(false);
-
         if (other.gameObject.CompareTag("Shark")) //если столкнулась с акулой
         {
             //урон акуле
+
+            //Скрипт здоровья акулы
+            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            //урон + опыт
+            enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
+
+            this.ReturnToPool();
         }
     }
 
-    public void Shoot()
+    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //передаёт лэвлы
     {
-        throw new System.NotImplementedException();
+        ShooterLevelSystem = shooterLevelSystem;
     }
 }

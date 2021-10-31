@@ -21,9 +21,12 @@ public class PlayerMovement : MonoBehaviour
 
     //ускорение
     private float fastSpeed = 25f;
+
     private float currentStamina;
-    private float maxValueStamina;
-    private float minValueStamina;
+    private float maxValueStamina = 10f;
+    private float minValueStamina = 0f;
+
+    private bool FastSpeed;
 
     private void Awake()
     {
@@ -33,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         realSpeed = moveSpeed;
-
         currentStamina = maxValueStamina;
     }
 
@@ -42,6 +44,29 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector3.Lerp(rb.velocity, HorizontalMovement.normalized * realSpeed, HorizontalMovementAcceleration);
         //поворот плавный
         transform.rotation = Quaternion.Lerp(transform.rotation, LookRotation, Time.deltaTime * rotationSpeed);
+
+        if (FastSpeed && HorizontalMovement != Vector3.zero)
+        {
+            currentStamina -= Time.deltaTime * 10f; // но лишь на время
+
+            if (currentStamina <= minValueStamina)
+            {
+                fastSpeesEnd();
+                currentStamina = minValueStamina;
+            }
+        }
+        else
+        {
+            if (currentStamina < maxValueStamina)
+            {
+                currentStamina += Time.deltaTime / 0.6f; //скорость возращается
+
+                if (currentStamina > maxValueStamina)
+                {
+                    currentStamina = maxValueStamina;
+                }
+            }
+        }
     }
 
     public void SetVerticalPosition(float offset)
@@ -68,43 +93,15 @@ public class PlayerMovement : MonoBehaviour
         LookRotation.z = 0;
     }
 
-
-    public void FastSpeed() //метод ускорения
-    {
-        realSpeed = fastSpeed;
-        currentStamina -= Time.deltaTime * 10f; // но лишь на время
-        if (currentStamina <= 0)
-        {
-            realSpeed = moveSpeed;
-        }
-        else
-        {
-            realSpeed = moveSpeed; //если шифт не нажат то скорость становится прежней
-            currentStamina += Time.deltaTime / 0.6f; //скорость возращается
-        }
-    }
-
-    public void StaminaChecked()
-    {
-        if (currentStamina <= minValueStamina)
-        {
-            currentStamina = minValueStamina;
-        }
-
-        if (currentStamina >= maxValueStamina)
-        {
-            currentStamina = maxValueStamina;
-        }
-    }
-
     public void fastSpeedStart()
     {
         realSpeed = fastSpeed;
-
+        FastSpeed = true;
     }
 
     public void fastSpeesEnd()
     {
         realSpeed = moveSpeed;
+        FastSpeed = false;
     }
 }

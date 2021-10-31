@@ -3,16 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class ObjectPoolExtension
+{
+    public static void ReturnToPool(this MonoBehaviour monoBehaviour)
+    {
+        ResourceManager.ReturnToPool(monoBehaviour.gameObject);
+    }
+}
+
 public class ResourceManager : MonoBehaviour
 {
+    private static ResourceManager ResourceManagerInstance;
+
+    public static void ReturnToPool(GameObject gameObject)
+    {
+        ResourceManagerInstance.ReturnToPoolInternal(gameObject);
+    }
+
     public GameObject JellyfishPrefab; //создаёт обьект Медузы
     public GameObject SharkPrefab;//создаёт обьект акулы
-    public GameObject BulletPrefab;//создаёт обьект пули
+    public GameObject BulletLight;//создаёт обьект пули
+    public GameObject BulletJelly;
+    public GameObject JellyHoming;
+    public GameObject BulletFart;
 
     private Dictionary<EObjectType, ObjectPool> Pools = new Dictionary<EObjectType, ObjectPool>(); //словарь пулов в зависимости от типа . Зная тип мы можем полкучить пул для обектов
 
     private Dictionary<GameObject, EObjectType> InstantiatedObjects = new Dictionary<GameObject, EObjectType>(); //словарь всех обьектов который были сделаны через \рм с указанием типа
 
+    private void Awake()
+    {
+        if (ResourceManagerInstance != null)
+        {
+            Destroy(ResourceManagerInstance.gameObject);
+        }
+
+        ResourceManagerInstance = this;
+    }
 
     public GameObject GetObjectInstance(EObjectType objectType) //метод через который мы получаем обьект опр типа  
     {
@@ -33,7 +60,7 @@ public class ResourceManager : MonoBehaviour
         return objectToReturn; //возращаем обьект
     }
 
-    public void ReturnToPool(GameObject gameObject) //метод возращает обратно в пул
+    private void ReturnToPoolInternal(GameObject gameObject) //метод возращает обратно в пул
     {
         if (InstantiatedObjects.ContainsKey(gameObject)) //если в нашем словаре есть наш обект то мы берём его тип
         {
@@ -57,15 +84,21 @@ public class ResourceManager : MonoBehaviour
             case EObjectType.Jellyfish:
                 newPool = new ObjectPool(JellyfishPrefab);
                 break;
-
             case EObjectType.Shark:
                 newPool = new ObjectPool(SharkPrefab);
                 break;
-
-            case EObjectType.Bullet:
-                newPool = new ObjectPool(BulletPrefab);
+            case EObjectType.BulletLight:
+                newPool = new ObjectPool(BulletLight);
                 break;
-
+            case EObjectType.BulletJelly:
+                newPool = new ObjectPool(BulletJelly);
+                break;
+            case EObjectType.JellyHoming:
+                newPool = new ObjectPool(JellyHoming);
+                break;
+            case EObjectType.BulletFart:
+                newPool = new ObjectPool(BulletFart);
+                break;
             default: throw new ArgumentOutOfRangeException("UNKNOWN OBJECT TYPE FOR RESOURCE MANAGER");
         }
 

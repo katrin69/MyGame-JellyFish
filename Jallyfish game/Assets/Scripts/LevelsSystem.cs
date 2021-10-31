@@ -22,10 +22,13 @@ public class LevelsSystem : MonoBehaviour
     private void Start()
     {
         requiredXp = CalculateRequireXp();
-        levelText.text = "" + level;
+
+        if (levelText != null)
+        {
+            levelText.text = "" + level;
+        }
+        
         Load();
-
-
     }
 
     public void GainExperienceFlatRate(float xpGained)//набирание опыта  принимает число которое прибавляется к текущему опыту
@@ -45,7 +48,11 @@ public class LevelsSystem : MonoBehaviour
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
         GetComponent<PlayerHealth>().IncreaseHealth(level); 
         requiredXp = CalculateRequireXp();
-        levelText.text = "" + level;
+
+        if (levelText != null)
+        {
+            levelText.text = "" + level;
+        }
 
     }
 
@@ -89,8 +96,6 @@ public class LevelsSystem : MonoBehaviour
         {
             currentXp = PlayerPrefs.GetFloat("currentXp"); 
         }
-
-
     }
 }
 
