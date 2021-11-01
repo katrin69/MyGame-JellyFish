@@ -7,6 +7,7 @@ public class Root : MonoBehaviour
     //обьект который создаёт все менеджеры. обьединяет
 
     public GameObject ResourceManagerPrefab;
+    public GameObject CanvasManagerPrefab;
 
     private Transform ManagerParent; //для папки
 
@@ -15,7 +16,10 @@ public class Root : MonoBehaviour
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
     private WeaponManager WeaponManager; //скрипт с оружием
+    private EnemyInstantiationManager EnemyInstantiationManager;
+    private CanvasManager CanvasManager; //нащ канвасик
 
+    
     private Transform GetManagerParent()
     {
         if (ManagerParent == null)
@@ -27,6 +31,16 @@ public class Root : MonoBehaviour
         }
 
         return ManagerParent;
+    }
+    
+    public CanvasManager GetCanvasManager() //метод получения нашим канвасом
+    {
+        if (CanvasManager == null)
+        {
+            CreateManager("Canvas Manager", out CanvasManager, CanvasManagerPrefab);
+        }
+
+        return CanvasManager;
     }
 
     public WeaponManager GetWeaponManager()
@@ -76,6 +90,16 @@ public class Root : MonoBehaviour
         }
 
         return CameraManager;
+    }
+
+    public EnemyInstantiationManager GetEnemyInstantiationManager() //метод получения врага
+    {
+        if (EnemyInstantiationManager == null)
+        {
+            CreateManager("Enemy Instantiation Manager", out EnemyInstantiationManager);
+        }
+
+        return EnemyInstantiationManager;
     }
 
     //дженерик

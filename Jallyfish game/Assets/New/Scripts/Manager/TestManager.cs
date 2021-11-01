@@ -11,12 +11,19 @@ public class TestManager : MonoBehaviour
 
     public Transform SpawnObject; //место появления
 
+    public Transform LeftDown;
+    public Transform LeftUp;
+    public Transform RightDown;
+
     private SceneLoadingManager SceneLoadingManager; //скрипт с загрузкой сцен
     private InputManager InputManager; //скрипт с управлением
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
 
     private UnitManager UnitManager; //скрипт через который проходит управление персонажем
+
+    private EnemyInstantiationManager EnemyInstantiationManager;
+    private CanvasManager CanvasManager; //наш канвас
 
     //управление направления
     private Vector3 WestDirection = Vector3.left;
@@ -67,10 +74,47 @@ public class TestManager : MonoBehaviour
         //добавляем в медузу управление
         UnitManager = jellyFish.GetComponent<UnitManager>();
         UnitManager.Init(ResourceManager);
+        UnitManager.WeaponColldownChanged += UnitManager_WeaponColldownChanged;
+        UnitManager.ChangeHealth += UnitManager_ChangeHealth;
+        UnitManager.ChangeArmor += UnitManager_ChangeArmor;
+        UnitManager.ChangeFast += UnitManager_ChangeFast;
 
         //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
         CameraManager = Root.GetCameraManager();
         CameraManager.Initialize(Camera, jellyFish.transform);
+
+        EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
+
+        Vector4 spawningZone = new Vector4(LeftDown.position.z, LeftUp.position.z, LeftDown.position.x, RightDown.position.x);
+
+        EnemyInstantiationManager.Init(ResourceManager, jellyFish.transform, spawningZone);
+
+        //наш канвас
+        CanvasManager = Root.GetCanvasManager();
+        CanvasManager.choosWeaponOne += InputManager_choosWeaponOne;
+        CanvasManager.choosWeaponTwo += InputManager_choosWeaponTwo;
+        CanvasManager.choosWeaponThree += InputManager_choosWeaponThree;
+        CanvasManager.choosWeaponFour += InputManager_choosWeaponFour;
+    }
+
+    private void UnitManager_ChangeFast(float curStam)
+    {
+        CanvasManager.ChangeStamina(curStam);
+    }
+
+    private void UnitManager_ChangeArmor(float curArmor)
+    {
+        CanvasManager.ChangeArmor(curArmor);
+    }
+
+    private void UnitManager_ChangeHealth(float curHp)
+    {
+        CanvasManager.ChangeHealthe(curHp);
+    }
+
+    private void UnitManager_WeaponColldownChanged(EWeapon weapon, float cooldownPercent)
+    {
+        CanvasManager.SetWeaponFiller(weapon, cooldownPercent);
     }
 
     //выбор оружия

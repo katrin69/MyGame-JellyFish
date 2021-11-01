@@ -974,8 +974,8 @@ GameObject:
   - component: {fileID: 4996653010830157280}
   - component: {fileID: 3248005459454739755}
   - component: {fileID: 3841073790113108135}
-  - component: {fileID: 4214466210187503288}
-  - component: {fileID: -4792947932980444921}
+  - component: {fileID: -2980237993147804100}
+  - component: {fileID: 7952365293612963936}
   m_Layer: 0
   m_Name: EnemyShark
   m_TagString: Shark
@@ -1048,34 +1048,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &4214466210187503288
+--- !u!114 &-2980237993147804100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5302641808997960721}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113b4c50b43d6cd4e9c0b750fa214289, type: 3}
+  m_Script: {fileID: 11500000, guid: 4faba57175b45a4499f731793c02f5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
   howClose: 0
---- !u!114 &-4792947932980444921
+--- !u!114 &7952365293612963936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5302641808997960721}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc797f6ab918044ab8f6c6243f5da62, type: 3}
+  m_Script: {fileID: 11500000, guid: c838baec31eb76948979e1f2d7fa26f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 2
-  enemyHealthMax: 2
+  enemyHealth: 0
+  enemyHealthMax: 8
+  ExperienceToGain: 20
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0

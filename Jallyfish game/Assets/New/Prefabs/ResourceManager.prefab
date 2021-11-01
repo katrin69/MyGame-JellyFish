@@ -46,6 +46,6 @@ MonoBehaviour:
   JellyfishPrefab: {fileID: 4713226434334809543, guid: 4f672f80c4599634bbb98e5bf9ba4917, type: 3}
   SharkPrefab: {fileID: 5302641808997960721, guid: d71bb5a2a94401e41a9cd931c03c8005, type: 3}
   BulletLight: {fileID: 5216332769896663073, guid: 8679a4b42046aaf4e8c4f495c06834f1, type: 3}
-  BulletJelly: {fileID: 1853665350429367744, guid: 9d76b0577bb36244a90ab09e0fe070fb, type: 3}
+  BulletJelly: {fileID: 1853665350429367744, guid: 4a79c89f16e72c444a84b5fabcdd5e35, type: 3}
   JellyHoming: {fileID: 2454933172228073496, guid: cc734a71baef5824888e85d18e3d4425, type: 3}
   BulletFart: {fileID: 5244167958633841940, guid: 600fc361cfdc1274ea1c7110d5af9fc0, type: 3}

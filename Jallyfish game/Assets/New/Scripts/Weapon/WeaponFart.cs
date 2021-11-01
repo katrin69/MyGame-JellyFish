@@ -9,7 +9,7 @@ public class WeaponFart : MonoBehaviour
     [SerializeField] ParticleSystem _bulletFart;
     private float damageEnemyFart = 4f; //урон
 
-    private LevelsSystem ShooterLevelSystem; //лэвлы
+    private PlayerLevelSystem ShooterLevelSystem; //лэвлы
 
     //таймер
     private float Timer;
@@ -31,11 +31,11 @@ public class WeaponFart : MonoBehaviour
         Timer -= Time.deltaTime;
         if (Timer < 0)
         {
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //передаёт лэвлы
+    public void SetShooterLevelsSystem(PlayerLevelSystem shooterLevelSystem) //передаёт лэвлы
     {
         ShooterLevelSystem = shooterLevelSystem;
     }
@@ -53,11 +53,11 @@ public class WeaponFart : MonoBehaviour
                 if (ShooterLevelSystem != null)
                 {
                     //скрипт врагов
-                    EnemyHealth enemyHealthScript = c.transform.GetComponent<EnemyHealth>();
+                    EnemyHealthScript enemyHealthScript = c.transform.GetComponent<EnemyHealthScript>();
                     //урон + опыт
                     enemyHealthScript.DeductHealth(damageEnemyFart, ShooterLevelSystem);
 
-                    this.ReturnToPool();
+                    ResourceManager.ReturnToPool(gameObject);
                 }
             }
         }

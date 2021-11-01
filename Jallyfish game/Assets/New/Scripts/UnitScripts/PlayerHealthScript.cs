@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
-
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthScript : MonoBehaviour
 {
+    public event Action<float> ChangeHealth;
+    public event Action<float> ChangeArmor;
+
     //щит
     float curArmor; //текущий щит
     float maxArmor = 4; //максимальный щит
@@ -35,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         // deltaArmor = -1;
         // damage_HP = -1;
 
-        damage_HP += curArmor; 
+        damage_HP += curArmor;
 
         // curArmor = 4;
         // deltaArmor = -1;
@@ -53,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         //PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor); //отображает в бар
-
+        ChangeArmor?.Invoke(curArmor / maxArmor);
 
         if (damage_HP < 0)
         {
@@ -67,18 +68,13 @@ public class PlayerHealth : MonoBehaviour
         curHp += deltaHp;
         print("Осталось жизней " + curHp);
         //PlayerHealthBar.instance.SetValue(curHp / (float)maxHp);
+        ChangeHealth?.Invoke(curHp / maxHp);
         if (curHp <= 0)
         {
-            Invoke(nameof(Restart), reastartDelay); 
+            //Invoke(nameof(Restart), reastartDelay);
             print("СМЕРТЬ");
         }
     }
-
-    void Restart() //ìåòîä çàãðóæàåò ñöåíó Game Over
-    {
-        SceneManager.LoadScene(1);
-    }
-
 
     //
     public void IncreaseHealth(int level)
@@ -86,5 +82,4 @@ public class PlayerHealth : MonoBehaviour
         maxHp += (curHp * 0.01f) * ((100f - level) * 0.1f);
         curHp = maxHp;
     }
-
 }

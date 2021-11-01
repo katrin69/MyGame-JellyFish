@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class PlayerMovement : MonoBehaviour
 {
     //будет отвечать за все передвижение
-
+    public event Action<float> ChangeFast;
     //ходьба
     private float moveSpeed = 15f;
     private float realSpeed;
@@ -54,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
                 fastSpeesEnd();
                 currentStamina = minValueStamina;
             }
+            ChangeFast?.Invoke(currentStamina / maxValueStamina);
+
         }
         else
         {
@@ -65,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     currentStamina = maxValueStamina;
                 }
+                ChangeFast?.Invoke(currentStamina / maxValueStamina);
+
             }
         }
     }

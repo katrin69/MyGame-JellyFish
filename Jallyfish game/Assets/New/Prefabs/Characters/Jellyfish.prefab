@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 7817265678825562917}
   - component: {fileID: 1579650121438525010}
   - component: {fileID: 7264600800034203826}
-  - component: {fileID: 3153473673570523361}
+  - component: {fileID: 238979185563508188}
+  - component: {fileID: 2358860498724638403}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Player
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6491035195090063915}
   currentWeapon: 0
---- !u!114 &3153473673570523361
+--- !u!114 &238979185563508188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,13 +130,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4713226434334809543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce23e8248f9be134eb563ac2a04a9df5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f444ad69348652419530f6aa606a414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reastartDelay: 2
+--- !u!114 &2358860498724638403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713226434334809543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e97fb6857b9e814c9ff7ea37929b9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
   currentXp: 0
   requiredXp: 130
-  levelText: {fileID: 0}
   additionMultiplier: 300
   powerMultiplier: 2
   divisionMultiplier: 7

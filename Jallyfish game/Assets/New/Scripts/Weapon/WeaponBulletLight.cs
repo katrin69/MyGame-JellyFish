@@ -13,7 +13,7 @@ public class WeaponBulletLight : MonoBehaviour
     private float Timer;
     public float defaultTime = 8f;
 
-    private LevelsSystem ShooterLevelSystem; //система лэвлов
+    private PlayerLevelSystem ShooterLevelSystem; //система лэвлов
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class WeaponBulletLight : MonoBehaviour
         Timer -= Time.deltaTime;
         if (Timer < 0)
         {
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
@@ -46,15 +46,15 @@ public class WeaponBulletLight : MonoBehaviour
             //урон акуле
 
             //Скрипт акулы
-            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            EnemyHealthScript enemyHealthScript = other.transform.GetComponent<EnemyHealthScript>();
             //урон + опыт
             enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
 
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //передача лэвлов
+    public void SetShooterLevelsSystem(PlayerLevelSystem shooterLevelSystem) //передача лэвлов
     {
         ShooterLevelSystem = shooterLevelSystem;
     }

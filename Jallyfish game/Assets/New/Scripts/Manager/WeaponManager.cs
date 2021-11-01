@@ -1,16 +1,54 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+#if UNITY_EDITOR
+
+using UnityEditor;
+
+public partial class WeaponManager
 {
+    [CustomEditor(typeof(WeaponManager))]
+    private class WeaponMangerInspector : Editor
+    {
+        private WeaponManager weaponManager;
+
+        private void OnEnable()
+        {
+            weaponManager = (WeaponManager)target;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            GUILayout.Space(10);
+
+            foreach (EWeapon eWeapon in (EWeapon[])Enum.GetValues(typeof(EWeapon)))
+            {
+                if (weaponManager.WeaponsCurrentCooldown.ContainsKey(eWeapon))
+                {
+                    GUILayout.Label(eWeapon + "   :   " + weaponManager.WeaponsCurrentCooldown[eWeapon]);
+                }
+            }
+        }
+    }
+}
+
+#endif
+
+public partial class WeaponManager : MonoBehaviour
+{
+    public event Action<EWeapon, float> WeaponColldownChanged;
+
     //шарит за оружие
     public Transform firePoint;
 
     public EWeapon currentWeapon; //текущее оружие
 
     private ResourceManager ResourceManager;
-    private LevelsSystem LevelsSystem;
+    private PlayerLevelSystem LevelsSystem;
 
     private Dictionary<EWeapon, float> WeaponsCurrentCooldown = new Dictionary<EWeapon, float>();
 
@@ -29,7 +67,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (EWeapon eWeapon in WeaponsDefaultCooldown.Keys)
+        foreach (EWeapon eWeapon in (EWeapon[])Enum.GetValues(typeof(EWeapon)))
         {
             if (WeaponsCurrentCooldown.ContainsKey(eWeapon))
             {
@@ -41,11 +79,13 @@ public class WeaponManager : MonoBehaviour
                 {
                     WeaponsCurrentCooldown[eWeapon] -= Time.deltaTime;
                 }
+
+                WeaponColldownChanged?.Invoke(eWeapon, WeaponsCurrentCooldown[eWeapon] / WeaponsDefaultCooldown[eWeapon]); //получаем проценты
             }
         }
     }
 
-    public void Init(ResourceManager resourceManager, LevelsSystem levelsSystem)
+    public void Init(ResourceManager resourceManager, PlayerLevelSystem levelsSystem)
     {
         ResourceManager = resourceManager;
         LevelsSystem = levelsSystem;

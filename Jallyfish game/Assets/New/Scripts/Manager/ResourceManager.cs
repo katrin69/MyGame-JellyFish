@@ -3,14 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ObjectPoolExtension
-{
-    public static void ReturnToPool(this MonoBehaviour monoBehaviour)
-    {
-        ResourceManager.ReturnToPool(monoBehaviour.gameObject);
-    }
-}
-
 public class ResourceManager : MonoBehaviour
 {
     private static ResourceManager ResourceManagerInstance;

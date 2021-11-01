@@ -20,7 +20,7 @@ public class WeaponJellyHoming : MonoBehaviour
 
     private Transform MotherJellyfish; //наша мама (игрок)
 
-    private LevelsSystem ShooterLevelSystem; //система лэвлов
+    private PlayerLevelSystem ShooterLevelSystem; //система лэвлов
 
     private float RandomRevolvingSpeed;
 
@@ -29,7 +29,7 @@ public class WeaponJellyHoming : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(Transform jellyfishParent, LevelsSystem shooterLevelSystem)
+    public void Initialize(Transform jellyfishParent, PlayerLevelSystem shooterLevelSystem)
     {
         MotherJellyfish = jellyfishParent;
         ShooterLevelSystem = shooterLevelSystem;
@@ -82,7 +82,7 @@ public class WeaponJellyHoming : MonoBehaviour
 
         if (Timer < 0)
         {
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
@@ -123,11 +123,11 @@ public class WeaponJellyHoming : MonoBehaviour
             //урон акуле
 
             //скрипт акулы
-            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            EnemyHealthScript enemyHealthScript = other.transform.GetComponent<EnemyHealthScript>();
             //урон + опыт
             enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
 
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 }

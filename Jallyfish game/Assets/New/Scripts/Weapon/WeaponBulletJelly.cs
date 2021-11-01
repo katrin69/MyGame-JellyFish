@@ -13,7 +13,7 @@ public class WeaponBulletJelly : MonoBehaviour
     private float Timer;
     public float defaultTime = 8f;
 
-    private LevelsSystem ShooterLevelSystem; //лэвлы
+    private PlayerLevelSystem ShooterLevelSystem; //лэвлы
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class WeaponBulletJelly : MonoBehaviour
         Timer -= Time.deltaTime;
         if (Timer < 0)
         {
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
@@ -46,15 +46,15 @@ public class WeaponBulletJelly : MonoBehaviour
             //урон акуле
 
             //Скрипт здоровья акулы
-            EnemyHealth enemyHealthScript = other.transform.GetComponent<EnemyHealth>();
+            EnemyHealthScript enemyHealthScript = other.transform.GetComponent<EnemyHealthScript>();
             //урон + опыт
             enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
 
-            this.ReturnToPool();
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 
-    public void SetShooterLevelsSystem(LevelsSystem shooterLevelSystem) //передаёт лэвлы
+    public void SetShooterLevelsSystem(PlayerLevelSystem shooterLevelSystem) //передаёт лэвлы
     {
         ShooterLevelSystem = shooterLevelSystem;
     }
