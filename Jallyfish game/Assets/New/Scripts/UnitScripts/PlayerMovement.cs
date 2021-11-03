@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //будет отвечать за все передвижение
     public event Action<float> ChangeFast;
+
     //ходьба
     private float moveSpeed = 15f;
     private float realSpeed;
