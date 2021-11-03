@@ -77,7 +77,8 @@ public class EnemyInstantiationManager : MonoBehaviour
                 pos.y += 5f;
 
                 GameObject newShark = ResourceManager.GetObjectInstance(enemyType);
-                newShark.name = "Shark_" + i;
+                newShark.name = enemyType + "_" + i;
+                //newShark.name = "Shark_" + i;
                 newShark.transform.position = pos;
                 newShark.SetActive(true);
 

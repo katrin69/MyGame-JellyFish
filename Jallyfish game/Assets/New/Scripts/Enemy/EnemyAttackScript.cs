@@ -12,6 +12,11 @@ public class EnemyAttackScript : MonoBehaviour
     public float howClose;
     private Transform player;
 
+    Transform target; //цель Медуза
+    //поиск Медузы
+    private float SearchTimer = 0;
+    private float SearchStep = 1;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -20,21 +25,53 @@ public class EnemyAttackScript : MonoBehaviour
 
     private void Update()
     {
-        //dis = Vector3.Distance(player.position, transform.position);
-        Vector3 targetdirection = player.position - transform.position;
-        if (targetdirection.magnitude > 0.5f) // если расстояние меньше то 
+        if (target != null) //если цель не пуста то идём на цель
         {
-            transform.LookAt(player);
-            rb.velocity = targetdirection.normalized * moveSpeed; // поворачиваемся и движемся к медузе
+            Vector3 targetdirection = target.position - transform.position; //расстояние до цели
+            transform.LookAt(target);
+            rb.velocity = targetdirection.normalized * moveSpeed;
+        }
+        else
+        {
+            SearchTimer += Time.deltaTime;
+
+            if (SearchTimer >= SearchStep) //при этом ищем медузу каждую секунду
+            {
+                SearchTimer = 0;
+                FoundJellyfish(); //нашёл медузу
+            }
         }
 
+    }
 
-        if (dis <= howClose)
+    public void FoundJellyfish()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f); //массив колайдеров вокруг
+
+        Collider nearest = null; //рядом пока пусто с самого начала
+
+        foreach (Collider collider in colliders)
         {
-            transform.LookAt(player);
-            GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed);
+            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть Акула
+            {
+                if (nearest == null) //если не очень близко то пофиг
+                {
+                    nearest = collider;
+                }
+                else
+                {
+                    if ((collider.transform.position - transform.position).magnitude < (nearest.transform.position - transform.position).magnitude) //если близко то ударить
+                    {
+                        nearest = collider;
+                    }
+                }
+            }
         }
 
+        if (nearest != null) //цель станогвится ближе
+        {
+            target = nearest.transform;
+        }
     }
 
     //если сталкиваемся с медузой
