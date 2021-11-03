@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     //поворот
     private Quaternion LookRotation = Quaternion.identity;
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 10f;
 
     //ускорение
     private float fastSpeed = 25f;
