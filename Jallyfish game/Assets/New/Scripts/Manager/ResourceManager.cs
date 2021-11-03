@@ -14,6 +14,8 @@ public class ResourceManager : MonoBehaviour
 
     public GameObject JellyfishPrefab; //создаёт обьект Медузы
     public GameObject SharkPrefab;//создаёт обьект акулы
+    public GameObject LittleSharkPrefub;
+    public GameObject TerroristSharkPrefab;
     public GameObject BulletLight;//создаёт обьект пули
     public GameObject BulletJelly;
     public GameObject JellyHoming;
@@ -33,7 +35,7 @@ public class ResourceManager : MonoBehaviour
         ResourceManagerInstance = this;
     }
 
-    public GameObject GetObjectInstance(EObjectType objectType) //метод через который мы получаем обьект опр типа  
+    public GameObject GetObjectInstance(EObjectType objectType) //метод через который мы получаем обьект типа энам   
     {
         GameObject objectToReturn; //обьект который будет возвращен
 
@@ -78,6 +80,12 @@ public class ResourceManager : MonoBehaviour
                 break;
             case EObjectType.Shark:
                 newPool = new ObjectPool(SharkPrefab);
+                break;
+            case EObjectType.LittleShark:
+                newPool = new ObjectPool(LittleSharkPrefub);
+                break;
+            case EObjectType.TerroristShark:
+                newPool = new ObjectPool(TerroristSharkPrefab);
                 break;
             case EObjectType.BulletLight:
                 newPool = new ObjectPool(BulletLight);

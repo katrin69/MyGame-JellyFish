@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyInstantiationManager : MonoBehaviour
 {
-    public float enemyCount = 20f;
+    public float enemyCount = 10f;
+    public float enemyCountLittle = 8f;
+    public float enemyCountTerrorist = 5f;
+
 
     private LayerMask TerrainMask;
 
@@ -27,10 +30,13 @@ public class EnemyInstantiationManager : MonoBehaviour
         SpawningFreeTarget = spawningFreeTarget;
         SpawningZone = rect;
 
-        InstantiateEnemies();
+        InstantiateEnemies(EObjectType.Shark, enemyCount);
+        InstantiateEnemies(EObjectType.LittleShark, enemyCountLittle);
+        InstantiateEnemies(EObjectType.TerroristShark, enemyCountTerrorist);
+
     }
 
-    private void InstantiateEnemies()
+    private void InstantiateEnemies(EObjectType enemyType, float enemyCount)
     {
         for (int i = 0; i < enemyCount; i++)
         {
@@ -70,8 +76,8 @@ public class EnemyInstantiationManager : MonoBehaviour
                 pos = hitInfo.point;
                 pos.y += 5f;
 
-                GameObject newShark = ResourceManager.GetObjectInstance(EObjectType.Shark);
-                newShark.name = "Shakrk_" + i;
+                GameObject newShark = ResourceManager.GetObjectInstance(enemyType);
+                newShark.name = "Shark_" + i;
                 newShark.transform.position = pos;
                 newShark.SetActive(true);
 

@@ -43,7 +43,7 @@ public class EnemyAttackScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //отнимаем жизнь у медузы
-            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-1);
+            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-2);
         }
     }
 }

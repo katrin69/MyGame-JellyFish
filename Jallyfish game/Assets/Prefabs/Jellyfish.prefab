@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6308240867534586622}
   - component: {fileID: 6308240867534586609}
   - component: {fileID: 6308240867534586620}
-  - component: {fileID: 6308240867534586619}
   - component: {fileID: 6308240867534586618}
   m_Layer: 0
   m_Name: Jellyfish
@@ -111,9 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c53d9c1eb6a944cab74a6d0c104ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5216332769896663073, guid: a4638eb06b2991145ac78c2065910768, type: 3}
+  bulletPrefab: {fileID: 0}
   firePoint: {fileID: 6308240869213989176}
   bulletForce: 20
+  _bulletFart: {fileID: 6911463674011278550}
+  damageEnemyFart: 4
 --- !u!114 &6308240867534586620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,19 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reastartDelay: 2
---- !u!114 &6308240867534586619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6308240867534586610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e265036fa82c0f84995d1bf8445ab888, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceImpact: 1
 --- !u!114 &6308240867534586618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,5 +437,10 @@ PrefabInstance:
 --- !u!4 &6727016231571146606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 3}
+  m_PrefabInstance: {fileID: 6725312825844523572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6911463674011278550 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 3}
   m_PrefabInstance: {fileID: 6725312825844523572}
   m_PrefabAsset: {fileID: 0}
