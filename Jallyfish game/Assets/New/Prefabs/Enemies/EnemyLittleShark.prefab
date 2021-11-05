@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 3841073790113108135}
   - component: {fileID: 7952365293612963936}
   - component: {fileID: 4906822926076371886}
+  - component: {fileID: 8071544344221506797}
   m_Layer: 0
   m_Name: EnemyLittleShark
   m_TagString: Shark
@@ -1077,6 +1078,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   howClose: 0
+--- !u!114 &8071544344221506797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302641808997960721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bc3b051dcc43149a8b1a683729b67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  diapason: 2
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0

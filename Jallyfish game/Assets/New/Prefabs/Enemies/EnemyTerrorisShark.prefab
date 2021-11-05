@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 3841073790113108135}
   - component: {fileID: 3901218198464799028}
   - component: {fileID: 7952365293612963936}
+  - component: {fileID: 6689182456959835077}
   m_Layer: 0
   m_Name: EnemyTerrorisShark
   m_TagString: Shark
@@ -1078,6 +1079,20 @@ MonoBehaviour:
   enemyHealth: 0
   enemyHealthMax: 8
   ExperienceToGain: 20
+--- !u!114 &6689182456959835077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302641808997960721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bc3b051dcc43149a8b1a683729b67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  diapason: 7
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0

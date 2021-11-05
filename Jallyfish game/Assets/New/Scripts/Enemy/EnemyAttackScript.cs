@@ -46,7 +46,7 @@ public class EnemyAttackScript : MonoBehaviour
 
     public void FoundJellyfish()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f); //массив колайдеров вокруг
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 25f); //массив колайдеров вокруг
 
         Collider nearest = null; //рядом пока пусто с самого начала
 
