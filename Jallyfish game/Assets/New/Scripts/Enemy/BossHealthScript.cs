@@ -9,7 +9,7 @@ public class BossHealthScript : MonoBehaviour
 
     //ХР врага
     public float enemyHealth;
-    public float enemyHealthMax = 8f;
+    public float enemyHealthMax = 20f;
     public float ExperienceToGain = 20f; //опыт
 
     void Start()

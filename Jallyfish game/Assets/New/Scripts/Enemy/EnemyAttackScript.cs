@@ -13,6 +13,8 @@ public class EnemyAttackScript : MonoBehaviour
     private Transform player;
 
     Transform target; //цель Медуза
+    private float targetRange = 25f; //диапозон где ищем медузу
+
     //поиск Медузы
     private float SearchTimer = 0;
     private float SearchStep = 1;
@@ -46,13 +48,13 @@ public class EnemyAttackScript : MonoBehaviour
 
     public void FoundJellyfish()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 25f); //массив колайдеров вокруг
+        Collider[] colliders = Physics.OverlapSphere(transform.position, targetRange); //массив колайдеров вокруг
 
         Collider nearest = null; //рядом пока пусто с самого начала
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть Акула
+            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть медуза
             {
                 if (nearest == null) //если не очень близко то пофиг
                 {
