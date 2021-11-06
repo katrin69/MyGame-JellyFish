@@ -156,7 +156,7 @@ public class TestManager : MonoBehaviour
     }
 
     //ускорение
-    private void InputManager_fastSpeedStart()
+    private void InputManager_fastSpeedStart()  //обработчик событий
     {
         UnitManager.fastSpeedStart();
     }

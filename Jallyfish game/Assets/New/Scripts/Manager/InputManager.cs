@@ -71,7 +71,7 @@ public class InputManager : MonoBehaviour
 
 
         //ускорение
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
             if (fastSpeedStart != null)
             {

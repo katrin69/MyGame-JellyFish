@@ -8,7 +8,7 @@ public class CameraManager : MonoBehaviour
 
     private Camera Camera; //вообще впринципе камера
     private Transform Target; //Наш игрок
-    private Vector3 offset = new Vector3(0,20,-15); //место где камера стоит
+    private Vector3 offset = new Vector3(0,20,-20); //место где камера стоит
     private float smoothSpeed = 2f; //движение камеры за игроком
 
     private LayerMask GroundLayerMask; //Наш песок
