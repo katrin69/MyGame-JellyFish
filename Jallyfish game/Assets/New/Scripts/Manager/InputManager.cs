@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
 
     //движение мыши
     public event Action<Vector3> positionMouse;
-
+    
     //выбор оружия
     public event Action choosWeaponOne;
     public event Action choosWeaponTwo;

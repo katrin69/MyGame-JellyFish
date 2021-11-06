@@ -37,7 +37,7 @@ public class TestManager : MonoBehaviour
         InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
         //выбор оружия
-        InputManager.choosWeaponOne += InputManager_choosWeaponOne;
+        InputManager.choosWeaponOne += InputManager_choosWeaponOne; //подписываемся на событие
         InputManager.choosWeaponTwo += InputManager_choosWeaponTwo;
         InputManager.choosWeaponThree += InputManager_choosWeaponThree;
         InputManager.choosWeaponFour += InputManager_choosWeaponFour;
@@ -118,7 +118,7 @@ public class TestManager : MonoBehaviour
     }
 
     //выбор оружия
-    private void InputManager_choosWeaponOne()
+    private void InputManager_choosWeaponOne() //обработчик событий
     {
         UnitManager.ChoosWeaponOne();
     }

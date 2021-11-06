@@ -6,32 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadingManager : MonoBehaviour
 {
-    public event Action OnSceneWasLoaded;
+    public event Action OnSceneWasLoaded; //событие 
 
-    private Dictionary<EScene, string> Scenes = new Dictionary<EScene, string>();
+    private Dictionary<EScene, string> Scenes = new Dictionary<EScene, string>(); //словарь со сценами энам 
 
     private void Awake()
     {
-        Scenes.Add(EScene.MainMenu, "NewScene");
-        Scenes.Add(EScene.Pause, "NewScene");
-        Scenes.Add(EScene.Level1, "NewScene");
+        Scenes.Add(EScene.MainMenu, "MainMenu"); //добавляем сцену из энама в словарь
+        Scenes.Add(EScene.Pause, "Pause");
+        Scenes.Add(EScene.Level1, "Level1");
+        Scenes.Add(EScene.GameOver, "GameOver");
     }
 
     public void LoadScene(EScene scene) //метод куда я передаю сцены
     {
-        string sceneName = Scenes[scene];
+        string sceneName = Scenes[scene]; //имя сцены равно сцена выбранная
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-        asyncOperation.completed += AsyncOperation_completed;
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName); //операция в отдельном потоке ? 
+        asyncOperation.completed += AsyncOperation_completed; //подписываемся на событие 
     }
 
-    private void AsyncOperation_completed(AsyncOperation asyncOperation)
+    private void AsyncOperation_completed(AsyncOperation asyncOperation) //
     {
-        asyncOperation.completed -= AsyncOperation_completed;
+        asyncOperation.completed -= AsyncOperation_completed; //отписывается
 
         if (OnSceneWasLoaded != null)
         {
-            OnSceneWasLoaded();
+            OnSceneWasLoaded(); //загружает сцену
         }
     }
 }
