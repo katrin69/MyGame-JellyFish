@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     //будет отвечать за все передвижение
     public event Action<float> ChangeFast;
 
+    public Transform JellyfishModel;
+
     //ходьба
     private float moveSpeed = 15f;
     private float realSpeed;
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     //поворот
     private Quaternion LookRotation = Quaternion.identity;
-    private float rotationSpeed = 10f;
+    private float rotationSpeed = 5f;
 
     //ускорение
     private float fastSpeed = 25f;
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {   //направление со скоростью плавное . Наша медуза и точка умноженная на скорость и  ускорение
         rb.velocity = Vector3.Lerp(rb.velocity, HorizontalMovement.normalized * realSpeed, HorizontalMovementAcceleration);
         //поворот плавный
-        transform.rotation = Quaternion.Lerp(transform.rotation, LookRotation, Time.deltaTime * rotationSpeed);
+        JellyfishModel.rotation = Quaternion.Lerp(JellyfishModel.rotation, LookRotation, Time.deltaTime * rotationSpeed);
 
         if (FastSpeed && HorizontalMovement != Vector3.zero)
         {
@@ -70,8 +72,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     currentStamina = maxValueStamina;
                 }
-                ChangeFast?.Invoke(currentStamina / maxValueStamina);
 
+                ChangeFast?.Invoke(currentStamina / maxValueStamina);
             }
         }
     }
@@ -110,5 +112,10 @@ public class PlayerMovement : MonoBehaviour
     {
         realSpeed = moveSpeed;
         FastSpeed = false;
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        HorizontalMovement = Vector3.zero;
     }
 }

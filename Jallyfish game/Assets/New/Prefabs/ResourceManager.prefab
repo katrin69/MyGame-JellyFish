@@ -51,3 +51,5 @@ MonoBehaviour:
   BulletJelly: {fileID: 1853665350429367744, guid: 4a79c89f16e72c444a84b5fabcdd5e35, type: 3}
   JellyHoming: {fileID: 2454933172228073496, guid: cc734a71baef5824888e85d18e3d4425, type: 3}
   BulletFart: {fileID: 5244167958633841940, guid: 600fc361cfdc1274ea1c7110d5af9fc0, type: 3}
+  MainMenuUI: {fileID: 7140403949114196973, guid: fac4dac888e898746b4c5a841e1e7e1c, type: 3}
+  GameUI: {fileID: 5098831425880870200, guid: 300bfe1263026ba4d85e9e3b1dd773fb, type: 3}

@@ -4,34 +4,22 @@ using UnityEngine;
 
 public class EnemyAttackScript : MonoBehaviour
 {
-    // public Transform player;
-    public float moveSpeed = 10f; // скорость врага
-    private Rigidbody rb;
+    public EnemyMovement EnemyMovementScript;
 
-    private float dis;
-    public float howClose;
-    private Transform player;
+    public float Damage = 2f;
 
-    Transform target; //цель Медуза
+    private Transform target; //цель Медуза
     private float targetRange = 25f; //диапозон где ищем медузу
 
     //поиск Медузы
     private float SearchTimer = 0;
     private float SearchStep = 1;
 
-    void Start()
-    {
-        rb = this.GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
     private void Update()
     {
         if (target != null) //если цель не пуста то идём на цель
         {
-            Vector3 targetdirection = target.position - transform.position; //расстояние до цели
-            transform.LookAt(target);
-            rb.velocity = targetdirection.normalized * moveSpeed;
+            EnemyMovementScript.SetTargetPosition(target.position);
         }
         else
         {
@@ -77,12 +65,12 @@ public class EnemyAttackScript : MonoBehaviour
     }
 
     //если сталкиваемся с медузой
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //отнимаем жизнь у медузы
-            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-2);
+            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-Damage);
         }
     }
 }

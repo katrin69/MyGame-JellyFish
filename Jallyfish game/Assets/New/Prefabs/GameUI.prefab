@@ -2006,19 +2006,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5098831425396991209}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: MainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5098831425461874590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,19 +2443,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5098831425621263778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5098831425660825743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,7 +2751,7 @@ GameObject:
   - component: {fileID: 5098831425880870201}
   - component: {fileID: 1359447241583715620}
   m_Layer: 5
-  m_Name: CanvasWindow
+  m_Name: GameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2891,6 +2867,9 @@ MonoBehaviour:
   PlayerHealthBar: {fileID: 5098831426246034244}
   PlayerArmorBar: {fileID: 5098831425853284652}
   PlayerStaminaBar: {fileID: 6752484468876064168}
+  Continue: {fileID: 5098831425621263777}
+  BackMainMenu: {fileID: 5098831425396991208}
+  PauseMenuUI: {fileID: 5098831425840995064}
 --- !u!1 &5098831426246034241
 GameObject:
   m_ObjectHideFlags: 0

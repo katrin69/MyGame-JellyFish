@@ -21,6 +21,9 @@ public class ResourceManager : MonoBehaviour
     public GameObject JellyHoming;
     public GameObject BulletFart;
 
+    public GameObject MainMenuUI;
+    public GameObject GameUI;
+
     private Dictionary<EObjectType, ObjectPool> Pools = new Dictionary<EObjectType, ObjectPool>(); //словарь пулов в зависимости от типа . Зная тип мы можем полкучить пул для обектов
 
     private Dictionary<GameObject, EObjectType> InstantiatedObjects = new Dictionary<GameObject, EObjectType>(); //словарь всех обьектов который были сделаны через \рм с указанием типа
@@ -98,6 +101,12 @@ public class ResourceManager : MonoBehaviour
                 break;
             case EObjectType.BulletFart:
                 newPool = new ObjectPool(BulletFart);
+                break;
+            case EObjectType.GameUI:
+                newPool = new ObjectPool(GameUI);
+                break;
+            case EObjectType.MainMenuUI:
+                newPool = new ObjectPool(MainMenuUI);
                 break;
             default: throw new ArgumentOutOfRangeException("UNKNOWN OBJECT TYPE FOR RESOURCE MANAGER");
         }

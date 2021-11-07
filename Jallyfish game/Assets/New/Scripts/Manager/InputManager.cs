@@ -36,6 +36,9 @@ public class InputManager : MonoBehaviour
     public event Action choosWeaponThree;
     public event Action choosWeaponFour;
 
+    //пауза
+    public event Action chooseEcsButton;
+
     private void Update()
     {
         //выбор оружия
@@ -68,6 +71,15 @@ public class InputManager : MonoBehaviour
             }
         }
 
+
+        //пауза
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (chooseEcsButton != null)
+            {
+                chooseEcsButton();
+            }
+        }
 
 
         //ускорение

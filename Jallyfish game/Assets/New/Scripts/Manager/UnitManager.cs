@@ -17,6 +17,7 @@ public class UnitManager : MonoBehaviour
     private PlayerMovement PlayerMovementScript; //скрипт со скоростью 
     private GroundChecker GroundChecker;//скрипт с лучём
     private WeaponManager WeaponManager; //скрипит с видами оружия
+    private PlayerLevelSystem PlayerLevelSystem;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class UnitManager : MonoBehaviour
         GroundChecker = GetComponent<GroundChecker>();
         WeaponManager = GetComponent<WeaponManager>();
         PlayerHealthScript = GetComponent<PlayerHealthScript>();
+        PlayerLevelSystem = GetComponent<PlayerLevelSystem>();
 
         WeaponManager.WeaponColldownChanged += WeaponManager_WeaponColldownChanged;
         PlayerHealthScript.ChangeHealth += PlayerHealthScript_ChangeHealth;
@@ -59,8 +61,7 @@ public class UnitManager : MonoBehaviour
 
     public void Init(ResourceManager resourceManager)
     {
-        PlayerLevelSystem levelsSystem = GetComponent<PlayerLevelSystem>();
-        WeaponManager.Init(resourceManager, levelsSystem);
+        WeaponManager.Init(resourceManager, PlayerLevelSystem);
     }
 
     //методы для выбора оружия
@@ -98,6 +99,8 @@ public class UnitManager : MonoBehaviour
     //метод принимает точку и передаёт в скрипт
     public void ChangeLookingPoint(Vector3 point) 
     {
+        WeaponManager.SetShootingPoint(point);
+
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }
 

@@ -6,14 +6,15 @@ public class TestManager : MonoBehaviour
 {
     //обьект который отвечает за то чтобы на текущей сцене было все ок и проверяет как все работает
 
+    public bool SpawnEnemies  = false;
+
+    [Space(10)]
     public Root Root; //берём Root
     public Camera Camera;
 
     public Transform SpawnObject; //место появления
 
-    public Transform LeftDown;
-    public Transform LeftUp;
-    public Transform RightDown;
+    public List<EnemySpawner> Spawners;
 
     private SceneLoadingManager SceneLoadingManager; //скрипт с загрузкой сцен
     private InputManager InputManager; //скрипт с управлением
@@ -23,7 +24,7 @@ public class TestManager : MonoBehaviour
     private UnitManager UnitManager; //скрипт через который проходит управление персонажем
 
     private EnemyInstantiationManager EnemyInstantiationManager;
-    private CanvasManager CanvasManager; //наш канвас
+    private GameUIManager GameUIManager; //наш канвас
 
     //управление направления
     private Vector3 WestDirection = Vector3.left;
@@ -31,6 +32,15 @@ public class TestManager : MonoBehaviour
 
     private Vector3 CurrentMousePosition;
 
+
+    private void Start()
+    {
+        if (SpawnEnemies)
+        {
+            EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
+            EnemyInstantiationManager.Init(ResourceManager, Spawners);
+        }
+    }
     private void Awake()
     {
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
@@ -83,39 +93,57 @@ public class TestManager : MonoBehaviour
         CameraManager = Root.GetCameraManager();
         CameraManager.Initialize(Camera, jellyFish.transform);
 
-        EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
-
-        Vector4 spawningZone = new Vector4(LeftDown.position.z, LeftUp.position.z, LeftDown.position.x, RightDown.position.x);
-
-        EnemyInstantiationManager.Init(ResourceManager, jellyFish.transform, spawningZone);
+        //if (SpawnEnemies)
+        //{
+        //    EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
+        //    EnemyInstantiationManager.Init(ResourceManager, Spawners);
+        //}
 
         //наш канвас
-        CanvasManager = Root.GetCanvasManager();
-        CanvasManager.choosWeaponOne += InputManager_choosWeaponOne;
-        CanvasManager.choosWeaponTwo += InputManager_choosWeaponTwo;
-        CanvasManager.choosWeaponThree += InputManager_choosWeaponThree;
-        CanvasManager.choosWeaponFour += InputManager_choosWeaponFour;
+        GameObject canvasObject = ResourceManager.GetObjectInstance(EObjectType.GameUI);
+        GameUIManager = canvasObject.GetComponent<GameUIManager>();
+        GameUIManager.choosWeaponOne += InputManager_choosWeaponOne;
+        GameUIManager.choosWeaponTwo += InputManager_choosWeaponTwo;
+        GameUIManager.choosWeaponThree += InputManager_choosWeaponThree;
+        GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
+        GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
+        canvasObject.SetActive(true);
+
+        //пауза
+        InputManager.chooseEcsButton += InputManager_bottonEsc;        
+    }
+
+    private void GameUIManager_OnBackMainMenu()
+    {
+        SceneLoadingManager.LoadScene(EScene.MainMenu);
+    }
+
+    //пауза
+    private void InputManager_bottonEsc()
+    {
+        GameUIManager.PauseCheck();
     }
 
     private void UnitManager_ChangeFast(float curStam)
     {
-        CanvasManager.ChangeStamina(curStam);
+        GameUIManager.ChangeStamina(curStam);
     }
 
     private void UnitManager_ChangeArmor(float curArmor)
     {
-        CanvasManager.ChangeArmor(curArmor);
+        GameUIManager.ChangeArmor(curArmor);
     }
 
     private void UnitManager_ChangeHealth(float curHp)
     {
-        CanvasManager.ChangeHealthe(curHp);
+        GameUIManager.ChangeHealthe(curHp);
     }
 
     private void UnitManager_WeaponColldownChanged(EWeapon weapon, float cooldownPercent)
     {
-        CanvasManager.SetWeaponFiller(weapon, cooldownPercent);
+        GameUIManager.SetWeaponFiller(weapon, cooldownPercent);
     }
+
 
     //выбор оружия
     private void InputManager_choosWeaponOne() //обработчик событий
@@ -138,6 +166,7 @@ public class TestManager : MonoBehaviour
         UnitManager.ChoosWeaponFour();
     } 
 
+
     //позиция мыши
     private void InputManager_positionMouse(Vector3 mousePosition)
     {
@@ -147,7 +176,7 @@ public class TestManager : MonoBehaviour
     //стрельба
     private void InputManager_shoot()
     {
-        if (CameraManager.GetGroundPoint(CurrentMousePosition, out Vector3 groundPoint))
+        if (CameraManager.GetClickPoint(CurrentMousePosition, out Vector3 groundPoint))
         {
             UnitManager.ChangeLookingPoint(groundPoint);
         }
@@ -165,6 +194,7 @@ public class TestManager : MonoBehaviour
     {
         UnitManager.fastSpeesEnd();
     }
+
 
     //ходьба
     private void InputManager_dirWestStart()

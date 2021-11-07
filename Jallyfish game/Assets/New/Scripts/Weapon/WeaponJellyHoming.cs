@@ -37,13 +37,13 @@ public class WeaponJellyHoming : MonoBehaviour
 
     private void OnEnable()
     {
-        RandomRevolvingSpeed = UnityEngine.Random.Range(-0.5f, 0.5f);
+        RandomRevolvingSpeed = UnityEngine.Random.Range(0.3f, 0.6f) * (UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1);
         Timer = defaultTime;
     }
 
     private void Update()
     {
-        if (target != null) //если цель не пуста то идём на цель
+        if (target != null && target.gameObject.activeSelf) //если цель не пуста то идём на цель
         {
             Vector3 targetdirection = target.position - transform.position;
             transform.LookAt(target);
@@ -69,7 +69,7 @@ public class WeaponJellyHoming : MonoBehaviour
             else
             {
                 transform.LookAt(MotherJellyfish); //иначе смотрит на игрока 
-                rb.velocity = targetdirection.normalized * bulletSpeed;
+                rb.velocity = targetdirection.normalized * bulletSpeed * Mathf.Abs(RandomRevolvingSpeed);
             }
         }
 

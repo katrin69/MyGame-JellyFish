@@ -54,10 +54,10 @@ public partial class WeaponManager : MonoBehaviour
 
     private Dictionary<EWeapon, float> WeaponsDefaultCooldown = new Dictionary<EWeapon, float>()
     {
-        { EWeapon.BulletLight, 0.5f },
-        { EWeapon.BulletJelly, 0.8f },
-        { EWeapon.JellyHoming, 1.5f },
-        { EWeapon.Fart, 5f }
+        { EWeapon.BulletLight, 0f },
+        { EWeapon.BulletJelly, 0f },
+        { EWeapon.JellyHoming, 0f },
+        { EWeapon.Fart, 0f }
     };
 
     private void Awake()
@@ -111,6 +111,15 @@ public partial class WeaponManager : MonoBehaviour
         currentWeapon = EWeapon.Fart;
     }
 
+    public void SetShootingPoint(Vector3 newPoint)
+    {
+        Vector3 targetDirection = newPoint - transform.position;
+        targetDirection = targetDirection.normalized;
+        firePoint.position = transform.position + targetDirection;
+
+        firePoint.LookAt(newPoint);
+    }
+
     public void Shoot()
     {
         if (WeaponsCurrentCooldown.ContainsKey(currentWeapon) == false)
@@ -153,7 +162,7 @@ public partial class WeaponManager : MonoBehaviour
             }
 
             bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = transform.rotation;
+            bullet.transform.rotation = firePoint.rotation;
             bullet.SetActive(true);
         }
     }
@@ -172,7 +181,7 @@ public partial class WeaponManager : MonoBehaviour
         }
 
         bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = transform.rotation;
+        bullet.transform.rotation = firePoint.rotation;
         bullet.SetActive(true);
     }
 
@@ -189,7 +198,7 @@ public partial class WeaponManager : MonoBehaviour
             }
 
             bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = transform.rotation;
+            bullet.transform.rotation = firePoint.rotation;
             bullet.SetActive(true);
         }
     }

@@ -7,5 +7,8 @@ public enum EObjectType
     BulletLight,
     BulletJelly,
     JellyHoming,
-    BulletFart
+    BulletFart,
+
+    MainMenuUI,
+    GameUI,
 }
