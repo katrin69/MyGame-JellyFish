@@ -26,9 +26,9 @@ public class Shooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) //
         {
 
-            ShootBulletHoming();
+            //ShootBulletHoming();
             // ShootBulletLight();
-            // ShootBulletJelly();
+             ShootBulletJelly();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))

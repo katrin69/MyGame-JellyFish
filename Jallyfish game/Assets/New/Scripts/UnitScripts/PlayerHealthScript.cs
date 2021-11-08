@@ -53,8 +53,7 @@ public class PlayerHealthScript : MonoBehaviour
             curArmor = 0;
         }
 
-        //PlayerArmorBar.instance.SetValue(curArmor / (float)maxArmor); //отображает в бар
-        ChangeArmor?.Invoke(curArmor / maxArmor);
+        ChangeArmor?.Invoke(curArmor / maxArmor);//отображает в бар
 
         if (damage_HP < 0)
         {
@@ -67,8 +66,7 @@ public class PlayerHealthScript : MonoBehaviour
     {
         curHp += deltaHp;
         print("Осталось жизней " + curHp);
-        //PlayerHealthBar.instance.SetValue(curHp / (float)maxHp);
-        ChangeHealth?.Invoke(curHp / maxHp);
+        ChangeHealth?.Invoke(curHp / maxHp);//отображает в бар
         if (curHp <= 0)
         {
             //Invoke(nameof(Restart), reastartDelay);

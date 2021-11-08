@@ -88,6 +88,7 @@ public class TestManager : MonoBehaviour
         UnitManager.ChangeHealth += UnitManager_ChangeHealth;
         UnitManager.ChangeArmor += UnitManager_ChangeArmor;
         UnitManager.ChangeFast += UnitManager_ChangeFast;
+        UnitManager.ChangeLevel += UnitManager_ChangeLevel;
 
         //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
         CameraManager = Root.GetCameraManager();
@@ -139,6 +140,10 @@ public class TestManager : MonoBehaviour
         GameUIManager.ChangeHealthe(curHp);
     }
 
+    private void UnitManager_ChangeLevel(float level) //Лэвл
+    {
+        GameUIManager.ChangeLevel(level);
+    }
     private void UnitManager_WeaponColldownChanged(EWeapon weapon, float cooldownPercent)
     {
         GameUIManager.SetWeaponFiller(weapon, cooldownPercent);

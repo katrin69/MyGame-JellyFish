@@ -12,6 +12,8 @@ public class UnitManager : MonoBehaviour
     public event Action<float> ChangeHealth; 
     public event Action<float> ChangeArmor;
     public event Action<float> ChangeFast;
+    public event Action<float> ChangeLevel;
+
 
     private PlayerHealthScript PlayerHealthScript; //скрипт со здоровьем
     private PlayerMovement PlayerMovementScript; //скрипт со скоростью 
@@ -31,6 +33,18 @@ public class UnitManager : MonoBehaviour
         PlayerHealthScript.ChangeHealth += PlayerHealthScript_ChangeHealth;
         PlayerHealthScript.ChangeArmor += PlayerHealthScript_ChangeArmor;
         PlayerMovementScript.ChangeFast += PlayerMovementScript_ChangeFast;
+        PlayerLevelSystem.ChangeLevel += PlayerLevelSystem_ChangeLevel;
+    }
+
+    private void Update()
+    {
+        float difference = GroundChecker.CheckGround();
+        PlayerMovementScript.SetVerticalPosition(difference);
+    }
+
+    private void PlayerLevelSystem_ChangeLevel(float level)
+    {
+        ChangeLevel?.Invoke(level);
     }
 
     private void PlayerMovementScript_ChangeFast(float curStam)
@@ -48,21 +62,18 @@ public class UnitManager : MonoBehaviour
         ChangeHealth?.Invoke(curHP);
     }
 
+
     private void WeaponManager_WeaponColldownChanged(EWeapon weapon, float cooldownPercent)
     {
         WeaponColldownChanged?.Invoke(weapon, cooldownPercent);
     }
 
-    private void Update()
-    {
-        float difference = GroundChecker.CheckGround();
-        PlayerMovementScript.SetVerticalPosition(difference);
-    }
-
+    
     public void Init(ResourceManager resourceManager)
     {
         WeaponManager.Init(resourceManager, PlayerLevelSystem);
     }
+
 
     //методы для выбора оружия
     public void ChoosWeaponOne()
@@ -90,6 +101,7 @@ public class UnitManager : MonoBehaviour
         WeaponManager.Shoot();
     }
 
+
     //метод принимает направление и передаёт в скрипт 
     public void ChangeMovementDirection(Vector3 direction) 
     {
@@ -103,6 +115,7 @@ public class UnitManager : MonoBehaviour
 
         PlayerMovementScript.ChangeLookingPoint(point - transform.position);
     }
+
 
     //метод ускорение
     public void fastSpeedStart() //вызываем метод

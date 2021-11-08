@@ -51,7 +51,7 @@ public class EnemyInstantiationManager : MonoBehaviour
             EnemyMovement enemyMovement = script.gameObject.GetComponent<EnemyMovement>();
             Vector3 patrollinPoint = CurrentEnemies[Random.Range(0, CurrentEnemies.Count)].gameObject.transform.position;
             enemyMovement.SetPatrollingPoint(patrollinPoint);
-            Points.Add(script.gameObject.transform.position, patrollinPoint);
+           // Points.Add(script.gameObject.transform.position, patrollinPoint);
         }
     }
 
@@ -87,20 +87,20 @@ public class EnemyInstantiationManager : MonoBehaviour
         }
     }
 
-    private Dictionary<Vector3, Vector3> Points = new Dictionary<Vector3, Vector3>();
+   // private Dictionary<Vector3, Vector3> Points = new Dictionary<Vector3, Vector3>();
 
-    private void OnDrawGizmos()
-    {
-        foreach (var p in Points)
-        {
-            Gizmos.color = Color.yellow;
+    //private void OnDrawGizmos()
+    //{
+    //    foreach (var p in Points)
+    //    {
+    //        Gizmos.color = Color.yellow;
 
-            Gizmos.DrawSphere(p.Key, 0.5f);
-            Gizmos.DrawSphere(p.Value, 0.5f);
+    //        Gizmos.DrawSphere(p.Key, 0.5f);
+    //        Gizmos.DrawSphere(p.Value, 0.5f);
 
-            Gizmos.color = Color.green;
+    //        Gizmos.color = Color.green;
 
-            Gizmos.DrawLine(p.Key, p.Value);
-        }
-    }
+    //        Gizmos.DrawLine(p.Key, p.Value);
+    //    }
+    //}
 }

@@ -12,30 +12,34 @@ public class GameUIManager : MonoBehaviour
     public event Action choosWeaponThree;
     public event Action choosWeaponFour;
 
+    //в главное меню из паузы
     public event Action OnBackMainMenu;
 
+    //кнопки оруджия на экране
     public Button WeaponOne;
     public Button WeaponTwo;
     public Button WeaponThree;
     public Button WeaponFour;
-
+    //кнопки оружия картинки
     [Space(10)]
     public Image FillerOne;
     public Image FillerTwo;
     public Image FillerThree;
     public Image FillerFour;
-
+    //Здоровье,щит,ускорение
     [Space(10)]
     public PlayerHealthBar PlayerHealthBar;
     public PlayerArmorBar PlayerArmorBar;
     public PlayerStaminaBar PlayerStaminaBar;
+    public LevelBar levelBar;
+    //public Text levelText; //показывает лэвл
 
     [Space(10)] //меню
     public Button Continue;
     public Button BackMainMenu;
 
+    //пауза
     public GameObject PauseMenuUI;
-
     private bool IsPaused = false;
 
     private void Awake()
@@ -50,19 +54,19 @@ public class GameUIManager : MonoBehaviour
     }
 
     //пауза
-    private void Unpause()
+    private void Unpause()// метод чтобы отключить паузу
     {
         Time.timeScale = 1f;
         IsPaused = false;
     }
 
-    private void Pause()
+    private void Pause() //вклюает паузу и время останавливается
     {
         Time.timeScale = 0f;
         IsPaused = true;
     }
 
-    private void BackMainMenuButton()
+    private void BackMainMenuButton() //если нажата кнопка назад в меню то пауза выключается  и идём в меню 
     {
         if (OnBackMainMenu != null)
         {
@@ -71,20 +75,21 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void PauseCheck()
+    public void PauseCheck() //включает паузу
     {
-        if (IsPaused)
+        if (IsPaused) //если выключает паузу то IsPaused = false
         {
-            Unpause();
+            Unpause(); //и пауза выклюяается
         }
         else
         {
-            Pause();
+            Pause(); //включчается пауза
         }
 
-        PauseMenuUI.SetActive(IsPaused);
+        PauseMenuUI.SetActive(IsPaused); //или включена или нет
     }
 
+    //кнопки для оружия
     private void ChooseOne()
     {
         choosWeaponOne?.Invoke();
@@ -124,22 +129,24 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void ChangeHealthe(float curHp)
+    public void ChangeHealthe(float curHp) //отображает здоровье
     {
         PlayerHealthBar.SetValue(curHp);
     }
 
-    public void ChangeArmor(float curArmor)
+    public void ChangeArmor(float curArmor) //отображает щит
     {
         PlayerArmorBar.SetValue(curArmor);
     }
 
-    public void ChangeStamina(float curStam)
+    public void ChangeStamina(float curStam) //отображает ускорение
     {
         PlayerStaminaBar.SetValue(curStam);
     }
 
-    //пауза
+    public void ChangeLevel(float level)
+    {
+        levelBar.SetValue(level);
+    }
 
-   
 }

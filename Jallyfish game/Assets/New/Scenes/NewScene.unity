@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &339500804
 Transform:
   m_ObjectHideFlags: 0
@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 3
+  enemyCountLittle: 3
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &556100103
 BoxCollider:
@@ -329,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698314931
 Transform:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998075209
 Transform:
   m_ObjectHideFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1508817231
 Transform:
   m_ObjectHideFlags: 0

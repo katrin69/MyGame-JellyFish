@@ -1704,7 +1704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 14.6}
+  m_AnchoredPosition: {x: 0, y: 14.599976}
   m_SizeDelta: {x: 200, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131526850
@@ -4136,6 +4136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92bc3b051dcc43149a8b1a683729b67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1001 &6308240868016365207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4145,7 +4146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: _bulletFart
@@ -4154,7 +4155,7 @@ PrefabInstance:
     - target: {fileID: 6308240867534586609, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 2454933172228073496, guid: fec9fbe8c47625748b0cb00c71d82713, type: 3}
+      objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
     - target: {fileID: 6308240867534586610, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_Name
       value: Jellyfish
@@ -4181,7 +4182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308240867534586621, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.16
+      value: 22.37
       objectReference: {fileID: 0}
     - target: {fileID: 6308240867534586621, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4226,7 +4227,7 @@ PrefabInstance:
     - target: {fileID: 6308240869213989159, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 2454933172228073496, guid: fec9fbe8c47625748b0cb00c71d82713, type: 3}
+      objectReference: {fileID: 7099772050094924033, guid: e16a055688e5b7b4fb03209a300a52fa, type: 3}
     - target: {fileID: 6725723500256356508, guid: c2abe51eedf43ab48bc15bc1f777c128, type: 3}
       propertyPath: m_IsActive
       value: 1

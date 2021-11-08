@@ -1,13 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLevelSystem : MonoBehaviour
 {
+    public event Action<float> ChangeLevel;
+
+
     public int level; //уровень
     public float currentXp; //текущий опыт
     public float requiredXp; //необходимый опыт
-    
+
+
     [Header("Multipliers")]
     [Range(1f, 300f)]
     public float additionMultiplier = 300f;
@@ -19,13 +24,12 @@ public class PlayerLevelSystem : MonoBehaviour
     private void Start()
     {
         requiredXp = CalculateRequireXp();
-        //Load();
+
     }
 
     public void GainExperienceFlatRate(float xpGained)//набирание опыта  принимает число которое прибавляется к текущему опыту
     {
         currentXp += xpGained;
-        //Save();
 
         if (currentXp >= requiredXp)
         {
@@ -39,6 +43,9 @@ public class PlayerLevelSystem : MonoBehaviour
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
         GetComponent<PlayerHealthScript>().IncreaseHealth(level);
         requiredXp = CalculateRequireXp();
+
+        ChangeLevel?.Invoke(level);//отображает в бар
+
     }
 
     //метод высчитывает опыт
@@ -66,20 +73,4 @@ public class PlayerLevelSystem : MonoBehaviour
         }
     }
 
-
-    ////сохранение не очень
-    //public void Save()
-    //{
-    //    PlayerPrefs.SetFloat("currentXp", currentXp);
-
-    //    PlayerPrefs.Save();
-    //}
-
-    //public void Load()
-    //{
-    //    if (PlayerPrefs.HasKey("currentXp"))
-    //    {
-    //        currentXp = PlayerPrefs.GetFloat("currentXp");
-    //    }
-    //}
 }
