@@ -18,8 +18,10 @@ public class MenuSceneManager : MonoBehaviour
 
         GameObject canvasObject = ResourceManager.GetObjectInstance(EObjectType.MainMenuUI);
         MainMenuUIManager = canvasObject.GetComponent<MainMenuUIManager>();
+
         MainMenuUIManager.OnStartButtonClicked += MainMenuUIManager_OnStartButtonClicked;
         MainMenuUIManager.OnExitButtonClicked += MainMenuUIManager_OnExitButtonClicked;
+
         canvasObject.SetActive(true);
     }
     private void MainMenuUIManager_OnStartButtonClicked()

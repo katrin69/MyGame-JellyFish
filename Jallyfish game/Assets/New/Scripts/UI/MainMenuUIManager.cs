@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    public event Action OnStartButtonClicked;
+    public event Action OnStartButtonClicked; //события для клика по кнопке
     public event Action OnExitButtonClicked;
 
-    public Button StartGameButton;
+    public Button StartGameButton; //сами кнопки
     public Button ExitGameButton;
 
     private void Awake()

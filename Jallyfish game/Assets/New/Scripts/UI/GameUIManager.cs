@@ -31,7 +31,7 @@ public class GameUIManager : MonoBehaviour
     public PlayerHealthBar PlayerHealthBar;
     public PlayerArmorBar PlayerArmorBar;
     public PlayerStaminaBar PlayerStaminaBar;
-    public LevelBar levelBar;
+    public PlayerLevelBar levelBar;
     //public Text levelText; //показывает лэвл
 
     [Space(10)] //меню

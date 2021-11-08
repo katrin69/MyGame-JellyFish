@@ -11,4 +11,5 @@ public enum EObjectType
 
     MainMenuUI,
     GameUI,
+    GameOverUI,
 }
