@@ -44,7 +44,6 @@ public class WeaponBulletJelly : MonoBehaviour
         if (other.gameObject.CompareTag("Shark")) //если столкнулась с акулой
         {
             //урон акуле
-
             //Скрипт здоровья акулы
             EnemyHealthScript enemyHealthScript = other.transform.GetComponent<EnemyHealthScript>();
             //урон + опыт
@@ -52,6 +51,7 @@ public class WeaponBulletJelly : MonoBehaviour
 
             ResourceManager.ReturnToPool(gameObject);
         }
+       
     }
 
     public void SetShooterLevelsSystem(PlayerLevelSystem shooterLevelSystem) //передаёт лэвлы

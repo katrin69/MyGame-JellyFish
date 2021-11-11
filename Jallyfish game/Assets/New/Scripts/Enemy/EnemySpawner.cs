@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float enemyCount = 10f;
-    public float enemyCountLittle = 8f;
-    public float enemyCountTerrorist = 5f;
+    public float enemyCount = 5f;
+    public float enemyCountLittle = 4f;
+    public float enemyCountTerrorist = 3f; 
     public float enemyCountBoss = 0f;
 
     private Collider SpawnerCollider;
-
+      
     private void Awake()
     {
         SpawnerCollider = GetComponent<Collider>();

@@ -972,7 +972,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4818029226429322923}
   - component: {fileID: 4996653010830157280}
-  - component: {fileID: 3248005459454739755}
+  - component: {fileID: 3682983540849233928}
+  - component: {fileID: 1980585136003404429}
   - component: {fileID: 3841073790113108135}
   - component: {fileID: 7952365293612963936}
   - component: {fileID: 3901218198464799028}
@@ -1019,7 +1020,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!64 &3248005459454739755
+--- !u!136 &3682983540849233928
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302641808997960721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.0052952394
+  m_Height: 0.042523403
+  m_Direction: 2
+  m_Center: {x: 0.000052726722, y: 0.0014652526, z: 0.008555224}
+--- !u!64 &1980585136003404429
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1080,7 +1095,7 @@ MonoBehaviour:
   Damage: 2
   shark: {fileID: 7170092704374877868}
   _explosion: {fileID: 5205572833155546717}
-  SharkCollider: {fileID: 3248005459454739755}
+  SharkCollider: {fileID: 0}
 --- !u!114 &6689182456959835077
 MonoBehaviour:
   m_ObjectHideFlags: 0
