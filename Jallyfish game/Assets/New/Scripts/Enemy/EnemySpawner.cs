@@ -9,8 +9,11 @@ public class EnemySpawner : MonoBehaviour
     public float enemyCountTerrorist = 3f; 
     public float enemyCountBoss = 0f;
 
+    float xPos;
+    float zPos;
+
     private Collider SpawnerCollider;
-      
+
     private void Awake()
     {
         SpawnerCollider = GetComponent<Collider>();
@@ -18,8 +21,8 @@ public class EnemySpawner : MonoBehaviour
 
     public Vector3 GetSpawningPoint()
     {
-        float xPos = Random.Range(SpawnerCollider.bounds.min.x, SpawnerCollider.bounds.max.x);
-        float zPos = Random.Range(SpawnerCollider.bounds.min.z, SpawnerCollider.bounds.max.z);
+         xPos = Random.Range(SpawnerCollider.bounds.min.x, SpawnerCollider.bounds.max.x);
+         zPos = Random.Range(SpawnerCollider.bounds.min.z, SpawnerCollider.bounds.max.z);
 
         return new Vector3(xPos, 0, zPos);
     }

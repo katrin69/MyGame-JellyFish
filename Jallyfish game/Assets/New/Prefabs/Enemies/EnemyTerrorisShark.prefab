@@ -1029,7 +1029,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5302641808997960721}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.0052952394
   m_Height: 0.042523403
   m_Direction: 2
@@ -1043,7 +1043,7 @@ MeshCollider:
   m_GameObject: {fileID: 5302641808997960721}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -1095,7 +1095,7 @@ MonoBehaviour:
   Damage: 2
   shark: {fileID: 7170092704374877868}
   _explosion: {fileID: 5205572833155546717}
-  SharkCollider: {fileID: 0}
+  SharkCollider: {fileID: 3682983540849233928}
 --- !u!114 &6689182456959835077
 MonoBehaviour:
   m_ObjectHideFlags: 0
