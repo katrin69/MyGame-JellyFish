@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
-    public event Action<EnemyHealthScript, float> HealthPercentageChanged; 
+    public event Action<EnemyHealthScript, float> HealthPercentageChanged;
 
     //ХР врага
     public float enemyHealth;
     public float enemyHealthMax = 8f;
     public float ExperienceToGain = 20f; //опыт
 
+    Animator animator;
+
     void Start()
     {
         //задаём жизнь врага
         enemyHealth = enemyHealthMax;
-
+        animator = GetComponent<Animator>(); //ищем на акуле  
         HealthPercentageChanged?.Invoke(this, 1);
     }
 
@@ -30,12 +32,23 @@ public class EnemyHealthScript : MonoBehaviour
         {
             killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //передаём опыт в систему лэвлов
             deadEnemy(); //убиваем врага
+            //StartCoroutine(DeadEnemy());
         }
     }
 
     void deadEnemy() //метод смерти врага
     {
+        animator.SetBool("Dead", true);
+
         gameObject.SetActive(false);
         ResourceManager.ReturnToPool(gameObject);
     }
+
+    //private IEnumerator DeadEnemy()
+    //{
+    //    animator.SetBool("Dead", true);
+    //    gameObject.SetActive(false);
+    //    yield return new WaitForSeconds(2f);
+    //    ResourceManager.ReturnToPool(gameObject);
+    //}
 }

@@ -198,9 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &339500806
 BoxCollider:
@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 3
-  enemyCountLittle: 3
-  enemyCountTerrorist: 32
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &556100103
 BoxCollider:
@@ -369,9 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!1 &988073493
 GameObject:
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &998075211
 BoxCollider:
@@ -783,9 +783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &1410738093
 BoxCollider:
@@ -951,9 +951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 5
-  enemyCountLittle: 5
-  enemyCountTerrorist: 5
+  enemyCount: 2
+  enemyCountLittle: 2
+  enemyCountTerrorist: 2
   enemyCountBoss: 0
 --- !u!65 &1508817233
 BoxCollider:

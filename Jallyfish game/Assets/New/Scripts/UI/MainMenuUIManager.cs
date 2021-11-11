@@ -15,7 +15,6 @@ public class MainMenuUIManager : MonoBehaviour
         StartGameButton.onClick.AddListener(StartButtonClicked);
         ExitGameButton.onClick.AddListener(ExitButtonClicked);
     }
-
     private void StartButtonClicked()
     {
         if (OnStartButtonClicked != null)

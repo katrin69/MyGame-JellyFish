@@ -15,10 +15,29 @@ public class EnemyAttackScript : MonoBehaviour
     private float SearchTimer = 0;
     private float SearchStep = 1;
 
+    Animator animator;
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); //ищем на акуле       
+    }
+
     private void Update()
     {
+        //bool isAttack = animator.GetBool("isAttack");
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    animator.SetBool("isAttack", true);
+        //}
+        //if (!Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    animator.SetBool("isAttack", false);
+        //}
+
+
+
         if (target != null) //если цель не пуста то идём на цель
         {
+            animator.SetBool("Attack", true);
             EnemyMovementScript.SetTargetPosition(target.position);
         }
         else
