@@ -18,11 +18,14 @@ public class PlayerHealthScript : MonoBehaviour
     float maxHp = 10; //максимальное
     public float reastartDelay = 2f;//умирает с паузой
 
+    public Animator animator;
 
     private void Start()
     {
         curArmor = maxArmor;
         curHp = maxHp;
+       // animator = GetComponent<Animator>();
+       // Debug.Log(animator);
     }
 
     public void RecountArmorp(float deltaArmor) //отнимает щит
@@ -69,6 +72,7 @@ public class PlayerHealthScript : MonoBehaviour
         ChangeHealth?.Invoke(curHp / maxHp);//отображает в бар
         if (curHp <= 0)
         {
+            animator.SetBool("PlayerDead", true);
             //Invoke(nameof(Restart), reastartDelay);
             print("СМЕРТЬ");
         }

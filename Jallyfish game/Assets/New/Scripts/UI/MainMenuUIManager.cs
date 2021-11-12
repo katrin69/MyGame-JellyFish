@@ -12,7 +12,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Awake()
     {
-        StartGameButton.onClick.AddListener(StartButtonClicked);
+        StartGameButton.onClick.AddListener(StartButtonClicked);//у кнопки вызывает метод клик куда передаётся событие клика
         ExitGameButton.onClick.AddListener(ExitButtonClicked);
     }
     private void StartButtonClicked()
