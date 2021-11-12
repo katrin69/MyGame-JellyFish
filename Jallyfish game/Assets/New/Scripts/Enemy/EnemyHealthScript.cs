@@ -12,14 +12,17 @@ public class EnemyHealthScript : MonoBehaviour
     public float enemyHealthMax = 8f;
     public float ExperienceToGain = 20f; //опыт
 
+
     Animator animator;
 
     void Start()
     {
         //задаём жизнь врага
         enemyHealth = enemyHealthMax;
-        animator = GetComponent<Animator>(); //ищем на акуле  
         HealthPercentageChanged?.Invoke(this, 1);
+
+        animator = GetComponent<Animator>(); //ищем на акуле  
+
     }
 
     public void DeductHealth(float deductHealth, PlayerLevelSystem killrLevelSystem) //передаём урон и систему лэвлов
@@ -38,6 +41,9 @@ public class EnemyHealthScript : MonoBehaviour
 
     void deadEnemy() //метод смерти врага
     {
+        
+        FindObjectOfType<AudioManager>().Play("SoundEnemyDead");
+
         animator.SetBool("Dead", true);
 
         gameObject.SetActive(false);

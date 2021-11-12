@@ -152,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 1097226414}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556100100
 GameObject:
@@ -245,6 +245,80 @@ Transform:
   - {fileID: 556100101}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929825238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929825240}
+  - component: {fileID: 929825239}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &929825239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929825238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118a7f173e0b1ea478be929e100e63fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MusicBackground
+    loop: 1
+    clip: {fileID: 8300000, guid: 503f7ac445a8ad04f8bd491f430fd298, type: 3}
+    volume: 0.45
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundWeaponLight
+    loop: 0
+    clip: {fileID: 8300000, guid: 1bccd20820aad734e9d1f01f5ed1b315, type: 3}
+    volume: 0.8
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: SoundEnemyDead
+    loop: 0
+    clip: {fileID: 8300000, guid: 87eac7c76d3671f49b257b8fa8f0355f, type: 3}
+    volume: 0.26
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundExplosion1
+    loop: 0
+    clip: {fileID: 8300000, guid: 59b42307a702b1a4b99d8ca388d50f68, type: 3}
+    volume: 0.26
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: MusicInGame
+    loop: 1
+    clip: {fileID: 8300000, guid: 73837b772d8af0e469d4aaeb7dd2848d, type: 3}
+    volume: 0.15
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &929825240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929825238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988073493
 GameObject:
@@ -406,7 +480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -639,7 +713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1466047526
 MonoBehaviour:
@@ -799,7 +873,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1884722679
 MonoBehaviour:

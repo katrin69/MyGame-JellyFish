@@ -19,6 +19,8 @@ public class EnemyTerrorAttackScript : EnemyAttackScript
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("SoundExplosion1");
+
             _explosion.Play();
             //отнимаем жизнь у медузы
             collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(Damage);

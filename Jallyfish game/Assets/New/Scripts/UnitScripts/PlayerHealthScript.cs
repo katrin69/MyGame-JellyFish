@@ -69,7 +69,9 @@ public class PlayerHealthScript : MonoBehaviour
     {
         curHp += deltaHp;
         print("Осталось жизней " + curHp);
+
         ChangeHealth?.Invoke(curHp / maxHp);//отображает в бар
+
         if (curHp <= 0)
         {
             animator.SetBool("PlayerDead", true);
