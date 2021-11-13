@@ -13,6 +13,7 @@ public class GameUIManager : MonoBehaviour
     public event Action choosWeaponFour;
 
     //в главное меню из паузы
+    public event Action OnSaveGame;
     public event Action OnBackMainMenu;
 
     //кнопки оруджия на экране
@@ -36,7 +37,8 @@ public class GameUIManager : MonoBehaviour
 
     public EnamyHealthBar enamyHealthBar;
 
-    [Space(10)] //меню
+    [Space(10)] //меню паузы
+    public Button SaveGame;
     public Button Continue;
     public Button BackMainMenu;
 
@@ -51,10 +53,19 @@ public class GameUIManager : MonoBehaviour
         WeaponThree.onClick.AddListener(ChooseThree);
         WeaponFour.onClick.AddListener(ChooseFour);
 
+        SaveGame.onClick.AddListener(SaveGameButton);
         Continue.onClick.AddListener(PauseCheck);
         BackMainMenu.onClick.AddListener(BackMainMenuButton);
     }
 
+    //сохранение
+    private void SaveGameButton() //если нажата кнопка то сохраняем игру
+    {
+        if (OnSaveGame != null)
+        {
+            OnSaveGame();
+        }
+    }
 
     //пауза
     private void Unpause()// метод чтобы отключить паузу

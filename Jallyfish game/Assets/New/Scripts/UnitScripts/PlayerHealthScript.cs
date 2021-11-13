@@ -94,7 +94,7 @@ public class PlayerHealthScript : MonoBehaviour
         if (curHp <= 0)
         {
             animator.SetBool("PlayerDead", true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(reastartDelay);
 
             PlayerDead?.Invoke();
             print("СМЕРТЬ");

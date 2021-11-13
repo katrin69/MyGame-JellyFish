@@ -53,8 +53,8 @@ MonoBehaviour:
   - name: MusicInGame
     loop: 1
     clip: {fileID: 8300000, guid: 73837b772d8af0e469d4aaeb7dd2848d, type: 3}
-    volume: 0.15
-    pitch: 1
+    volume: 0.3
+    pitch: 2
     source: {fileID: 0}
   - name: SoundEnemyDead
     loop: 0
