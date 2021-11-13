@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 690779535026915976}
   - component: {fileID: 3061338483858962547}
   m_Layer: 0
-  m_Name: HealthBar
+  m_Name: EnamyHealthBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

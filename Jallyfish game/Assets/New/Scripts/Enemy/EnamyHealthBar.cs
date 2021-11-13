@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class EnamyHealthBar : MonoBehaviour
 {
-    public Sprite mask;
+    public Image mask;
     float originalSize;
 
     private Camera mainCamera;
 
     private void Start()
     {
-        //originalSize = mask.rectTransform.rect.width;
+        originalSize = mask.rectTransform.rect.width;
         mainCamera = Camera.main;
     }
 
@@ -25,6 +26,6 @@ public class HealthBar : MonoBehaviour
 
     public void SetValue(float value)
     {
-        //mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
+        mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }
 }

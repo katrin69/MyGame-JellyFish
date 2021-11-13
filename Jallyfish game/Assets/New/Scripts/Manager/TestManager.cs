@@ -115,6 +115,13 @@ public class TestManager : MonoBehaviour
 
         //Проигрыш
 
+        UnitManager.PlayerDead += UnitManager_PlayerDead;
+    }
+
+    //игрок умер загружаем сцену проигрыша
+    private void UnitManager_PlayerDead()
+    {
+        SceneLoadingManager.LoadScene(EScene.GameOver);
     }
 
     //загрузка сцены главное меню

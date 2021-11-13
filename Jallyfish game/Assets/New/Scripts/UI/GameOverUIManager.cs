@@ -12,7 +12,7 @@ public class GameOverUIManager : MonoBehaviour
     public Button ReplayButton; //сами кнопки
     public Button MainManuButton;
 
-    private void Awake()
+    private void Start()
     {
         ReplayButton.onClick.AddListener(RestartButtonClicked); //у кнопки вызывает метод клик куда передаётся событие клика
         MainManuButton.onClick.AddListener(MainManuButtonClicked);

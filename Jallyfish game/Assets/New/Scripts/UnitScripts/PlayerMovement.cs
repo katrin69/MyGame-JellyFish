@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public event Action<float> ChangeFast;
 
     public Transform JellyfishModel;
+    [SerializeField] ParticleSystem _fastSpeed;
 
     //ходьба
     private float moveSpeed = 15f;
@@ -104,6 +105,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void fastSpeedStart()
     {
+        FindObjectOfType<AudioManager>().Play("SoundFastSpeed");
+
+        _fastSpeed.Play();
+
         realSpeed = fastSpeed;
         FastSpeed = true;
     }

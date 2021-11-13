@@ -13,6 +13,7 @@ public class UnitManager : MonoBehaviour
     public event Action<float> ChangeArmor;
     public event Action<float> ChangeFast;
     public event Action<float> ChangeLevel;
+    public event Action PlayerDead;
 
 
     private PlayerHealthScript PlayerHealthScript; //скрипт со здоровьем
@@ -34,6 +35,8 @@ public class UnitManager : MonoBehaviour
         PlayerHealthScript.ChangeArmor += PlayerHealthScript_ChangeArmor;
         PlayerMovementScript.ChangeFast += PlayerMovementScript_ChangeFast;
         PlayerLevelSystem.ChangeLevel += PlayerLevelSystem_ChangeLevel;
+
+        PlayerHealthScript.PlayerDead += PlayerHealthScript_PlayerDead;
     }
 
     private void Update()
@@ -41,6 +44,13 @@ public class UnitManager : MonoBehaviour
         float difference = GroundChecker.CheckGround();
         PlayerMovementScript.SetVerticalPosition(difference);
     }
+
+    //игрок умер
+    private void PlayerHealthScript_PlayerDead()
+    {
+        PlayerDead?.Invoke();
+    }
+
 
     private void PlayerLevelSystem_ChangeLevel(float level)
     {

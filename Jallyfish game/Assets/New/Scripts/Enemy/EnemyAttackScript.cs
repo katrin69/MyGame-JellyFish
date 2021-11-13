@@ -36,7 +36,7 @@ public class EnemyAttackScript : MonoBehaviour
 
 
         if (target != null) //если цель не пуста то идём на цель
-        {
+        { 
             animator.SetBool("Attack", true);
             EnemyMovementScript.SetTargetPosition(target.position);
         }
@@ -63,6 +63,8 @@ public class EnemyAttackScript : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть медуза
             {
+                FindObjectOfType<AudioManager>().Play("SoundSharkAttack2");
+
                 if (nearest == null) //если не очень близко то пофиг
                 {
                     nearest = collider;

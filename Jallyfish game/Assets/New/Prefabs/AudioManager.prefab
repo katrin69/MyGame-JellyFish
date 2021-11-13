@@ -62,6 +62,12 @@ MonoBehaviour:
     volume: 0.26
     pitch: 1
     source: {fileID: 0}
+  - name: SoundSharkAttack2
+    loop: 0
+    clip: {fileID: 8300000, guid: 6e0c6c0834d86404d85d228d4a032d07, type: 3}
+    volume: 0.48
+    pitch: 1
+    source: {fileID: 0}
   - name: SoundExplosion1
     loop: 0
     clip: {fileID: 8300000, guid: 59b42307a702b1a4b99d8ca388d50f68, type: 3}
@@ -71,7 +77,7 @@ MonoBehaviour:
   - name: SoundWeaponLight
     loop: 0
     clip: {fileID: 8300000, guid: 1bccd20820aad734e9d1f01f5ed1b315, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}
   - name: SoundWeaponJelly

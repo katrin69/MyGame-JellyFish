@@ -52,6 +52,7 @@ public class WeaponFart : MonoBehaviour
             {
                 if (ShooterLevelSystem != null)
                 {
+                    _bulletFart.Play();
                     //скрипт врагов
                     EnemyHealthScript enemyHealthScript = c.transform.GetComponent<EnemyHealthScript>();
                     //урон + опыт

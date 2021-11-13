@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyMovementScript: {fileID: 6689182456959835077}
-  Damage: 2
+  Damage: 3
   shark: {fileID: 7170092704374877868}
   _explosion: {fileID: 5205572833155546717}
   SharkCollider: {fileID: 3682983540849233928}

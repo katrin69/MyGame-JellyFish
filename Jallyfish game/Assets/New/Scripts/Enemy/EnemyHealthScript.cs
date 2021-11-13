@@ -29,32 +29,34 @@ public class EnemyHealthScript : MonoBehaviour
     {
         enemyHealth -= deductHealth;
 
-        HealthPercentageChanged?.Invoke(this, enemyHealth / enemyHealthMax);
+        HealthPercentageChanged?.Invoke(this, enemyHealth / enemyHealthMax); //отображает жизни 
 
         if (enemyHealth <= 0) //если жизни кончились 
         {
             killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //передаём опыт в систему лэвлов
-            deadEnemy(); //убиваем врага
-            //StartCoroutine(DeadEnemy());
+            //deadEnemy(); //убиваем врага
+            StartCoroutine(DeadEnemy());
         }
     }
 
-    void deadEnemy() //метод смерти врага
-    {
-        
-        FindObjectOfType<AudioManager>().Play("SoundEnemyDead");
+    //void deadEnemy() //метод смерти врага
+    //{
 
-        animator.SetBool("Dead", true);
+    //    FindObjectOfType<AudioManager>().Play("SoundEnemyDead");
+
+    //    animator.SetBool("Dead", true);
+
+    //    gameObject.SetActive(false);
+    //    ResourceManager.ReturnToPool(gameObject);
+    //}
+
+    private IEnumerator DeadEnemy()
+    {
+        FindObjectOfType<AudioManager>().Play("SoundEnemyDead");
+        animator.SetBool("Dead", true); //анимация смерти
+        yield return new WaitForSeconds(2f);
 
         gameObject.SetActive(false);
         ResourceManager.ReturnToPool(gameObject);
     }
-
-    //private IEnumerator DeadEnemy()
-    //{
-    //    animator.SetBool("Dead", true);
-    //    gameObject.SetActive(false);
-    //    yield return new WaitForSeconds(2f);
-    //    ResourceManager.ReturnToPool(gameObject);
-    //}
 }

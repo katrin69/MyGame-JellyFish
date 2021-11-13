@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JellyfishModel: {fileID: 7686090371300122324}
+  _fastSpeed: {fileID: 5367134676960457054, guid: eae577b4e522e9541954016d0d76ecc8, type: 3}
 --- !u!114 &1579650121438525010
 MonoBehaviour:
   m_ObjectHideFlags: 0

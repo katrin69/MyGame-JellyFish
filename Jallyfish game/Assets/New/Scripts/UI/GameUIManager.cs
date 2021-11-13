@@ -34,6 +34,8 @@ public class GameUIManager : MonoBehaviour
     public PlayerLevelBar levelBar;
     //public Text levelText; //показывает лэвл
 
+    public EnamyHealthBar enamyHealthBar;
+
     [Space(10)] //меню
     public Button Continue;
     public Button BackMainMenu;
@@ -52,6 +54,7 @@ public class GameUIManager : MonoBehaviour
         Continue.onClick.AddListener(PauseCheck);
         BackMainMenu.onClick.AddListener(BackMainMenuButton);
     }
+
 
     //пауза
     private void Unpause()// метод чтобы отключить паузу
@@ -144,9 +147,15 @@ public class GameUIManager : MonoBehaviour
         PlayerStaminaBar.SetValue(curStam);
     }
 
-    public void ChangeLevel(float level)
+    public void ChangeLevel(float level) //отображает лэвл
     {
         levelBar.SetValue(level);
+    }
+
+
+    public void EnamyHealth(float hp)
+    {
+        enamyHealthBar.SetValue(hp);
     }
 
 }

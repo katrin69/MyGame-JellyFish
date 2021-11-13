@@ -2429,6 +2429,7 @@ MonoBehaviour:
   Continue: {fileID: 5098831425621263777}
   BackMainMenu: {fileID: 5098831425396991208}
   PauseMenuUI: {fileID: 5098831425840995064}
+  EnamyBar: {fileID: 3020165631235786422, guid: 7882fb06f00d1b941b90a81c2cf07ee7, type: 3}
 --- !u!1 &5098831426246034241
 GameObject:
   m_ObjectHideFlags: 0

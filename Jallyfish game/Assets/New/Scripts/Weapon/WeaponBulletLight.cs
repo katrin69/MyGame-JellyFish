@@ -6,7 +6,7 @@ public class WeaponBulletLight : MonoBehaviour
 {
     //Пуля молния с уроном 2
     private float damageEnemy = 2f; //урон
-    private float bulletForce = 24f; //скорость
+    private float bulletForce = 30f; //скорость
     private Rigidbody rb; //тело
 
     //таймер
