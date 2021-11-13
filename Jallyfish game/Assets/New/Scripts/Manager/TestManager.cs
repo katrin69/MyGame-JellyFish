@@ -111,35 +111,40 @@ public class TestManager : MonoBehaviour
         canvasObject.SetActive(true);
 
         //пауза
-        InputManager.chooseEcsButton += InputManager_bottonEsc;        
+        InputManager.chooseEcsButton += InputManager_bottonEsc;
+
+        //Проигрыш
+
     }
 
-    private void GameUIManager_OnBackMainMenu()
+    //загрузка сцены главное меню
+    private void GameUIManager_OnBackMainMenu()//обработчик событий
     {
         SceneLoadingManager.LoadScene(EScene.MainMenu);
     }
 
     //пауза
-    private void InputManager_bottonEsc()
+    private void InputManager_bottonEsc()//обработчик событий
     {
         GameUIManager.PauseCheck();
     }
 
+    //изменение скорости
     private void UnitManager_ChangeFast(float curStam)
     {
         GameUIManager.ChangeStamina(curStam);
     }
-
+    //изменение щита
     private void UnitManager_ChangeArmor(float curArmor)
     {
         GameUIManager.ChangeArmor(curArmor);
     }
-
+    //изменение жизни
     private void UnitManager_ChangeHealth(float curHp)
     {
         GameUIManager.ChangeHealthe(curHp);
     }
-
+    //изменение уровня
     private void UnitManager_ChangeLevel(float level) //Лэвл
     {
         GameUIManager.ChangeLevel(level);

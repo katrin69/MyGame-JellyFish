@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (FastSpeed && HorizontalMovement != Vector3.zero)
         {
-            currentStamina -= Time.deltaTime * 10f; // но лишь на время
+            currentStamina -= Time.deltaTime * 6f; // но лишь на время
 
             if (currentStamina <= minValueStamina)
             {

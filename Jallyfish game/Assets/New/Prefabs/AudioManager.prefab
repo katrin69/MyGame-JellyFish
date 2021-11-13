@@ -50,11 +50,11 @@ MonoBehaviour:
     volume: 0.45
     pitch: 1
     source: {fileID: 0}
-  - name: SoundWeaponLight
-    loop: 0
-    clip: {fileID: 8300000, guid: 1bccd20820aad734e9d1f01f5ed1b315, type: 3}
-    volume: 0.8
-    pitch: 1.5
+  - name: MusicInGame
+    loop: 1
+    clip: {fileID: 8300000, guid: 73837b772d8af0e469d4aaeb7dd2848d, type: 3}
+    volume: 0.15
+    pitch: 1
     source: {fileID: 0}
   - name: SoundEnemyDead
     loop: 0
@@ -68,9 +68,27 @@ MonoBehaviour:
     volume: 0.26
     pitch: 1.5
     source: {fileID: 0}
-  - name: MusicInGame
-    loop: 1
-    clip: {fileID: 8300000, guid: 73837b772d8af0e469d4aaeb7dd2848d, type: 3}
-    volume: 0.15
+  - name: SoundWeaponLight
+    loop: 0
+    clip: {fileID: 8300000, guid: 1bccd20820aad734e9d1f01f5ed1b315, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundWeaponJelly
+    loop: 0
+    clip: {fileID: 8300000, guid: 8baed04ade98fcf409dee3f18b847eaa, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundWeaponHoming
+    loop: 0
+    clip: {fileID: 8300000, guid: 818bc54f26591034992d17f62b651652, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundWeaponFart2
+    loop: 0
+    clip: {fileID: 8300000, guid: b339fefe9320c8341951c7419f917979, type: 3}
+    volume: 0.9
     pitch: 1
     source: {fileID: 0}

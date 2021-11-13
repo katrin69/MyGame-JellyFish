@@ -18,6 +18,7 @@ public class WeaponBulletLight : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
     }
 
     private void Update()
@@ -28,7 +29,7 @@ public class WeaponBulletLight : MonoBehaviour
             ResourceManager.ReturnToPool(gameObject);
         }
     }
-
+ 
     private void OnEnable()
     {
         Timer = defaultTime;

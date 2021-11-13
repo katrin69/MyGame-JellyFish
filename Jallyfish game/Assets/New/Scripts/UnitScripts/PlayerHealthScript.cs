@@ -75,6 +75,7 @@ public class PlayerHealthScript : MonoBehaviour
         if (curHp <= 0)
         {
             animator.SetBool("PlayerDead", true);
+            //я должна включить сцену Конец Игры через 2 секунды после смерти, чтобы проигралась анимация смерти бро
             //Invoke(nameof(Restart), reastartDelay);
             print("СМЕРТЬ");
         }
