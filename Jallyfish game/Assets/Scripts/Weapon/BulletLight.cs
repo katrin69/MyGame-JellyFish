@@ -32,7 +32,6 @@ public class BulletLight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FindObjectOfType<AudioManager>().Play("SoundWeaponLight");
         rb.velocity = transform.forward * bulletForce; //скорость
     }
 

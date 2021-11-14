@@ -7,11 +7,9 @@ public class PlayerLevelSystem : MonoBehaviour
 {
     public event Action<float> ChangeLevel;
 
-
-    public int level; //уровень
+    public int CurrentLevel { get; private set; } = 1; //уровень
     public float currentXp; //текущий опыт
     public float requiredXp; //необходимый опыт
-
 
     [Header("Multipliers")]
     [Range(1f, 300f)]
@@ -24,7 +22,13 @@ public class PlayerLevelSystem : MonoBehaviour
     private void Start()
     {
         requiredXp = CalculateRequireXp();
+        ChangeLevel?.Invoke(CurrentLevel); //отображает в бар
+    }
 
+    public void SetNewLevel(int level)
+    {
+        CurrentLevel = level;
+        ChangeLevel?.Invoke(CurrentLevel);
     }
 
     public void GainExperienceFlatRate(float xpGained)//набирание опыта  принимает число которое прибавляется к текущему опыту
@@ -39,12 +43,12 @@ public class PlayerLevelSystem : MonoBehaviour
 
     public void LevelUp() //метод повышает опыт
     {
-        level++;
+        CurrentLevel++;
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
-        GetComponent<PlayerHealthScript>().IncreaseHealth(level);
+        GetComponent<PlayerHealthScript>().IncreaseHealth(CurrentLevel);
         requiredXp = CalculateRequireXp();
 
-        ChangeLevel?.Invoke(level);//отображает в бар
+        ChangeLevel?.Invoke(CurrentLevel);//отображает в бар
 
     }
 
@@ -52,7 +56,7 @@ public class PlayerLevelSystem : MonoBehaviour
     private int CalculateRequireXp()
     {
         int solveForRequiredXp = 0;
-        for (int levelCycle = 1; levelCycle <= level; levelCycle++)
+        for (int levelCycle = 1; levelCycle <= CurrentLevel; levelCycle++)
         {
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
         }
@@ -62,9 +66,9 @@ public class PlayerLevelSystem : MonoBehaviour
 
     public void GainExperienceScalable(float xpGained, int passedLevel)
     {
-        if (passedLevel < level)
+        if (passedLevel < CurrentLevel)
         {
-            float multiplier = 1 + (level - passedLevel) * 0.01f;
+            float multiplier = 1 + (CurrentLevel - passedLevel) * 0.01f;
             currentXp += xpGained * multiplier;
         }
         else

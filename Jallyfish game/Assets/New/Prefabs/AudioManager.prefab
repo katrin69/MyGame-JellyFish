@@ -53,8 +53,8 @@ MonoBehaviour:
   - name: MusicInGame
     loop: 1
     clip: {fileID: 8300000, guid: 73837b772d8af0e469d4aaeb7dd2848d, type: 3}
-    volume: 0.3
-    pitch: 2
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: SoundEnemyDead
     loop: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   - name: SoundSharkAttack2
     loop: 0
     clip: {fileID: 8300000, guid: 6e0c6c0834d86404d85d228d4a032d07, type: 3}
-    volume: 0.48
+    volume: 0.3
     pitch: 1
     source: {fileID: 0}
   - name: SoundExplosion1
@@ -96,5 +96,17 @@ MonoBehaviour:
     loop: 0
     clip: {fileID: 8300000, guid: b339fefe9320c8341951c7419f917979, type: 3}
     volume: 0.9
+    pitch: 1
+    source: {fileID: 0}
+  - name: SoundFastSpeed
+    loop: 0
+    clip: {fileID: 8300000, guid: 209e1bc1bab8bfd46836f1c6747f7b78, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: MusicMainMenu
+    loop: 1
+    clip: {fileID: 8300000, guid: 7ab8a03767d52ef48beebb54f5a6f52c, type: 3}
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}

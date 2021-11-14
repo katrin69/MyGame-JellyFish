@@ -49,15 +49,21 @@ public partial class WeaponManager : MonoBehaviour
 
     private ResourceManager ResourceManager;
     private PlayerLevelSystem LevelsSystem;
+    private AudioManager AudioManager;
 
     private Dictionary<EWeapon, float> WeaponsCurrentCooldown = new Dictionary<EWeapon, float>();
 
     private Dictionary<EWeapon, float> WeaponsDefaultCooldown = new Dictionary<EWeapon, float>()
     {
-        { EWeapon.BulletLight, 1f },
-        { EWeapon.BulletJelly, 1f },
-        { EWeapon.JellyHoming, 2f },
-        { EWeapon.Fart, 3f }
+        //{ EWeapon.BulletLight, 1f },
+        //{ EWeapon.BulletJelly, 1f },
+        //{ EWeapon.JellyHoming, 2f },
+        //{ EWeapon.Fart, 3f },
+
+        { EWeapon.BulletLight, 0f },
+        { EWeapon.BulletJelly, 0f },
+        { EWeapon.JellyHoming, 0f },
+        { EWeapon.Fart, 0f }
     };
 
     private void Awake()
@@ -85,10 +91,11 @@ public partial class WeaponManager : MonoBehaviour
         }
     }
 
-    public void Init(ResourceManager resourceManager, PlayerLevelSystem levelsSystem)
+    public void Init(ResourceManager resourceManager, PlayerLevelSystem levelsSystem, AudioManager audioManager)
     {
         ResourceManager = resourceManager;
         LevelsSystem = levelsSystem;
+        AudioManager = audioManager;
     }
 
     public void ChoosWeaponOne()
@@ -157,7 +164,7 @@ public partial class WeaponManager : MonoBehaviour
         {
             if (LevelsSystem != null) //и система лэвлов не пуста
             {
-                FindObjectOfType<AudioManager>().Play("SoundWeaponLight");
+                AudioManager.Play("SoundWeaponLight");
 
                 WeaponBulletLight bulletLight = bullet.GetComponent<WeaponBulletLight>(); //то берём скрипт пули
                 bulletLight.SetShooterLevelsSystem(LevelsSystem);  //и метод из лэвлов
@@ -177,7 +184,7 @@ public partial class WeaponManager : MonoBehaviour
         {
             if (LevelsSystem != null)//и система лэвлов не пуста
             {
-                FindObjectOfType<AudioManager>().Play("SoundWeaponJelly");
+                AudioManager.Play("SoundWeaponJelly");
 
                 WeaponBulletJelly bulletJelly = bullet.GetComponent<WeaponBulletJelly>(); //то берём скрипт пули
                 bulletJelly.SetShooterLevelsSystem(LevelsSystem);  //и метод из лэвлов
@@ -197,7 +204,7 @@ public partial class WeaponManager : MonoBehaviour
         {
             if (LevelsSystem != null) //и система лэвлов не пуста
             {
-                FindObjectOfType<AudioManager>().Play("SoundWeaponHoming");
+                AudioManager.Play("SoundWeaponHoming");
 
                 WeaponJellyHoming bulletHoming = bullet.GetComponent<WeaponJellyHoming>(); //то берём скрипт пули
                 bulletHoming.Initialize(transform, LevelsSystem);  //и метод из лэвлов
@@ -217,7 +224,7 @@ public partial class WeaponManager : MonoBehaviour
         {
             if (LevelsSystem != null) //и система лэвлов не пуста
             {
-                FindObjectOfType<AudioManager>().Play("SoundWeaponFart2");
+                AudioManager.Play("SoundWeaponFart2");
 
                 WeaponFart bulletHoming = bullet.GetComponent<WeaponFart>(); //то берём скрипт пули
                 bulletHoming.SetShooterLevelsSystem(LevelsSystem);  //и метод из лэвлов

@@ -78,4 +78,10 @@ public class CameraManager : MonoBehaviour
 
         return result; //вот это детка
     }
+
+
+    public Vector3 WorldToCanvasPosition(Vector3 point)
+    {
+        return Camera.WorldToScreenPoint(point);
+    }
 }

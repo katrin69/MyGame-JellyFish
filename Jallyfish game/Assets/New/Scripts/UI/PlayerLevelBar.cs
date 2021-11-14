@@ -7,16 +7,8 @@ public class PlayerLevelBar : MonoBehaviour
 {
     public Text levelText; //показывает лэвл
 
-    private void Start()
-    {
-        if (levelText != null)
-        {
-            levelText.text = "";
-        }
-    }
     public void SetValue(float level)
     {
-        levelText.text = "" + level;
+        levelText.text = level.ToString();
     }
-
 }

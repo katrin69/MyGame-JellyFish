@@ -19,6 +19,11 @@ public class MainMenuUIManager : MonoBehaviour
         ExitGameButton.onClick.AddListener(ExitButtonClicked);
     }
 
+    public void SetContinueButtonStatus(bool continueButtonActive)
+    {
+        ContinueButton.interactable = continueButtonActive;
+    }
+
     private void ContinueClicked()
     {
         if (OnExitContinueClicked != null)

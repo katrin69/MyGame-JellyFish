@@ -6,21 +6,21 @@ public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 10f; // скорость врага
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
-    private Vector3 TargetPosition;
+    protected Vector3 TargetPosition;
 
-    private Vector3 StartPoint;
-    private Vector3 EndPoint;
+    protected Vector3 StartPoint;
+    protected Vector3 EndPoint;
 
-    private enum EMovement
+    protected enum EMovement
     {
         Idle,
         StartToEnd,
         EndToStart,
     }
 
-    private EMovement CurrentMovement  = EMovement.Idle;
+    protected EMovement CurrentMovement  = EMovement.Idle;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
         CurrentMovement = EMovement.Idle;
     }
 
-    public void SetPatrollingPoint(Vector3 newPoint)
+    public virtual void SetPatrollingPoint(Vector3 newPoint)
     {
         EndPoint = newPoint;
         StartPoint = transform.position;

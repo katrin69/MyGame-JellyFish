@@ -16,7 +16,7 @@ public class PlayerHealthScript : MonoBehaviour
     float maxArmor = 4; //максимальный щит
 
     //здоровье
-    float curHp; //текущее здоровье
+    public float CurrentHP { get; private set; }//текущее здоровье
     float maxHp = 10; //максимальное
     public float reastartDelay = 2f;//умирает с паузой
 
@@ -25,9 +25,15 @@ public class PlayerHealthScript : MonoBehaviour
     private void Start()
     {
         curArmor = maxArmor;
-        curHp = maxHp;
+        CurrentHP = maxHp;
        // animator = GetComponent<Animator>();
        // Debug.Log(animator);
+    }
+
+    public void SetNewHealth(float value)
+    {
+        CurrentHP = value;
+        ChangeHealth?.Invoke(CurrentHP / maxHp);
     }
 
     public void RecountArmorp(float deltaArmor) //отнимает щит
@@ -86,12 +92,12 @@ public class PlayerHealthScript : MonoBehaviour
 
     private IEnumerator RecountHp(float deltaHp)
     {
-        curHp += deltaHp;
-        print("Осталось жизней " + curHp);
+        CurrentHP += deltaHp;
+        print("Осталось жизней " + CurrentHP);
 
-        ChangeHealth?.Invoke(curHp / maxHp);//отображает в бар
+        ChangeHealth?.Invoke(CurrentHP / maxHp);//отображает в бар
 
-        if (curHp <= 0)
+        if (CurrentHP <= 0)
         {
             animator.SetBool("PlayerDead", true);
             yield return new WaitForSeconds(reastartDelay);
@@ -103,7 +109,7 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void IncreaseHealth(int level)
     {
-        maxHp += (curHp * 0.01f) * ((100f - level) * 0.1f);
-        curHp = maxHp;
+        maxHp += (CurrentHP * 0.01f) * ((100f - level) * 0.1f);
+        CurrentHP = maxHp;
     }
 }

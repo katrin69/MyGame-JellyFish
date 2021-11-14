@@ -38,6 +38,8 @@ public class InputManager : MonoBehaviour
 
     //пауза
     public event Action chooseEcsButton;
+    public event Action saveGame;
+    public event Action loadGame;
 
     private void Update()
     {
@@ -78,6 +80,22 @@ public class InputManager : MonoBehaviour
             if (chooseEcsButton != null)
             {
                 chooseEcsButton();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            if (saveGame != null)
+            {
+                saveGame();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            if (loadGame != null)
+            {
+                loadGame();
             }
         }
 

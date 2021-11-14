@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceManagerPrefab: {fileID: 5242304868513694024, guid: 35be962367468a147b451601bbd5c55f, type: 3}
+  AudioManagerPrefab: {fileID: 6087743726026537907, guid: 6f86044b0bfad8f4497cf142042a96a8, type: 3}
 --- !u!4 &1576086283
 Transform:
   m_ObjectHideFlags: 0

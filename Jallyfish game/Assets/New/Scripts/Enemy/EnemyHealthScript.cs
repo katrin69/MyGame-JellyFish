@@ -12,8 +12,9 @@ public class EnemyHealthScript : MonoBehaviour
     public float enemyHealthMax = 8f;
     public float ExperienceToGain = 20f; //опыт
 
-
     Animator animator;
+
+    protected AudioManager AudioManager;
 
     void Start()
     {
@@ -21,8 +22,20 @@ public class EnemyHealthScript : MonoBehaviour
         enemyHealth = enemyHealthMax;
         HealthPercentageChanged?.Invoke(this, 1);
 
-        animator = GetComponent<Animator>(); //ищем на акуле  
+        animator = GetComponent<Animator>(); //ищем на акуле
+    }
 
+    public void SetAudioManager(AudioManager audioManager)
+    {
+        AudioManager = audioManager;
+    }
+
+    public void Kill()
+    {
+        enemyHealth = 0;
+        HealthPercentageChanged?.Invoke(this, 0); //отображает жизни 
+
+        StartCoroutine(DeadEnemy());
     }
 
     public void DeductHealth(float deductHealth, PlayerLevelSystem killrLevelSystem) //передаём урон и систему лэвлов
@@ -35,6 +48,7 @@ public class EnemyHealthScript : MonoBehaviour
         {
             killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //передаём опыт в систему лэвлов
             //deadEnemy(); //убиваем врага
+            GetComponent<EnemyMovement>().Stop();
             StartCoroutine(DeadEnemy());
         }
     }
@@ -52,8 +66,8 @@ public class EnemyHealthScript : MonoBehaviour
 
     private IEnumerator DeadEnemy()
     {
-        FindObjectOfType<AudioManager>().Play("SoundEnemyDead");
-        animator.SetBool("Dead", true); //анимация смерти
+        AudioManager.Play("SoundEnemyDead");
+        //animator.SetBool("Dead", true); //анимация смерти
         yield return new WaitForSeconds(2f);
 
         gameObject.SetActive(false);

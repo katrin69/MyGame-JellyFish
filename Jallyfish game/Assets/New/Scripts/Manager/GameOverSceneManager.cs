@@ -9,6 +9,7 @@ public class GameOverSceneManager : MonoBehaviour
     private ResourceManager ResourceManager;
     private SceneLoadingManager SceneLoadingManager;
     private GameOverUIManager GameOverUIManager;
+    private AudioManager AudioManager;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class GameOverSceneManager : MonoBehaviour
 
         canvasObject.SetActive(true);
 
+        AudioManager = Root.GetAudioManager();
+        AudioManager.Play("MusicInGame");
     }
 
     private void GameOverUIManager_OnMainManuButtonClicked()

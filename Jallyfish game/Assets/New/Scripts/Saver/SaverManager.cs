@@ -2,25 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json;
+using System.IO;
 
 public class SaverManager : MonoBehaviour
 {
-    // Будет находиться в мире и проверять нажатиена клавиши сохранения
+    private string SavingPath;
+    private string FileName = "GameSave.json";
 
-    public UnityEvent save;
-    public UnityEvent load;
-
-
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.F6)) //сохранение на кнопку F6
-        {
-            save?.Invoke();
-        }
+        Debug.Log("Application persistent data path: " + Application.persistentDataPath);
+        Debug.Log("Application data path: " + Application.dataPath);
 
-        if (Input.GetKeyDown(KeyCode.F7)) //загрузка 
-        {
-            load?.Invoke();
-        }
+        SavingPath = Application.dataPath + "/" + FileName;
+    }
+
+    public void Save(SaverData saverData)
+    {
+        string data = JsonConvert.SerializeObject(saverData);
+
+        Debug.Log("Saving");
+
+        File.WriteAllText(SavingPath, data);
+    }
+
+    public bool IsSaveDataExists()
+    {
+        return File.Exists(SavingPath);
+    }
+
+    public SaverData Load()
+    {
+        string data = File.ReadAllText(SavingPath);
+        return JsonConvert.DeserializeObject<SaverData>(data);
     }
 }

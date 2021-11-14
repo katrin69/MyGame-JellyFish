@@ -56,11 +56,17 @@ public class WeaponFart : MonoBehaviour
                     //скрипт врагов
                     EnemyHealthScript enemyHealthScript = c.transform.GetComponent<EnemyHealthScript>();
                     //урон + опыт
-                    enemyHealthScript.DeductHealth(damageEnemyFart, ShooterLevelSystem);
-
-                    ResourceManager.ReturnToPool(gameObject);
+                    enemyHealthScript.DeductHealth(damageEnemyFart * ShooterLevelSystem.CurrentLevel, ShooterLevelSystem);                   
                 }
             }
         }
+
+        StartCoroutine(DelayedPoolReturn());
+    }
+
+    private IEnumerator DelayedPoolReturn()
+    {
+        yield return new WaitForSeconds(_bulletFart.main.duration);
+        ResourceManager.ReturnToPool(gameObject);
     }
 }

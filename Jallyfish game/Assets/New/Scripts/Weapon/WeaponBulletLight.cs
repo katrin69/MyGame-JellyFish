@@ -49,7 +49,7 @@ public class WeaponBulletLight : MonoBehaviour
             //Скрипт акулы
             EnemyHealthScript enemyHealthScript = other.transform.GetComponent<EnemyHealthScript>();
             //урон + опыт
-            enemyHealthScript.DeductHealth(damageEnemy, ShooterLevelSystem);
+            enemyHealthScript.DeductHealth(damageEnemy * ShooterLevelSystem.CurrentLevel, ShooterLevelSystem);
 
             ResourceManager.ReturnToPool(gameObject);
         }

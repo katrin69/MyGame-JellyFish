@@ -25,6 +25,8 @@ public class TestManager : MonoBehaviour
 
     private EnemyInstantiationManager EnemyInstantiationManager;
     private GameUIManager GameUIManager; //наш канвас
+    private AudioManager AudioManager;
+    private SaverManager SaverManager;
 
     //управление направления
     private Vector3 WestDirection = Vector3.left;
@@ -32,18 +34,14 @@ public class TestManager : MonoBehaviour
 
     private Vector3 CurrentMousePosition;
 
-
-    private void Start()
-    {
-        if (SpawnEnemies)
-        {
-            EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
-            EnemyInstantiationManager.Init(ResourceManager, Spawners);
-        }
-    }
     private void Awake()
     {
         SceneLoadingManager = Root.GetSceneManager(); //присваеваем метод из Root который получает сцены 
+
+        AudioManager = Root.GetAudioManager();
+
+        SaverManager = Root.GetSaverManager();
+
         InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
 
         //выбор оружия
@@ -73,6 +71,9 @@ public class TestManager : MonoBehaviour
         InputManager.shoot += InputManager_shoot;
         InputManager.positionMouse += InputManager_positionMouse;
 
+        InputManager.saveGame += OnSaveGame;
+        InputManager.loadGame += OnLoadGame;
+
         //присваеваем метод из root который получает скрипт с ресурсами(вкула медуза пуля)
         ResourceManager = Root.GetResourceManager();
 
@@ -81,9 +82,10 @@ public class TestManager : MonoBehaviour
         //передаём ей место появления
         jellyFish.transform.position = SpawnObject.position;
         jellyFish.SetActive(true);
+
         //добавляем в медузу управление
         UnitManager = jellyFish.GetComponent<UnitManager>();
-        UnitManager.Init(ResourceManager);
+        UnitManager.Init(ResourceManager, AudioManager);
         UnitManager.WeaponColldownChanged += UnitManager_WeaponColldownChanged;
         UnitManager.ChangeHealth += UnitManager_ChangeHealth;
         UnitManager.ChangeArmor += UnitManager_ChangeArmor;
@@ -108,6 +110,7 @@ public class TestManager : MonoBehaviour
         GameUIManager.choosWeaponThree += InputManager_choosWeaponThree;
         GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
         GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
+        GameUIManager.OnSaveGame += OnSaveGame;
         canvasObject.SetActive(true);
 
         //пауза
@@ -115,7 +118,44 @@ public class TestManager : MonoBehaviour
 
         //Проигрыш
 
-        UnitManager.PlayerDead += UnitManager_PlayerDead;
+        UnitManager.PlayerDead += UnitManager_PlayerDead;    
+    }
+
+    private void OnLoadGame()
+    {
+        if (SaverManager.IsSaveDataExists())
+        {
+            SaverData saverData = SaverManager.Load();
+
+            UnitManager.ApplySaverData(saverData);
+        }
+    }
+
+    private void OnSaveGame()
+    {
+        SaverData saverData = new SaverData();
+
+        UnitManager.FillSaverData(saverData);
+
+        if (EnemyInstantiationManager != null)
+        {
+            //EnemyInstantiationManager.FillSaverData(saverData);
+        }
+
+        SaverManager.Save(saverData);
+    }
+
+    private void Start()
+    {
+        if (SpawnEnemies)
+        {
+            EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
+            EnemyInstantiationManager.Init(ResourceManager, AudioManager, CameraManager);
+            EnemyInstantiationManager.InstantiateEnemies(Spawners);
+        }
+
+        AudioManager.Play("MusicBackground");
+        AudioManager.Play("MusicInGame");
     }
 
     //игрок умер загружаем сцену проигрыша
@@ -204,6 +244,7 @@ public class TestManager : MonoBehaviour
     //ускорение
     private void InputManager_fastSpeedStart()  //обработчик событий
     {
+        AudioManager.Play("SoundFastSpeed");
         UnitManager.fastSpeedStart();
     }
 
@@ -211,7 +252,6 @@ public class TestManager : MonoBehaviour
     {
         UnitManager.fastSpeesEnd();
     }
-
 
     //ходьба
     private void InputManager_dirWestStart()

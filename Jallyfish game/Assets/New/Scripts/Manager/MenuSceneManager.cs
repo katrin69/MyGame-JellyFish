@@ -9,12 +9,16 @@ public class MenuSceneManager : MonoBehaviour
     private ResourceManager ResourceManager;
     private SceneLoadingManager SceneLoadingManager;
     private MainMenuUIManager MainMenuUIManager;
+    private AudioManager AudioManager;
+    private SaverManager SaverManager;
 
     private void Awake()
     {
         ResourceManager = Root.GetResourceManager();
 
         SceneLoadingManager = Root.GetSceneManager();
+
+        SaverManager = Root.GetSaverManager();
 
         GameObject canvasObject = ResourceManager.GetObjectInstance(EObjectType.MainMenuUI);
         MainMenuUIManager = canvasObject.GetComponent<MainMenuUIManager>();
@@ -23,7 +27,17 @@ public class MenuSceneManager : MonoBehaviour
         MainMenuUIManager.OnExitButtonClicked += MainMenuUIManager_OnExitButtonClicked;
 
         canvasObject.SetActive(true);
+
+        AudioManager = Root.GetAudioManager();
+        AudioManager.Play("MusicMainMenu");
     }
+
+    private void Start()
+    {
+        bool isContinueButtonActive = SaverManager.IsSaveDataExists();
+        MainMenuUIManager.SetContinueButtonStatus(isContinueButtonActive);
+    }
+
     private void MainMenuUIManager_OnStartButtonClicked()
     {
         SceneLoadingManager.LoadScene(EScene.Level1);

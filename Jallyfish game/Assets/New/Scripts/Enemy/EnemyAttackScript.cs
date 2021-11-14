@@ -16,6 +16,9 @@ public class EnemyAttackScript : MonoBehaviour
     private float SearchStep = 1;
 
     Animator animator;
+
+    protected AudioManager AudioManager;
+
     private void Start()
     {
         animator = GetComponent<Animator>(); //ищем на акуле       
@@ -53,6 +56,11 @@ public class EnemyAttackScript : MonoBehaviour
 
     }
 
+    public void SetAudioManager(AudioManager audioManager)
+    {
+        AudioManager = audioManager;
+    }
+
     public void FoundJellyfish()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, targetRange); //массив колайдеров вокруг
@@ -63,7 +71,7 @@ public class EnemyAttackScript : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть медуза
             {
-                FindObjectOfType<AudioManager>().Play("SoundSharkAttack2");
+                AudioManager.Play("SoundSharkAttack2");
 
                 if (nearest == null) //если не очень близко то пофиг
                 {
@@ -86,12 +94,12 @@ public class EnemyAttackScript : MonoBehaviour
     }
 
     //если сталкиваемся с медузой
-    public virtual void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //отнимаем жизнь у медузы
-            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-Damage);
+            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-Damage * Time.deltaTime); 
         }
     }
 }

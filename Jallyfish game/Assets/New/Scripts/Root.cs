@@ -7,6 +7,7 @@ public class Root : MonoBehaviour
     //обьект который создаёт все менеджеры. обьединяет
 
     public GameObject ResourceManagerPrefab;
+    public GameObject AudioManagerPrefab;
 
     private Transform ManagerParent; //для папки
 
@@ -14,8 +15,9 @@ public class Root : MonoBehaviour
     private InputManager InputManager; //скрипт с движением игрока
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
-    private WeaponManager WeaponManager; //скрипт с оружием
     private EnemyInstantiationManager EnemyInstantiationManager;
+    private AudioManager AudioManager;
+    private SaverManager SaverManager;
     
     private Transform GetManagerParent()
     {
@@ -30,14 +32,14 @@ public class Root : MonoBehaviour
         return ManagerParent;
     }  
 
-    public WeaponManager GetWeaponManager()
+    public SaverManager GetSaverManager()
     {
-        if (WeaponManager == null) //если сцен нету то ...
+        if (SaverManager == null) //если сцен нету то ...
         {
-            CreateManager("Weapon Manager", out WeaponManager);
+            CreateManager("Saver Manager", out SaverManager);
         }
 
-        return WeaponManager;
+        return SaverManager;
     }
 
     public SceneLoadingManager GetSceneManager() //метод получения сцен
@@ -69,6 +71,17 @@ public class Root : MonoBehaviour
 
         return ResourceManager;
     }
+
+    public AudioManager GetAudioManager() //метод получения ресурсами
+    {
+        if (AudioManager == null)
+        {
+            CreateManager("Audio Manager", out AudioManager, AudioManagerPrefab);
+        }
+
+        return AudioManager;
+    }
+
     public CameraManager GetCameraManager() //метод получения камеры
     {
         if (CameraManager == null)

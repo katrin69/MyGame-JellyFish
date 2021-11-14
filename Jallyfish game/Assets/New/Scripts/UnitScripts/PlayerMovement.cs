@@ -105,8 +105,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void fastSpeedStart()
     {
-        FindObjectOfType<AudioManager>().Play("SoundFastSpeed");
-
         _fastSpeed.Play();
 
         realSpeed = fastSpeed;

@@ -15,7 +15,6 @@ public class UnitManager : MonoBehaviour
     public event Action<float> ChangeLevel;
     public event Action PlayerDead;
 
-
     private PlayerHealthScript PlayerHealthScript; //скрипт со здоровьем
     private PlayerMovement PlayerMovementScript; //скрипт со скоростью 
     private GroundChecker GroundChecker;//скрипт с лучём
@@ -43,6 +42,20 @@ public class UnitManager : MonoBehaviour
     {
         float difference = GroundChecker.CheckGround();
         PlayerMovementScript.SetVerticalPosition(difference);
+    }
+
+    public void FillSaverData(SaverData saverData)
+    {
+        saverData.PlayerHP = PlayerHealthScript.CurrentHP;
+        saverData.PlayerLevel = PlayerLevelSystem.CurrentLevel;
+        saverData.PlayerPosition = new float[] { transform.position.x, transform.position.y, transform.position.z };
+    }
+
+    public void ApplySaverData(SaverData saverData)
+    {
+        PlayerHealthScript.SetNewHealth(saverData.PlayerHP);
+        PlayerLevelSystem.SetNewLevel(saverData.PlayerLevel);
+        transform.position = new Vector3(saverData.PlayerPosition[0], saverData.PlayerPosition[1], saverData.PlayerPosition[2]);
     }
 
     //игрок умер
@@ -79,9 +92,9 @@ public class UnitManager : MonoBehaviour
     }
 
     
-    public void Init(ResourceManager resourceManager)
+    public void Init(ResourceManager resourceManager, AudioManager audioManager)
     {
-        WeaponManager.Init(resourceManager, PlayerLevelSystem);
+        WeaponManager.Init(resourceManager, PlayerLevelSystem, audioManager);
     }
 
 

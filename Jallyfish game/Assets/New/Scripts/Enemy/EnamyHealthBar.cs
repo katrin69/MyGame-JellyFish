@@ -5,27 +5,10 @@ using UnityEngine.UI;
 
 public class EnamyHealthBar : MonoBehaviour
 {
-    public Image mask;
-    float originalSize;
-
-    private Camera mainCamera;
-
-    private void Start()
-    {
-        originalSize = mask.rectTransform.rect.width;
-        mainCamera = Camera.main;
-    }
-
-    private void Update()
-    {
-        if (mainCamera != null)
-        {
-            transform.LookAt(mainCamera.transform);
-        }
-    }
+    public Image HealthBar;
 
     public void SetValue(float value)
     {
-        mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
+        HealthBar.fillAmount = value;
     }
 }

@@ -54,3 +54,5 @@ MonoBehaviour:
   GameUI: {fileID: 5098831425880870200, guid: 300bfe1263026ba4d85e9e3b1dd773fb, type: 3}
   MainMenuUI: {fileID: 7140403949114196973, guid: fac4dac888e898746b4c5a841e1e7e1c, type: 3}
   GameOverUI: {fileID: 5735401950734080308, guid: 4477ef85f69d1af459cf9792718837a9, type: 3}
+  EnemyHealthUI: {fileID: 4295075269393435823, guid: 6cf4a3137b0cac14cb189b215fa610f9, type: 3}
+  EnemyHealthBarUI: {fileID: 3020165631235786422, guid: 7882fb06f00d1b941b90a81c2cf07ee7, type: 3}
