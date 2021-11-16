@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935763038552160045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.44}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 1139976653173543485}
@@ -587,11 +587,11 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 6
-    angle: 25
+    type: 4
+    angle: 10.5
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0.1
+    radiusThickness: 0.8
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
@@ -674,7 +674,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.15
       mode: 0
       spread: 0
       speed:
@@ -731,7 +731,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 340.27
+      value: 341
       mode: 0
       spread: 0
       speed:
@@ -5101,7 +5101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e97fb6857b9e814c9ff7ea37929b9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
   currentXp: 0
   requiredXp: 130
   additionMultiplier: 300
