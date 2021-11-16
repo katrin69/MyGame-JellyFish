@@ -30,11 +30,13 @@ public class GameOverSceneManager : MonoBehaviour
 
     private void GameOverUIManager_OnMainManuButtonClicked()
     {
+        AudioManager.Play("ClickOnBotton");
         SceneLoadingManager.LoadScene(EScene.MainMenu);
     }
 
     private void GameOverUIManager_OnRestartButtonClicked()
     {
+        AudioManager.Play("ClickOnBotton");
         SceneLoadingManager.LoadScene(EScene.Level1);
     }
 }

@@ -28,8 +28,8 @@ public class MenuSceneManager : MonoBehaviour
 
         canvasObject.SetActive(true);
 
-        AudioManager = Root.GetAudioManager();
-        AudioManager.Play("MusicMainMenu");
+        AudioManager = Root.GetAudioManager(); //берём музло из рута
+        AudioManager.Play("MusicMainMenu"); //добавялем музло в меню на фон
     }
 
     private void Start()

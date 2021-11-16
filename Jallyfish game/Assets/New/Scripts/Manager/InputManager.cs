@@ -38,6 +38,8 @@ public class InputManager : MonoBehaviour
 
     //пауза
     public event Action chooseEcsButton;
+
+    //сохранение
     public event Action saveGame;
     public event Action loadGame;
 
@@ -83,6 +85,7 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        //сохранение
         if (Input.GetKeyDown(KeyCode.F5))
         {
             if (saveGame != null)
@@ -90,7 +93,7 @@ public class InputManager : MonoBehaviour
                 saveGame();
             }
         }
-
+        //загрузка
         if (Input.GetKeyDown(KeyCode.F7))
         {
             if (loadGame != null)

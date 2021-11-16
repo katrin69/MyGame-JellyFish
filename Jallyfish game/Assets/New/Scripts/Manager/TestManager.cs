@@ -42,8 +42,70 @@ public class TestManager : MonoBehaviour
 
         SaverManager = Root.GetSaverManager();
 
-        InputManager = Root.GetInputManager(); //присваем метод который получает управление персом
+        InputManager = Root.GetInputManager(); //присваем метод который получает управление п
 
+        ResourceManager = Root.GetResourceManager();//присваеваем метод из root который получает скрипт с ресурсами(вкула медуза пуля)
+
+        //сохранение и загрузка
+        InputManager.saveGame += OnSaveGame;
+        InputManager.loadGame += OnLoadGame;
+
+        EventPlayerOn();
+
+        //создаём обьект медуза . ResourceManager вызывает метод через который мы получаем обьект
+        GameObject jellyFish = ResourceManager.GetObjectInstance(EObjectType.Jellyfish);
+        //передаём ей место появления
+        jellyFish.transform.position = SpawnObject.position;
+        jellyFish.SetActive(true);
+
+        //добавляем в медузу управление
+        UnitManager = jellyFish.GetComponent<UnitManager>();
+        UnitManager.Init(ResourceManager, AudioManager);
+        UnitManager.WeaponColldownChanged += UnitManager_WeaponColldownChanged;
+        UnitManager.ChangeHealth += UnitManager_ChangeHealth;
+        UnitManager.ChangeArmor += UnitManager_ChangeArmor;
+        UnitManager.ChangeFast += UnitManager_ChangeFast;
+        UnitManager.ChangeLevel += UnitManager_ChangeLevel;
+
+        //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
+        CameraManager = Root.GetCameraManager();
+        CameraManager.Initialize(Camera, jellyFish.transform);
+
+        //наш канвас
+        GameObject canvasObject = ResourceManager.GetObjectInstance(EObjectType.GameUI);
+        GameUIManager = canvasObject.GetComponent<GameUIManager>();
+        GameUIManager.choosWeaponOne += InputManager_choosWeaponOne;
+        GameUIManager.choosWeaponTwo += InputManager_choosWeaponTwo;
+        GameUIManager.choosWeaponThree += InputManager_choosWeaponThree;
+        GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
+        GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
+        GameUIManager.OnSaveGame += OnSaveGame;
+        canvasObject.SetActive(true);
+
+        //пауза
+        InputManager.chooseEcsButton += InputManager_bottonEsc;
+
+        //проигрыш
+        UnitManager.PlayerDead += UnitManager_PlayerDead;    
+    }
+
+
+    private void Start() //действия при старте игры
+    {
+        if (SpawnEnemies) //если акулы значит у нас тут появляеются то 
+        {
+            EnemyInstantiationManager = Root.GetEnemyInstantiationManager(); //берём из рута менеджер инициализации акул
+            EnemyInstantiationManager.Init(ResourceManager, AudioManager, CameraManager); //добавляем им музло там
+            EnemyInstantiationManager.InstantiateEnemies(Spawners); //инициализируем акула
+        }
+        //начинает играть музыка на фоне 
+        AudioManager.Play("MusicBackground");
+        AudioManager.Play("MusicInGame");
+    }
+
+    //метод с подпискамина события управления персонажем
+    private void EventPlayerOn()
+    {
         //выбор оружия
         InputManager.choosWeaponOne += InputManager_choosWeaponOne; //подписываемся на событие
         InputManager.choosWeaponTwo += InputManager_choosWeaponTwo;
@@ -70,57 +132,39 @@ public class TestManager : MonoBehaviour
         //стрельба
         InputManager.shoot += InputManager_shoot;
         InputManager.positionMouse += InputManager_positionMouse;
-
-        InputManager.saveGame += OnSaveGame;
-        InputManager.loadGame += OnLoadGame;
-
-        //присваеваем метод из root который получает скрипт с ресурсами(вкула медуза пуля)
-        ResourceManager = Root.GetResourceManager();
-
-        //создаём обьект медуза . ResourceManager вызывает метод через который мы получаем обьект
-        GameObject jellyFish = ResourceManager.GetObjectInstance(EObjectType.Jellyfish);
-        //передаём ей место появления
-        jellyFish.transform.position = SpawnObject.position;
-        jellyFish.SetActive(true);
-
-        //добавляем в медузу управление
-        UnitManager = jellyFish.GetComponent<UnitManager>();
-        UnitManager.Init(ResourceManager, AudioManager);
-        UnitManager.WeaponColldownChanged += UnitManager_WeaponColldownChanged;
-        UnitManager.ChangeHealth += UnitManager_ChangeHealth;
-        UnitManager.ChangeArmor += UnitManager_ChangeArmor;
-        UnitManager.ChangeFast += UnitManager_ChangeFast;
-        UnitManager.ChangeLevel += UnitManager_ChangeLevel;
-
-        //присваеваем метод из Root который получает скрипт камеру и передаём камеру с игроком
-        CameraManager = Root.GetCameraManager();
-        CameraManager.Initialize(Camera, jellyFish.transform);
-
-        //if (SpawnEnemies)
-        //{
-        //    EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
-        //    EnemyInstantiationManager.Init(ResourceManager, Spawners);
-        //}
-
-        //наш канвас
-        GameObject canvasObject = ResourceManager.GetObjectInstance(EObjectType.GameUI);
-        GameUIManager = canvasObject.GetComponent<GameUIManager>();
-        GameUIManager.choosWeaponOne += InputManager_choosWeaponOne;
-        GameUIManager.choosWeaponTwo += InputManager_choosWeaponTwo;
-        GameUIManager.choosWeaponThree += InputManager_choosWeaponThree;
-        GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
-        GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
-        GameUIManager.OnSaveGame += OnSaveGame;
-        canvasObject.SetActive(true);
-
-        //пауза
-        InputManager.chooseEcsButton += InputManager_bottonEsc;
-
-        //Проигрыш
-
-        UnitManager.PlayerDead += UnitManager_PlayerDead;    
     }
 
+    private void EventPlayerOff()
+    {
+        //выбор оружия
+        InputManager.choosWeaponOne -= InputManager_choosWeaponOne; //подписываемся на событие
+        InputManager.choosWeaponTwo -= InputManager_choosWeaponTwo;
+        InputManager.choosWeaponThree -= InputManager_choosWeaponThree;
+        InputManager.choosWeaponFour -= InputManager_choosWeaponFour;
+
+        //ускорение
+        InputManager.fastSpeedStart -= InputManager_fastSpeedStart;
+        InputManager.fastSpeedEnd -= InputManager_fastSpeedEnd;
+
+        //движение перса
+        InputManager.dirNorthStart -= InputManager_dirNorthStart;
+        InputManager.dirNorthEnd -= InputManager_dirNorthEnd;
+
+        InputManager.dirSouthStart -= InputManager_dirSouthStart;
+        InputManager.dirSouthEnd -= InputManager_dirSouthEnd;
+
+        InputManager.dirWestStart -= InputManager_dirWestStart;
+        InputManager.dirEastEnd -= InputManager_dirEastEnd;
+
+        InputManager.dirEastStart -= InputManager_dirEastStart;
+        InputManager.dirWestEnd -= InputManager_dirWestEnd;
+
+        //стрельба
+        InputManager.shoot += InputManager_shoot;
+        InputManager.positionMouse += InputManager_positionMouse;
+    }
+
+    //загрузка
     private void OnLoadGame()
     {
         if (SaverManager.IsSaveDataExists())
@@ -130,7 +174,7 @@ public class TestManager : MonoBehaviour
             UnitManager.ApplySaverData(saverData);
         }
     }
-
+    //сохранение
     private void OnSaveGame()
     {
         SaverData saverData = new SaverData();
@@ -145,18 +189,7 @@ public class TestManager : MonoBehaviour
         SaverManager.Save(saverData);
     }
 
-    private void Start()
-    {
-        if (SpawnEnemies)
-        {
-            EnemyInstantiationManager = Root.GetEnemyInstantiationManager();
-            EnemyInstantiationManager.Init(ResourceManager, AudioManager, CameraManager);
-            EnemyInstantiationManager.InstantiateEnemies(Spawners);
-        }
-
-        AudioManager.Play("MusicBackground");
-        AudioManager.Play("MusicInGame");
-    }
+  
 
     //игрок умер загружаем сцену проигрыша
     private void UnitManager_PlayerDead()

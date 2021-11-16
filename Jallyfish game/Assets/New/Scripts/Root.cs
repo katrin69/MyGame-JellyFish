@@ -16,7 +16,7 @@ public class Root : MonoBehaviour
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
     private EnemyInstantiationManager EnemyInstantiationManager;
-    private AudioManager AudioManager;
+    private AudioManager AudioManager; //музло
     private SaverManager SaverManager;
     
     private Transform GetManagerParent()
@@ -72,7 +72,7 @@ public class Root : MonoBehaviour
         return ResourceManager;
     }
 
-    public AudioManager GetAudioManager() //метод получения ресурсами
+    public AudioManager GetAudioManager() //метод получения музла
     {
         if (AudioManager == null)
         {
