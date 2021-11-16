@@ -7,6 +7,7 @@ public class TestManager : MonoBehaviour
     //обьект который отвечает за то чтобы на текущей сцене было все ок и проверяет как все работает
 
     public bool SpawnEnemies  = false;
+    private bool IsPaused = false;
 
     [Space(10)]
     public Root Root; //берём Root
@@ -79,6 +80,7 @@ public class TestManager : MonoBehaviour
         GameUIManager.choosWeaponThree += InputManager_choosWeaponThree;
         GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
         GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
+        GameUIManager.OnContinue += GameUIManager_OnContinue;
         GameUIManager.OnSaveGame += OnSaveGame;
         canvasObject.SetActive(true);
 
@@ -89,6 +91,7 @@ public class TestManager : MonoBehaviour
         UnitManager.PlayerDead += UnitManager_PlayerDead;    
     }
 
+ 
 
     private void Start() //действия при старте игры
     {
@@ -103,7 +106,7 @@ public class TestManager : MonoBehaviour
         AudioManager.Play("MusicInGame");
     }
 
-    //метод с подпискамина события управления персонажем
+    //метод с подпискамина события управления персонажем ,ходьба тау тау тау
     private void EventPlayerOn()
     {
         //выбор оружия
@@ -160,9 +163,64 @@ public class TestManager : MonoBehaviour
         InputManager.dirWestEnd -= InputManager_dirWestEnd;
 
         //стрельба
-        InputManager.shoot += InputManager_shoot;
-        InputManager.positionMouse += InputManager_positionMouse;
+        InputManager.shoot -= InputManager_shoot;
+        InputManager.positionMouse -= InputManager_positionMouse;
     }
+
+    //пауза
+    public void PauseCheck() //включает паузу
+    {
+        if (IsPaused) //если выключает паузу то IsPaused = false
+        {
+            Unpause(); //и пауза выклюяается
+        }
+        else
+        {
+            Pause(); //включчается пауза
+        }
+
+        GameUIManager.SetPauseMenuActive(IsPaused); //или включена или нет
+    }
+
+    private void Unpause()// метод чтобы отключить паузу
+    {
+        EventPlayerOn();
+        Time.timeScale = 1f;
+        IsPaused = false;
+    }
+
+    private void Pause() //вклюает паузу и время останавливается
+    {
+        EventPlayerOff();
+        Time.timeScale = 0f;
+        IsPaused = true;
+    }
+
+    private void InputManager_bottonEsc()//обработчик событий
+    {
+        PauseCheck();
+    }
+
+    private void GameUIManager_OnContinue()
+    {
+        PauseCheck();
+    }
+
+    //загрузка сцены главное меню
+    private void GameUIManager_OnBackMainMenu()//обработчик событий
+    {
+        Unpause();
+        SceneLoadingManager.LoadScene(EScene.MainMenu);
+    }
+
+    //игрок умер загружаем сцену проигрыша
+    private void UnitManager_PlayerDead()
+    {
+        SceneLoadingManager.LoadScene(EScene.GameOver);
+    }
+
+
+    
 
     //загрузка
     private void OnLoadGame()
@@ -191,23 +249,6 @@ public class TestManager : MonoBehaviour
 
   
 
-    //игрок умер загружаем сцену проигрыша
-    private void UnitManager_PlayerDead()
-    {
-        SceneLoadingManager.LoadScene(EScene.GameOver);
-    }
-
-    //загрузка сцены главное меню
-    private void GameUIManager_OnBackMainMenu()//обработчик событий
-    {
-        SceneLoadingManager.LoadScene(EScene.MainMenu);
-    }
-
-    //пауза
-    private void InputManager_bottonEsc()//обработчик событий
-    {
-        GameUIManager.PauseCheck();
-    }
 
     //изменение скорости
     private void UnitManager_ChangeFast(float curStam)

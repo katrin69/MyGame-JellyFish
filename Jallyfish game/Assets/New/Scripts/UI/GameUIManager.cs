@@ -15,6 +15,7 @@ public class GameUIManager : MonoBehaviour
     //в главное меню из паузы
     public event Action OnSaveGame;
     public event Action OnBackMainMenu;
+    public event Action OnContinue;
 
     //кнопки оруджия на экране
     public Button WeaponOne;
@@ -44,7 +45,7 @@ public class GameUIManager : MonoBehaviour
 
     //пауза
     public GameObject PauseMenuUI;
-    private bool IsPaused = false;
+    //private bool IsPaused = false;
 
     private void Awake()
     {
@@ -54,7 +55,7 @@ public class GameUIManager : MonoBehaviour
         WeaponFour.onClick.AddListener(ChooseFour);
 
         SaveGame.onClick.AddListener(SaveGameButton);
-        Continue.onClick.AddListener(PauseCheck);
+        Continue.onClick.AddListener(BackInGame);
         BackMainMenu.onClick.AddListener(BackMainMenuButton);
     }
 
@@ -68,40 +69,53 @@ public class GameUIManager : MonoBehaviour
     }
 
     //пауза
-    private void Unpause()// метод чтобы отключить паузу
-    {
-        Time.timeScale = 1f;
-        IsPaused = false;
-    }
+    //private void Unpause()// метод чтобы отключить паузу
+    //{
+    //    Time.timeScale = 1f;
+    //    IsPaused = false;
+    //}
 
-    private void Pause() //вклюает паузу и время останавливается
+    //private void Pause() //вклюает паузу и время останавливается
+    //{
+    //    Time.timeScale = 0f;
+    //    IsPaused = true;
+    //}
+
+    public void BackInGame()
     {
-        Time.timeScale = 0f;
-        IsPaused = true;
+        if (OnContinue != null)
+        {
+            OnContinue();
+        }
     }
 
     private void BackMainMenuButton() //если нажата кнопка назад в меню то пауза выключается  и идём в меню 
     {
         if (OnBackMainMenu != null)
         {
-            Unpause();
+            //Unpause();
             OnBackMainMenu();
         }
     }
 
-    public void PauseCheck() //включает паузу
+    public void SetPauseMenuActive(bool state)
     {
-        if (IsPaused) //если выключает паузу то IsPaused = false
-        {
-            Unpause(); //и пауза выклюяается
-        }
-        else
-        {
-            Pause(); //включчается пауза
-        }
-
-        PauseMenuUI.SetActive(IsPaused); //или включена или нет
+        PauseMenuUI.SetActive(state);
     }
+
+    //public void PauseCheck() //включает паузу
+    //{
+    //    if (IsPaused) //если выключает паузу то IsPaused = false
+    //    {
+    //        Unpause(); //и пауза выклюяается
+    //    }
+    //    else
+    //    {
+    //        Pause(); //включчается пауза
+    //    }
+
+    //    PauseMenuUI.SetActive(IsPaused); //или включена или нет
+    //}
 
     //кнопки для оружия
     private void ChooseOne()
