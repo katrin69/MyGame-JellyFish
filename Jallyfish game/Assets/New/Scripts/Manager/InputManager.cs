@@ -75,7 +75,6 @@ public class InputManager : MonoBehaviour
             }
         }
 
-
         //пауза
         if (Input.GetKeyDown(KeyCode.Escape))
         {

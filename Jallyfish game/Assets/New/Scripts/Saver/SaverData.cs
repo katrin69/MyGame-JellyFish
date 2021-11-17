@@ -8,5 +8,6 @@ public class SaverData
 
     public int PlayerLevel;
     public float PlayerHP;
+    public float PlayerArmor;
     public float[] PlayerPosition;
 }

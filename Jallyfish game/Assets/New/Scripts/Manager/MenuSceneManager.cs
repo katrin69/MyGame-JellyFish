@@ -34,8 +34,8 @@ public class MenuSceneManager : MonoBehaviour
 
     private void Start()
     {
-        bool isContinueButtonActive = SaverManager.IsSaveDataExists();
-        MainMenuUIManager.SetContinueButtonStatus(isContinueButtonActive);
+        bool isContinueButtonActive = SaverManager.IsSaveDataExists(); //имеет ли игра сохранение
+        MainMenuUIManager.SetContinueButtonStatus(isContinueButtonActive); //кнопка континуе активная или нет
     }
 
     private void MainMenuUIManager_OnStartButtonClicked()

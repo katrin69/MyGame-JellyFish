@@ -12,7 +12,7 @@ public class PlayerHealthScript : MonoBehaviour
     public event Action PlayerDead;
 
     //щит
-    float curArmor; //текущий щит
+    public float curArmor { get; private set; } //текущий щит
     float maxArmor = 4; //максимальный щит
 
     //здоровье
@@ -26,8 +26,6 @@ public class PlayerHealthScript : MonoBehaviour
     {
         curArmor = maxArmor;
         CurrentHP = maxHp;
-       // animator = GetComponent<Animator>();
-       // Debug.Log(animator);
     }
 
     public void SetNewHealth(float value)
@@ -36,6 +34,11 @@ public class PlayerHealthScript : MonoBehaviour
         ChangeHealth?.Invoke(CurrentHP / maxHp);
     }
 
+    public void SetNewArmor(float value)
+    {
+        curArmor = value;
+        ChangeArmor?.Invoke(curArmor / maxArmor);
+    }
     public void RecountArmorp(float deltaArmor) //отнимает щит
     {
         // curArmor = 4;

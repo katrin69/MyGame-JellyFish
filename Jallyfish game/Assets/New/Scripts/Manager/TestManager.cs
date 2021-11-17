@@ -81,8 +81,10 @@ public class TestManager : MonoBehaviour
         GameUIManager.choosWeaponFour += InputManager_choosWeaponFour;
         GameUIManager.OnBackMainMenu += GameUIManager_OnBackMainMenu;
         GameUIManager.OnContinue += GameUIManager_OnContinue;
-        GameUIManager.OnSaveGame += OnSaveGame;
         canvasObject.SetActive(true);
+
+        //сохранение
+        GameUIManager.OnSaveGame += OnSaveGame;
 
         //пауза
         InputManager.chooseEcsButton += InputManager_bottonEsc;

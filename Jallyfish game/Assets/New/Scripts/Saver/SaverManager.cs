@@ -8,7 +8,7 @@ using System.IO;
 public class SaverManager : MonoBehaviour
 {
     private string SavingPath;
-    private string FileName = "GameSave.json";
+    private string FileName = "GameSave.json"; //название файла с сохранением
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class SaverManager : MonoBehaviour
         SavingPath = Application.dataPath + "/" + FileName;
     }
 
-    public void Save(SaverData saverData)
+    public void Save(SaverData saverData) //метод сохранения
     {
         string data = JsonConvert.SerializeObject(saverData);
 
@@ -27,12 +27,12 @@ public class SaverManager : MonoBehaviour
         File.WriteAllText(SavingPath, data);
     }
 
-    public bool IsSaveDataExists()
+    public bool IsSaveDataExists() //сохранение существующих данных
     {
         return File.Exists(SavingPath);
     }
 
-    public SaverData Load()
+    public SaverData Load() //з-агрузка
     {
         string data = File.ReadAllText(SavingPath);
         return JsonConvert.DeserializeObject<SaverData>(data);
