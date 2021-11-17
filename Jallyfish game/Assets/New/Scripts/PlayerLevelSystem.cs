@@ -24,11 +24,19 @@ public class PlayerLevelSystem : MonoBehaviour
         requiredXp = CalculateRequireXp();
         ChangeLevel?.Invoke(CurrentLevel); //отображает в бар
     }
-
+    //сохранение
     public void SetNewLevel(int level)
     {
         CurrentLevel = level;
         ChangeLevel?.Invoke(CurrentLevel);
+    }
+    public void SetNewXp(float level)
+    {
+        currentXp = level;
+    }
+    public void SetNewRequiredXp(float level)
+    {
+        requiredXp = level;
     }
 
     public void GainExperienceFlatRate(float xpGained)//набирание опыта  принимает число которое прибавляется к текущему опыту

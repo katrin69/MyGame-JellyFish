@@ -47,6 +47,9 @@ public class UnitManager : MonoBehaviour
     public void FillSaverData(SaverData saverData)
     {
         saverData.PlayerLevel = PlayerLevelSystem.CurrentLevel;
+        saverData.PlayerXp = PlayerLevelSystem.currentXp;
+        saverData.PlayerRequiredXp = PlayerLevelSystem.requiredXp;
+
         saverData.PlayerHP = PlayerHealthScript.CurrentHP;
         saverData.PlayerArmor = PlayerHealthScript.curArmor;
         saverData.PlayerPosition = new float[] { transform.position.x, transform.position.y, transform.position.z };
@@ -55,6 +58,9 @@ public class UnitManager : MonoBehaviour
     public void ApplySaverData(SaverData saverData)
     {
         PlayerLevelSystem.SetNewLevel(saverData.PlayerLevel);
+        PlayerLevelSystem.SetNewXp(saverData.PlayerXp);
+        PlayerLevelSystem.SetNewRequiredXp(saverData.PlayerRequiredXp);
+
         PlayerHealthScript.SetNewHealth(saverData.PlayerHP);
         PlayerHealthScript.SetNewArmor(saverData.PlayerArmor);
         transform.position = new Vector3(saverData.PlayerPosition[0], saverData.PlayerPosition[1], saverData.PlayerPosition[2]);
