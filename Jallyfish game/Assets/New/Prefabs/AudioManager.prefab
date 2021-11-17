@@ -116,3 +116,9 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: SoundLevelUp
+    loop: 0
+    clip: {fileID: 8300000, guid: 484636aacec3a714bbb3ec2091211ac4, type: 3}
+    volume: 0.5
+    pitch: 0.8
+    source: {fileID: 0}

@@ -271,6 +271,7 @@ public class TestManager : MonoBehaviour
     //изменение уровня
     private void UnitManager_ChangeLevel(float level) //Лэвл
     {
+        AudioManager.Play("SoundLevelUp");
         GameUIManager.ChangeLevel(level);
     }
     private void UnitManager_WeaponColldownChanged(EWeapon weapon, float cooldownPercent)
