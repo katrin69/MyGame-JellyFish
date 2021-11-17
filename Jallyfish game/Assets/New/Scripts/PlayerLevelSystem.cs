@@ -8,8 +8,11 @@ public class PlayerLevelSystem : MonoBehaviour
     public event Action<float> ChangeLevel;
 
     public int CurrentLevel { get; private set; } = 1; //уровень
-    public float currentXp; //текущий опыт
-    public float requiredXp; //необходимый опыт
+    public float currentXp { get; private set; } //текущий опыт
+    public float requiredXp { get; private set; } //необходимый опыт
+
+    [SerializeField] ParticleSystem _LevelUp;
+
 
     [Header("Multipliers")]
     [Range(1f, 300f)]
@@ -51,6 +54,7 @@ public class PlayerLevelSystem : MonoBehaviour
 
     public void LevelUp() //метод повышает опыт
     {
+        _LevelUp.Play();
         CurrentLevel++;
         currentXp = Mathf.RoundToInt(currentXp - requiredXp); //WTF
         GetComponent<PlayerHealthScript>().IncreaseHealth(CurrentLevel);

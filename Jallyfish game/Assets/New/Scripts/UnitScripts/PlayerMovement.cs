@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform JellyfishModel;
     [SerializeField] ParticleSystem _fastSpeed;
 
+
     //ходьба
     private float moveSpeed = 15f;
     private float realSpeed;
