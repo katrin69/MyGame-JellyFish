@@ -47,6 +47,8 @@ MonoBehaviour:
   SharkPrefab: {fileID: 5302641808997960721, guid: d71bb5a2a94401e41a9cd931c03c8005, type: 3}
   LittleSharkPrefub: {fileID: 5302641808997960721, guid: 1e11962517c2566499be015f5c782ade, type: 3}
   TerroristSharkPrefab: {fileID: 5302641808997960721, guid: 6024bb4c593c0334298bad213aedbaf0, type: 3}
+  BossShark: {fileID: 5302641808997960721, guid: e6b382a17de3d9f468300c01af8479de, type: 3}
+  WeapomForBoss: {fileID: 5302641808997960721, guid: 7536a61ac1bb5d546a1a308d53f088d5, type: 3}
   BulletLight: {fileID: 5216332769896663073, guid: 8679a4b42046aaf4e8c4f495c06834f1, type: 3}
   BulletJelly: {fileID: 1853665350429367744, guid: 4a79c89f16e72c444a84b5fabcdd5e35, type: 3}
   JellyHoming: {fileID: 2454933172228073496, guid: cc734a71baef5824888e85d18e3d4425, type: 3}

@@ -9,9 +9,11 @@ public class SaverData
     public int PlayerLevel;
     public float PlayerXp;
     public float PlayerRequiredXp;
-
-
     public float PlayerHP;
     public float PlayerArmor;
     public float[] PlayerPosition;
+
+    public List<float[]> EnamyPosition;
+    public List<float> EnamyHealth;
+    public List<int> EnamyType;
 }

@@ -12,12 +12,19 @@ public class BossHealthScript : MonoBehaviour
     public float enemyHealthMax = 20f;
     public float ExperienceToGain = 20f; //опыт
 
+    protected AudioManager AudioManager;
+
     void Start()
     {
         //задаём жизнь врага
         enemyHealth = enemyHealthMax;
 
         HealthPercentageChanged?.Invoke(this, 1);
+    }
+
+    public void SetAudioManager(AudioManager audioManager)
+    {
+        AudioManager = audioManager;
     }
 
     public void DeductHealth(float deductHealth, PlayerLevelSystem killrLevelSystem) //передаём урон и систему лэвлов

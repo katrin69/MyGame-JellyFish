@@ -232,6 +232,7 @@ public class TestManager : MonoBehaviour
             SaverData saverData = SaverManager.Load();
 
             UnitManager.ApplySaverData(saverData);
+            EnemyInstantiationManager.ApplySaverData(saverData);
         }
     }
     //сохранение
@@ -243,7 +244,7 @@ public class TestManager : MonoBehaviour
 
         if (EnemyInstantiationManager != null)
         {
-            //EnemyInstantiationManager.FillSaverData(saverData);
+            EnemyInstantiationManager.FillSaverData(saverData);
         }
 
         SaverManager.Save(saverData);

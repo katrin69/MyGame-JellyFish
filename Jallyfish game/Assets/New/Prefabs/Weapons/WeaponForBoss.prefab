@@ -972,13 +972,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4818029226429322923}
   - component: {fileID: 4996653010830157280}
-  - component: {fileID: 8494729062132572549}
+  - component: {fileID: 5244436203549389610}
+  - component: {fileID: 3344606468645505290}
   - component: {fileID: 3841073790113108135}
-  - component: {fileID: -1000608348256836726}
-  - component: {fileID: -2912425397993134213}
-  - component: {fileID: -5237585219839479353}
+  - component: {fileID: 1208730044760486676}
   m_Layer: 9
-  m_Name: EnemyBoss
+  m_Name: WeaponForBoss
   m_TagString: Shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -992,8 +991,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5302641808997960721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 471.28036, y: 706.92053, z: 400.58832}
+  m_LocalPosition: {x: 0, y: -4.9, z: 0}
+  m_LocalScale: {x: 30.9019, y: 46.35285, z: 26.266619}
   m_Children:
   - {fileID: 4342368352037505314}
   - {fileID: 7762162680006625072}
@@ -1019,7 +1018,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &8494729062132572549
+--- !u!64 &5244436203549389610
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302641808997960721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3640009273208903192, guid: d31a15e4aa626c949b4051163d253f37, type: 3}
+--- !u!136 &3344606468645505290
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1049,7 +1062,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-1000608348256836726
+--- !u!114 &1208730044760486676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1058,45 +1071,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5302641808997960721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50065ead6833af94b952f24a1ea3204b, type: 3}
+  m_Script: {fileID: 11500000, guid: dafa795746dd69e489edbd9b28dfc2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  howClose: 0
---- !u!114 &-2912425397993134213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302641808997960721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc5510c710776d44a303a5a1fc8e046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  speed: 2
-  moveSpots:
-  - {fileID: 2236207243068464805, guid: 2ae1de27d7f4fd94db817d7516f18391, type: 3}
-  - {fileID: 6868364328144478888, guid: c33a7aebc8bb0d14fb9d09134810ab2b, type: 3}
-  - {fileID: 5561247188421416353, guid: 187ba70b7df48554e927687303654286, type: 3}
-  - {fileID: 1355109994603892422, guid: 307757cd19267584e8f668b3f31423f2, type: 3}
---- !u!114 &-5237585219839479353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302641808997960721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c838baec31eb76948979e1f2d7fa26f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 0
-  enemyHealthMax: 8
-  ExperienceToGain: 20
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1515,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c43b5adf492edd4993573bc18694cf1, type: 2}
+  - {fileID: 2100000, guid: 8b7c7053ac013794fa68b75ffa953639, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

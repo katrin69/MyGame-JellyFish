@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +19,26 @@ public class EnemyInstantiationManager : MonoBehaviour
         TerrainMask = LayerMask.GetMask("Terrain");
     }
 
+    private void Update()
+    {
+        foreach (var keyValue in CurrentEnemies)
+        {
+            keyValue.Value.transform.position = CameraManager.WorldToCanvasPosition(keyValue.Key.transform.position);
+        }
+    }
+
+
+    //сохранение
+    public void FillSaverData(SaverData saverData)
+    {
+
+    }
+    //загрузка
+    public void ApplySaverData(SaverData saverData)
+    {
+
+    }
+
     public void Init(ResourceManager resourceManager, AudioManager audioManager, CameraManager cameraManager)
     {
         ResourceManager = resourceManager;
@@ -27,14 +47,6 @@ public class EnemyInstantiationManager : MonoBehaviour
 
         EnemyHealthUIGameObject = ResourceManager.GetObjectInstance(EObjectType.EnemyHealthUI);
         EnemyHealthUIGameObject.SetActive(true);
-    }
-
-    private void Update()
-    {
-        foreach (var keyValue in CurrentEnemies)
-        {
-            keyValue.Value.transform.position = CameraManager.WorldToCanvasPosition(keyValue.Key.transform.position);
-        }
     }
 
     public void InstantiateEnemies(List<EnemySpawner> enemySpawners)
@@ -62,7 +74,7 @@ public class EnemyInstantiationManager : MonoBehaviour
             for (int i = 0; i < spawner.enemyCountBoss; i++)
             {
                 Vector3 spawningPoint = spawner.GetSpawningPoint();
-                //InstantiateEnemies(EObjectType.FirstBoss, spawningPoint);
+                InstantiateEnemies(EObjectType.FirstBoss, spawningPoint, AudioManager);
             }
         }
 
@@ -72,7 +84,7 @@ public class EnemyInstantiationManager : MonoBehaviour
         {
             EnemyMovement enemyMovement = script.gameObject.GetComponent<EnemyMovement>();
             Vector3 patrollinPoint = enemies[Random.Range(0, enemies.Count)].gameObject.transform.position;
-            enemyMovement.SetPatrollingPoint(patrollinPoint);
+            enemyMovement. SetPatrollingPoint(patrollinPoint);
            // Points.Add(script.gameObject.transform.position, patrollinPoint);
         }
     }
@@ -128,20 +140,4 @@ public class EnemyInstantiationManager : MonoBehaviour
         }
     }
 
-   // private Dictionary<Vector3, Vector3> Points = new Dictionary<Vector3, Vector3>();
-
-    //private void OnDrawGizmos()
-    //{
-    //    foreach (var p in Points)
-    //    {
-    //        Gizmos.color = Color.yellow;
-
-    //        Gizmos.DrawSphere(p.Key, 0.5f);
-    //        Gizmos.DrawSphere(p.Value, 0.5f);
-
-    //        Gizmos.color = Color.green;
-
-    //        Gizmos.DrawLine(p.Key, p.Value);
-    //    }
-    //}
 }

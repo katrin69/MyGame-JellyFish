@@ -13,9 +13,13 @@ public class ResourceManager : MonoBehaviour
     }
 
     public GameObject JellyfishPrefab; //создаёт обьект Медузы
+
     public GameObject SharkPrefab;//создаёт обьект акулы
     public GameObject LittleSharkPrefub;
     public GameObject TerroristSharkPrefab;
+    public GameObject BossShark;
+    public GameObject WeapomForBoss;
+
     public GameObject BulletLight;//создаёт обьект пули
     public GameObject BulletJelly;
     public GameObject JellyHoming;
@@ -92,6 +96,12 @@ public class ResourceManager : MonoBehaviour
                 break;
             case EObjectType.TerroristShark:
                 newPool = new ObjectPool(TerroristSharkPrefab);
+                break;
+            case EObjectType.FirstBoss:
+                newPool = new ObjectPool(BossShark);
+                break;
+            case EObjectType.WeaponForBoss:
+                newPool = new ObjectPool(WeapomForBoss);
                 break;
             case EObjectType.BulletLight:
                 newPool = new ObjectPool(BulletLight);

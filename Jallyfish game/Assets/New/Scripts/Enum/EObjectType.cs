@@ -4,6 +4,9 @@ public enum EObjectType
     Shark,
     LittleShark,
     TerroristShark,
+    FirstBoss,
+    WeaponForBoss,
+
     BulletLight,
     BulletJelly,
     JellyHoming,

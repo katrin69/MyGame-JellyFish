@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackScript : MonoBehaviour
+public class BossAttackScript : EnemyAttackScript
 {
-    // public Transform player;
-    public float moveSpeed = 10f; // скорость врага
-    private Rigidbody rb;
-
     private float dis;
     public float howClose;
-    private Transform player;
 
+    private Transform player;
     Transform target; //цель Медуза
+
     //поиск Медузы
     private float SearchTimer = 0;
     private float SearchStep = 1;
 
+    protected AudioManager AudioManager;
+    private ResourceManager ResourceManager;
+
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -27,9 +26,7 @@ public class BossAttackScript : MonoBehaviour
     {
         if (target != null) //если цель не пуста то идём на цель
         {
-            Vector3 targetdirection = target.position - transform.position; //расстояние до цели
             transform.LookAt(target);
-            rb.velocity = targetdirection.normalized * moveSpeed;
         }
         else
         {
@@ -44,15 +41,20 @@ public class BossAttackScript : MonoBehaviour
 
     }
 
+    public void SetAudioManager(AudioManager audioManager)
+    {
+        AudioManager = audioManager;
+    }
+
     public void FoundJellyfish()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f); //массив колайдеров вокруг
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f); //массив колайдеров вокруг
 
         Collider nearest = null; //рядом пока пусто с самого начала
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть Акула
+            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть медуза
             {
                 if (nearest == null) //если не очень близко то пофиг
                 {
@@ -60,10 +62,8 @@ public class BossAttackScript : MonoBehaviour
                 }
                 else
                 {
-                    if ((collider.transform.position - transform.position).magnitude < (nearest.transform.position - transform.position).magnitude) //если близко то ударить
-                    {
-                        nearest = collider;
-                    }
+                    //выпстить пулю
+                    ShootWeaponForBoss();
                 }
             }
         }
@@ -74,13 +74,20 @@ public class BossAttackScript : MonoBehaviour
         }
     }
 
-    //если сталкиваемся с медузой
-    private void OnCollisionEnter(Collision collision)
+
+    //стреляем пулей
+    private void ShootWeaponForBoss()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        GameObject bullet = ResourceManager.GetObjectInstance(EObjectType.WeaponForBoss); //берём пулю из пула
+
+        if (bullet != null) //если пуля не пуста
         {
-            //отнимаем жизнь у медузы
-            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-2);
+
+            WeaponForBoss weaponForBoss = bullet.GetComponent<WeaponForBoss>(); //то берём скрипт пули
+
+            bullet.transform.position = target.position;
+            bullet.transform.rotation = target.rotation;
+            bullet.SetActive(true);
         }
     }
 }

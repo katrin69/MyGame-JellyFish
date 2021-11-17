@@ -9,4 +9,5 @@ public enum EWeapon
     BulletJelly,
     JellyHoming,
     Fart,
+    WeaponForBoss,
 }
