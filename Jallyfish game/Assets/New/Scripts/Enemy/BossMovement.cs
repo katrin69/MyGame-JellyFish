@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossMovement : EnemyMovement
 {
-    private float speed = 0.4f; // скорость врага
+    private float speed = 0.2f; // скорость врага
 
     private float waitTime;
     private float startWaitTime;

@@ -59,11 +59,12 @@ public class BossAttackScript : EnemyAttackScript
                 if (nearest == null) //если не очень близко то пофиг
                 {
                     nearest = collider;
+                    ShootWeaponForBoss();
+
                 }
                 else
                 {
-                    //выпстить пулю
-                    ShootWeaponForBoss();
+                    //что то делать
                 }
             }
         }
