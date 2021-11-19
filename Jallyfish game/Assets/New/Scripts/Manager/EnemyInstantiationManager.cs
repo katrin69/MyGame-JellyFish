@@ -31,7 +31,11 @@ public class EnemyInstantiationManager : MonoBehaviour
     //сохранение
     public void FillSaverData(SaverData saverData)
     {
-
+        foreach (KeyValuePair<EnemyHealthScript, EnamyHealthBar> keyValue in CurrentEnemies)
+        {
+            
+            
+        }
     }
     //загрузка
     public void ApplySaverData(SaverData saverData)
