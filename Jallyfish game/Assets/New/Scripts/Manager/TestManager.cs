@@ -271,7 +271,7 @@ public class TestManager : MonoBehaviour
     //изменение уровня
     private void UnitManager_ChangeLevel(float level) //Лэвл
     {
-        if (level >1)
+        if (level > 1)
         {
             AudioManager.Play("SoundLevelUp");
 

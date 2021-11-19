@@ -31,10 +31,11 @@ public class EnemyInstantiationManager : MonoBehaviour
     //сохранение
     public void FillSaverData(SaverData saverData)
     {
-        foreach (KeyValuePair<EnemyHealthScript, EnamyHealthBar> keyValue in CurrentEnemies)
+        saverData.EnamyHealth = new List<float>();
+
+        foreach (EnemyHealthScript script in CurrentEnemies.Keys)
         {
-            
-            
+            saverData.EnamyHealth.Add(script.enemyHealth);
         }
     }
     //загрузка
