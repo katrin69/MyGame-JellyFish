@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,16 +33,30 @@ public class EnemyInstantiationManager : MonoBehaviour
     public void FillSaverData(SaverData saverData)
     {
         saverData.EnamyHealth = new List<float>();
+        saverData.EnamyType = new List<ESharkType>();
+        saverData.EnamyPosition = new List< float[] > ();
 
         foreach (EnemyHealthScript script in CurrentEnemies.Keys)
         {
             saverData.EnamyHealth.Add(script.enemyHealth);
+            saverData.EnamyType.Add(script.sharkType);
+            saverData.EnamyPosition.Add( new float[] { script.transform.position.x, script.transform.position.y, script.transform.position.z});
+
         }
     }
     //загрузка
     public void ApplySaverData(SaverData saverData)
     {
 
+    }
+
+    public void InstantiateEnemies(SaverData saverData)
+    {
+        for (int i = 0; i < saverData.EnamyType.Count; i++)
+        {
+            Vector3 positionShark = new Vector3(saverData.EnamyPosition[i][0], saverData.EnamyPosition[i][1], saverData.EnamyPosition[i][2]);
+            InstantiateEnemies(saverData.EnamyType[i], positionShark,AudioManager);
+        }
     }
 
     public void Init(ResourceManager resourceManager, AudioManager audioManager, CameraManager cameraManager)
@@ -61,25 +76,25 @@ public class EnemyInstantiationManager : MonoBehaviour
             for (int i = 0; i < spawner.enemyCount; i++)
             {
                 Vector3 spawningPoint = spawner.GetSpawningPoint();
-                InstantiateEnemies(EObjectType.Shark, spawningPoint, AudioManager);
+                InstantiateEnemies(ESharkType.Shark, spawningPoint, AudioManager);
             }
 
             for (int i = 0; i < spawner.enemyCountLittle; i++)
             {
                 Vector3 spawningPoint = spawner.GetSpawningPoint();
-                InstantiateEnemies(EObjectType.LittleShark, spawningPoint, AudioManager);
+                InstantiateEnemies(ESharkType.LittleShark, spawningPoint, AudioManager);
             }
 
             for (int i = 0; i < spawner.enemyCountTerrorist; i++)
             {
                 Vector3 spawningPoint = spawner.GetSpawningPoint();
-                InstantiateEnemies(EObjectType.TerroristShark, spawningPoint, AudioManager);
+                InstantiateEnemies(ESharkType.TerroristShark, spawningPoint, AudioManager);
             }
 
             for (int i = 0; i < spawner.enemyCountBoss; i++)
             {
                 Vector3 spawningPoint = spawner.GetSpawningPoint();
-                InstantiateEnemies(EObjectType.FirstBoss, spawningPoint, AudioManager);
+                InstantiateEnemies(ESharkType.FirstBoss, spawningPoint, AudioManager);
             }
         }
 
@@ -88,13 +103,13 @@ public class EnemyInstantiationManager : MonoBehaviour
         foreach (EnemyHealthScript script in enemies)
         {
             EnemyMovement enemyMovement = script.gameObject.GetComponent<EnemyMovement>();
-            Vector3 patrollinPoint = enemies[Random.Range(0, enemies.Count)].gameObject.transform.position;
-            enemyMovement. SetPatrollingPoint(patrollinPoint);
-           // Points.Add(script.gameObject.transform.position, patrollinPoint);
+            Vector3 patrollinPoint = enemies[UnityEngine.Random.Range(0, enemies.Count)].gameObject.transform.position;
+            enemyMovement.SetPatrollingPoint(patrollinPoint);
+            // Points.Add(script.gameObject.transform.position, patrollinPoint);
         }
     }
 
-    private void InstantiateEnemies(EObjectType enemyType, Vector3 spawnPosition, AudioManager audioManager)
+    private void InstantiateEnemies(ESharkType enemyType, Vector3 spawnPosition, AudioManager audioManager)
     {
         Vector3 pos = new Vector3(spawnPosition.x, 500, spawnPosition.z);
         Ray ray = new Ray(pos, Vector3.down);
@@ -104,7 +119,10 @@ public class EnemyInstantiationManager : MonoBehaviour
             pos = hitInfo.point;
             pos.y += 5f;
 
-            GameObject newShark = ResourceManager.GetObjectInstance(enemyType);
+            EObjectType objectType = ConvertEnum_SharkToObject(enemyType);
+
+            GameObject newShark = ResourceManager.GetObjectInstance(objectType);
+
             newShark.name = enemyType.ToString();
             newShark.transform.position = pos;
             newShark.SetActive(true);
@@ -142,6 +160,24 @@ public class EnemyInstantiationManager : MonoBehaviour
             {
                 CurrentEnemies[healthScript].SetValue(healthPercents);
             }
+        }
+
+    }
+
+    private EObjectType ConvertEnum_SharkToObject(ESharkType sharkType)
+    {
+        switch (sharkType)
+        {
+            case ESharkType.Shark:
+                return EObjectType.Shark;
+            case ESharkType.LittleShark:
+                return EObjectType.LittleShark;
+            case ESharkType.TerroristShark:
+                return EObjectType.TerroristShark;
+            case ESharkType.FirstBoss:
+                return EObjectType.FirstBoss;
+            default:
+                throw new ArgumentOutOfRangeException("UNKNOWN OBJECT TYPE FOR RESOURCE MANAGER");
         }
     }
 

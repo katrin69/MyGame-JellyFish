@@ -1061,7 +1061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50065ead6833af94b952f24a1ea3204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  EnemyMovementScript: {fileID: 0}
+  Damage: 2
   howClose: 0
 --- !u!114 &-2912425397993134213
 MonoBehaviour:
@@ -1076,7 +1077,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  speed: 2
   moveSpots:
   - {fileID: 2236207243068464805, guid: 2ae1de27d7f4fd94db817d7516f18391, type: 3}
   - {fileID: 6868364328144478888, guid: c33a7aebc8bb0d14fb9d09134810ab2b, type: 3}
@@ -1097,6 +1097,7 @@ MonoBehaviour:
   enemyHealth: 0
   enemyHealthMax: 8
   ExperienceToGain: 20
+  sharkType: 3
 --- !u!1 &5710466585984017271
 GameObject:
   m_ObjectHideFlags: 0

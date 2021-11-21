@@ -16,6 +16,8 @@ public class EnemyHealthScript : MonoBehaviour
 
     protected AudioManager AudioManager;
 
+    public ESharkType sharkType;
+
     void Start()
     {
         //задаём жизнь врага
@@ -23,6 +25,11 @@ public class EnemyHealthScript : MonoBehaviour
         HealthPercentageChanged?.Invoke(this, 1);
 
         animator = GetComponent<Animator>(); //ищем на акуле
+    }
+
+    public void SetNewEnamyHealth(float value)
+    {
+        enemyHealth = value;
     }
 
     public void SetAudioManager(AudioManager audioManager)

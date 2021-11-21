@@ -15,5 +15,5 @@ public class SaverData
 
     public List<float[]> EnamyPosition;
     public List<float> EnamyHealth;
-    public List<int> EnamyType;
+    public List<ESharkType> EnamyType;
 }
