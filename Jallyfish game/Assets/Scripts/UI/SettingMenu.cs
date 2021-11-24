@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SettingMenu : MonoBehaviour
 {
     //меню настроек
-    public AudioMixer audioMixer;
+    //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
 
     Resolution[] resolutions;//разрешение масив
@@ -48,7 +48,7 @@ public class SettingMenu : MonoBehaviour
     //Громкость
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+   //     audioMixer.SetFloat("volume", volume);
     }
 
     //Качество
