@@ -227,11 +227,13 @@ public class TestManager : MonoBehaviour
     //загрузка
     private void OnLoadGame()
     {
+        
         if (SaverManager.IsSaveDataExists())
         {
             SaverData saverData = SaverManager.Load();
 
             UnitManager.ApplySaverData(saverData);
+            EnemyInstantiationManager.ClearEnemies();
             EnemyInstantiationManager.ApplySaverData(saverData);
         }
     }

@@ -34,20 +34,36 @@ public class EnemyInstantiationManager : MonoBehaviour
     {
         saverData.EnamyHealth = new List<float>();
         saverData.EnamyType = new List<ESharkType>();
-        saverData.EnamyPosition = new List< float[] > ();
+        saverData.EnamyPosition = new List<float[]>();
 
         foreach (EnemyHealthScript script in CurrentEnemies.Keys)
         {
             saverData.EnamyHealth.Add(script.enemyHealth);
             saverData.EnamyType.Add(script.sharkType);
-            saverData.EnamyPosition.Add( new float[] { script.transform.position.x, script.transform.position.y, script.transform.position.z});
+            saverData.EnamyPosition.Add(new float[] { script.transform.position.x, script.transform.position.y, script.transform.position.z });
 
         }
     }
     //загрузка
     public void ApplySaverData(SaverData saverData)
     {
+        ClearEnemies();
 
+        InstantiateEnemies(saverData);
+
+    }
+
+    //очищение от акул
+    public void ClearEnemies()
+    {
+        foreach (var healthScript in CurrentEnemies.Keys)
+        {
+            ResourceManager.ReturnToPool(CurrentEnemies[healthScript].gameObject);
+            ResourceManager.ReturnToPool(healthScript.gameObject);
+
+            healthScript.HealthPercentageChanged -= EnemyHealthScript_HealthPercentageChanged;
+        }
+        CurrentEnemies.Clear();
     }
 
     public void InstantiateEnemies(SaverData saverData)
@@ -55,7 +71,9 @@ public class EnemyInstantiationManager : MonoBehaviour
         for (int i = 0; i < saverData.EnamyType.Count; i++)
         {
             Vector3 positionShark = new Vector3(saverData.EnamyPosition[i][0], saverData.EnamyPosition[i][1], saverData.EnamyPosition[i][2]);
-            InstantiateEnemies(saverData.EnamyType[i], positionShark,AudioManager);
+            EnemyHealthScript enemyHealthScript = InstantiateEnemies(saverData.EnamyType[i], positionShark, AudioManager);
+
+            enemyHealthScript.SetNewEnamyHealth(saverData.EnamyHealth[i]);
         }
     }
 
@@ -109,39 +127,43 @@ public class EnemyInstantiationManager : MonoBehaviour
         }
     }
 
-    private void InstantiateEnemies(ESharkType enemyType, Vector3 spawnPosition, AudioManager audioManager)
+    private EnemyHealthScript InstantiateEnemies(ESharkType enemyType, Vector3 spawnPosition, AudioManager audioManager)
     {
         Vector3 pos = new Vector3(spawnPosition.x, 500, spawnPosition.z);
         Ray ray = new Ray(pos, Vector3.down);
+
+        EnemyHealthScript enemyHealthScript;
 
         if (Physics.Raycast(ray, out var hitInfo, 1000, TerrainMask))
         {
             pos = hitInfo.point;
             pos.y += 5f;
 
-            EObjectType objectType = ConvertEnum_SharkToObject(enemyType);
-
-            GameObject newShark = ResourceManager.GetObjectInstance(objectType);
-
-            newShark.name = enemyType.ToString();
-            newShark.transform.position = pos;
-            newShark.SetActive(true);
-
-            EnemyHealthScript enemyHealthScript = newShark.GetComponent<EnemyHealthScript>();
-            enemyHealthScript.HealthPercentageChanged += EnemyHealthScript_HealthPercentageChanged;
-            enemyHealthScript.SetAudioManager(audioManager);
-
-            EnemyAttackScript enemyAttackScript = newShark.GetComponent<EnemyAttackScript>();
-            enemyAttackScript.SetAudioManager(audioManager);
-
-            GameObject enemyHealthBar = ResourceManager.GetObjectInstance(EObjectType.EnemyHealthBarUI);
-            enemyHealthBar.transform.SetParent(EnemyHealthUIGameObject.transform);
-            enemyHealthBar.SetActive(true);
-
-            EnamyHealthBar enamyHealthBar = enemyHealthBar.GetComponent<EnamyHealthBar>();
-
-            CurrentEnemies.Add(enemyHealthScript, enamyHealthBar);
         }
+        EObjectType objectType = ConvertEnum_SharkToObject(enemyType);
+
+        GameObject newShark = ResourceManager.GetObjectInstance(objectType);
+
+        newShark.name = enemyType.ToString();
+        newShark.transform.position = pos;
+        newShark.SetActive(true);
+
+        enemyHealthScript = newShark.GetComponent<EnemyHealthScript>();
+        enemyHealthScript.HealthPercentageChanged += EnemyHealthScript_HealthPercentageChanged;
+        enemyHealthScript.SetAudioManager(audioManager);
+
+        EnemyAttackScript enemyAttackScript = newShark.GetComponent<EnemyAttackScript>();
+        enemyAttackScript.SetAudioManager(audioManager);
+
+        GameObject enemyHealthBar = ResourceManager.GetObjectInstance(EObjectType.EnemyHealthBarUI);
+        enemyHealthBar.transform.SetParent(EnemyHealthUIGameObject.transform);
+        enemyHealthBar.SetActive(true);
+
+        EnamyHealthBar enamyHealthBar = enemyHealthBar.GetComponent<EnamyHealthBar>();
+
+        CurrentEnemies.Add(enemyHealthScript, enamyHealthBar);
+
+        return enemyHealthScript;
     }
 
     private void EnemyHealthScript_HealthPercentageChanged(EnemyHealthScript healthScript, float healthPercents)
