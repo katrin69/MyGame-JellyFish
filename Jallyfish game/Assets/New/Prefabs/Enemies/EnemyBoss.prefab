@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50065ead6833af94b952f24a1ea3204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyMovementScript: {fileID: 0}
+  EnemyMovementScript: {fileID: -2912425397993134213}
   Damage: 2
   howClose: 0
 --- !u!114 &-2912425397993134213
@@ -1078,10 +1078,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   moveSpots:
-  - {fileID: 2236207243068464805, guid: 2ae1de27d7f4fd94db817d7516f18391, type: 3}
-  - {fileID: 6868364328144478888, guid: c33a7aebc8bb0d14fb9d09134810ab2b, type: 3}
-  - {fileID: 5561247188421416353, guid: 187ba70b7df48554e927687303654286, type: 3}
-  - {fileID: 1355109994603892422, guid: 307757cd19267584e8f668b3f31423f2, type: 3}
+  - {fileID: 7630531457223347560, guid: 2ae1de27d7f4fd94db817d7516f18391, type: 3}
+  - {fileID: 2090920075037717331, guid: c33a7aebc8bb0d14fb9d09134810ab2b, type: 3}
+  - {fileID: 4508224623353519637, guid: 187ba70b7df48554e927687303654286, type: 3}
+  - {fileID: 5399223104503389804, guid: 307757cd19267584e8f668b3f31423f2, type: 3}
 --- !u!114 &-5237585219839479353
 MonoBehaviour:
   m_ObjectHideFlags: 0
