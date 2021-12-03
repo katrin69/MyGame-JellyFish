@@ -13,7 +13,7 @@ public class SceneLoadingManager : MonoBehaviour
     private void Awake()
     {
         Scenes.Add(EScene.MainMenu, "MainMenu"); //добавляем сцену из энама в словарь
-        Scenes.Add(EScene.Level1, "NewScene");
+        Scenes.Add(EScene.Level1, "Level 1");
         Scenes.Add(EScene.GameOver, "GameOver");
     }
 
