@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Size: {x: 35.695587, y: 44.895176, z: 102.52609}
   m_Center: {x: -12.629021, y: 21.947588, z: 49.263046}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &6187523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Size: {x: 80.60607, y: 44.895176, z: 45.516464}
   m_Center: {x: 9.826221, y: 21.947588, z: 77.76786}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &84837882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_Size: {x: 80.60607, y: 44.895176, z: 26.82785}
   m_Center: {x: 9.826221, y: 21.947588, z: 87.11217}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &190246873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_Size: {x: 87.86456, y: 44.895176, z: 39.31586}
   m_Center: {x: 95.83304, y: 21.947588, z: 2.396059}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &287779124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5070,7 +5070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556100100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 121.3, y: 31.2, z: 229.4}
+  m_LocalPosition: {x: 128.4, y: 31.2, z: 237.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 607443639}
@@ -5103,7 +5103,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 80.67, y: 1, z: 81.1}
+  m_Size: {x: 62, y: 1, z: 44.73}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &572093003
 PrefabInstance:
@@ -7148,7 +7148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845127362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 228.6, y: 31.2, z: 110.4}
+  m_LocalPosition: {x: 216.9, y: 31.2, z: 125.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 607443639}
@@ -7165,7 +7165,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 80.67, y: 1, z: 81.1}
+  m_Size: {x: 38, y: 1, z: 69.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &845127365
 MonoBehaviour:
@@ -11172,7 +11172,7 @@ MonoBehaviour:
   m_Size: {x: 80.60607, y: 44.895176, z: 26.82785}
   m_Center: {x: 9.826221, y: 21.947588, z: 87.11217}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1 &1282814768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 88ffc53aeb8277749bc2f4326d927d13, type: 3}
@@ -15116,7 +15116,7 @@ MonoBehaviour:
   m_Size: {x: 107.65285, y: 44.895176, z: 162.42249}
   m_Center: {x: 16.760368, y: 21.947588, z: 63.94937}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1751349920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15537,7 +15537,7 @@ MonoBehaviour:
   m_Size: {x: 35.695587, y: 44.895176, z: 45.787064}
   m_Center: {x: -12.629021, y: 21.947588, z: 20.893532}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1838062747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16906,7 +16906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -16920,7 +16920,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.76666665
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: e2d7e4a225bd66d4c8858cefbed6dc0c, type: 2}
 --- !u!4 &1979782897
@@ -17517,7 +17517,7 @@ MonoBehaviour:
   m_Size: {x: 70.08971, y: 44.895176, z: 126.03712}
   m_Center: {x: -2.021202, y: 21.947588, z: 58.900906}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1 &2103019752
 GameObject:
   m_ObjectHideFlags: 0
@@ -17564,7 +17564,7 @@ MonoBehaviour:
   m_Size: {x: 263.94962, y: 44.895176, z: 39.31586}
   m_Center: {x: 94.90877, y: 21.947588, z: 2.396059}
   m_Area: 1
-  m_AffectedAgents: f2652fae
+  m_AffectedAgents: ffffffff
 --- !u!1001 &2118448279
 PrefabInstance:
   m_ObjectHideFlags: 0
