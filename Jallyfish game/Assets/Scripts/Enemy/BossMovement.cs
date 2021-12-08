@@ -20,7 +20,9 @@ public class BossMovement : EnemyMovement
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, moveSpots[randomSpots].position, speed);
-        
+        transform.LookAt(moveSpots[randomSpots]);
+
+
         if (Vector3.Distance(transform.position,moveSpots[randomSpots].position) < 0.2f)
         {
             if (waitTime <= 0)
