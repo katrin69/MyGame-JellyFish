@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 10f; // скорость врага
-    public NavMeshAgent agent;
 
     protected Rigidbody rb;
 
@@ -28,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
     }
 
 

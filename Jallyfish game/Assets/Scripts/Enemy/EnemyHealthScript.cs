@@ -75,7 +75,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         AudioManager.Play("SoundEnemyDead");
         //animator.SetBool("Dead", true); //анимация смерти
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         gameObject.SetActive(false);
         ResourceManager.ReturnToPool(gameObject);
