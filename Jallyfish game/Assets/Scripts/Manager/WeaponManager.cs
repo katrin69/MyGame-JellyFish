@@ -55,15 +55,15 @@ public partial class WeaponManager : MonoBehaviour
 
     private Dictionary<EWeapon, float> WeaponsDefaultCooldown = new Dictionary<EWeapon, float>()
     {
-        //{ EWeapon.BulletLight, 1f },
-        //{ EWeapon.BulletJelly, 1f },
-        //{ EWeapon.JellyHoming, 2f },
-        //{ EWeapon.Fart, 3f },
+        { EWeapon.BulletLight, 0.5f },
+        { EWeapon.BulletJelly, 1f },
+        { EWeapon.JellyHoming, 1.5f },
+        { EWeapon.Fart, 2f },
 
-        { EWeapon.BulletLight, 0f },
-        { EWeapon.BulletJelly, 0f },
-        { EWeapon.JellyHoming, 0f },
-        { EWeapon.Fart, 0f }
+        //{ EWeapon.BulletLight, 0f },
+        //{ EWeapon.BulletJelly, 0f },
+        //{ EWeapon.JellyHoming, 0f },
+        //{ EWeapon.Fart, 0f }
     };
 
     private void Awake()
