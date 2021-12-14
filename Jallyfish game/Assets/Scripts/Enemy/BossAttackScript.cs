@@ -14,19 +14,24 @@ public class BossAttackScript : EnemyAttackScript
     private float SearchTimer = 0;
     private float SearchStep = 1;
 
+    private EnemyInstantiationManager EnemyInstantiationManager;
     protected AudioManager AudioManager;
     private ResourceManager ResourceManager;
+    private CameraManager CameraManager;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        EnemyInstantiationManager.Init(ResourceManager, AudioManager, CameraManager);
     }
 
     private void Update()
     {
         if (target != null) //если цель не пуста то идём на цель
         {
-            transform.LookAt(target);
+            transform.LookAt(player);
+
         }
         else
         {
@@ -41,11 +46,6 @@ public class BossAttackScript : EnemyAttackScript
 
     }
 
-    public void SetAudioManager(AudioManager audioManager)
-    {
-        AudioManager = audioManager;
-    }
-
     public void FoundJellyfish()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 50f); //массив колайдеров вокруг
@@ -58,6 +58,8 @@ public class BossAttackScript : EnemyAttackScript
             {
                 if (nearest == null) //если не очень близко то пофиг
                 {
+                    transform.LookAt(player);
+
                     nearest = collider;
                     ShootWeaponForBoss();
 

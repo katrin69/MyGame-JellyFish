@@ -1078,10 +1078,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   moveSpots:
-  - {fileID: 7630531457223347560, guid: 2ae1de27d7f4fd94db817d7516f18391, type: 3}
-  - {fileID: 2090920075037717331, guid: c33a7aebc8bb0d14fb9d09134810ab2b, type: 3}
-  - {fileID: 4508224623353519637, guid: 187ba70b7df48554e927687303654286, type: 3}
-  - {fileID: 5399223104503389804, guid: 307757cd19267584e8f668b3f31423f2, type: 3}
+  - {fileID: 5338057125315479715, guid: 6b6af8c4e98a47a4c8c999e00ff6de7b, type: 3}
+  - {fileID: 2554877486527432864, guid: bb63bdad5ad99974491b9600d6ef5ff0, type: 3}
+  - {fileID: 8602139110945782440, guid: 1b6dc9b72a3a07446b91189cc931d943, type: 3}
+  - {fileID: 2893968834030287341, guid: 6538e1a30f6d82949bb940dd0379cb8a, type: 3}
 --- !u!114 &-5237585219839479353
 MonoBehaviour:
   m_ObjectHideFlags: 0
