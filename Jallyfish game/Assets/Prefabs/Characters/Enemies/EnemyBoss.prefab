@@ -1062,8 +1062,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyMovementScript: {fileID: -2912425397993134213}
-  Damage: 2
-  howClose: 0
+  Damage: 3
+  targetRange: 75
+  AttackTimer: 4
+  AttackCooldown: 4
 --- !u!114 &-2912425397993134213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,7 +1078,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5510c710776d44a303a5a1fc8e046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 10
+  Distance: 0
   moveSpots:
   - {fileID: 5338057125315479715, guid: 6b6af8c4e98a47a4c8c999e00ff6de7b, type: 3}
   - {fileID: 2554877486527432864, guid: bb63bdad5ad99974491b9600d6ef5ff0, type: 3}
@@ -1094,8 +1097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c838baec31eb76948979e1f2d7fa26f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 0
-  enemyHealthMax: 8
+  enemyHealth: 50
+  enemyHealthMax: 50
   ExperienceToGain: 20
   sharkType: 3
 --- !u!1 &5710466585984017271

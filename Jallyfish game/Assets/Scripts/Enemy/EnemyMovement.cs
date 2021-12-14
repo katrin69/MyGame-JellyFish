@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     protected Vector3 StartPoint;
     protected Vector3 EndPoint;
 
+    public float Distance;
+
     protected enum EMovement
     {
         Idle,
@@ -29,29 +31,34 @@ public class EnemyMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
     }
 
-
-
-    private void Update()
+    public void Update()
     {
+        Distance = (TargetPosition - transform.position).magnitude;
+
         if (CurrentMovement != EMovement.Idle)
         {
             if ((TargetPosition - transform.position).magnitude < 0.5f)
             {
-                switch (CurrentMovement)
-                {
-                    case EMovement.StartToEnd:
-                        TargetPosition = StartPoint;
-                        CurrentMovement = EMovement.EndToStart;
-                        break;
-                    case EMovement.EndToStart:
-                        TargetPosition = EndPoint;
-                        CurrentMovement = EMovement.StartToEnd;
-                        break;
-                }
+                SwitchTargets();
             }
 
             rb.velocity = (TargetPosition - transform.position).normalized * moveSpeed;
             transform.LookAt(TargetPosition);
+        }
+    }
+
+    public virtual void SwitchTargets()
+    {
+        switch (CurrentMovement)
+        {
+            case EMovement.StartToEnd:
+                TargetPosition = StartPoint;
+                CurrentMovement = EMovement.EndToStart;
+                break;
+            case EMovement.EndToStart:
+                TargetPosition = EndPoint;
+                CurrentMovement = EMovement.StartToEnd;
+                break;
         }
     }
 
@@ -73,5 +80,10 @@ public class EnemyMovement : MonoBehaviour
     public void SetTargetPosition(Vector3 newPositioin)
     {
         TargetPosition = newPositioin;
+    }
+
+    public void Resume()
+    {
+        CurrentMovement = EMovement.StartToEnd;
     }
 }

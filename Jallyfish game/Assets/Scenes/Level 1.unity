@@ -2829,12 +2829,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324457754}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -91.3, y: 64.6, z: -2001.2}
-  m_LocalScale: {x: 10.247739, y: 3.6487, z: 5.7412295}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 703607157}
-  m_RootOrder: 4
+  m_Father: {fileID: 2094636263}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!65 &324457756
 BoxCollider:
@@ -5163,6 +5163,7 @@ Transform:
   - {fileID: 556100101}
   - {fileID: 845127363}
   - {fileID: 2034971807}
+  - {fileID: 1475125576}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5922,7 +5923,6 @@ Transform:
   - {fileID: 1325515928}
   - {fileID: 522168591}
   - {fileID: 1514539590}
-  - {fileID: 324457755}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10075,11 +10075,13 @@ MonoBehaviour:
   SpawnEnemies: 1
   Root: {fileID: 1884722679}
   Camera: {fileID: 1691298357}
+  GateController: {fileID: 2094636262}
   SpawnObject: {fileID: 988073494}
   Spawners:
   - {fileID: 556100102}
   - {fileID: 2034971809}
   - {fileID: 845127365}
+  - {fileID: 1475125578}
 --- !u!4 &1154790505
 Transform:
   m_ObjectHideFlags: 0
@@ -12320,6 +12322,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5921253824683994501, guid: 53a84e450c8f0224db0e092d816928dd, type: 3}
   m_PrefabInstance: {fileID: 1469575217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1475125575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475125576}
+  - component: {fileID: 1475125578}
+  - component: {fileID: 1475125577}
+  m_Layer: 0
+  m_Name: EnemySpawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475125576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475125575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 418.4, y: 22.2, z: 151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 607443639}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1475125577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475125575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 32.5, y: 1, z: 99.6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1475125578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475125575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34df9d82fad7b7c48af51b4177509b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCount: 0
+  enemyCountLittle: 0
+  enemyCountTerrorist: 0
+  enemyCountBoss: 1
 --- !u!1001 &1491318876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16704,7 +16767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034971806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 408.9, y: 22.2, z: 151}
+  m_LocalPosition: {x: 366.6, y: 22.2, z: 151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 607443639}
@@ -16721,7 +16784,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 80.67, y: 1, z: 81.1}
+  m_Size: {x: 38.5, y: 1, z: 144.72}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2034971809
 MonoBehaviour:
@@ -17011,6 +17074,56 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.003776739, y: 0.0047397255, z: 0.0040596877}
   m_Center: {x: -0.0010276552, y: 0.0010253201, z: 0.0015268528}
+--- !u!1 &2094636261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094636263}
+  - component: {fileID: 2094636262}
+  m_Layer: 0
+  m_Name: GateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2094636262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094636261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547afc211e687aa4abac6d0816939b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gate: {fileID: 324457755}
+  GateMovement: {x: 0, y: -0.1, z: 0}
+  NextScene: 2
+  Triggered: 0
+  Timer: 0
+  MaxTime: 10
+--- !u!4 &2094636263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094636261}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 499.54425, y: 10.586285, z: 162.10596}
+  m_LocalScale: {x: 10.247741, y: 3.648701, z: 5.7412295}
+  m_Children:
+  - {fileID: 324457755}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1001 &2118448279
 PrefabInstance:
   m_ObjectHideFlags: 0

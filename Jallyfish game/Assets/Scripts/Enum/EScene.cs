@@ -2,5 +2,8 @@ public enum EScene
 {
     MainMenu,
     Level1,
-    GameOver
+    Level2,
+    Level3,
+    GameOver,
+    Splash,
 }

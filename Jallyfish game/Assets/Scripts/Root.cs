@@ -15,7 +15,7 @@ public class Root : MonoBehaviour
     private InputManager InputManager; //скрипт с движением игрока
     private ResourceManager ResourceManager; //скрипт с ресурсами(акула медуза пуля)
     private CameraManager CameraManager; //скрипт с камерой
-    private EnemyInstantiationManager EnemyInstantiationManager;
+    private EnemiesManager EnemyInstantiationManager;
     private AudioManager AudioManager; //музло
     private SaverManager SaverManager;
     
@@ -92,7 +92,7 @@ public class Root : MonoBehaviour
         return CameraManager;
     }
 
-    public EnemyInstantiationManager GetEnemyInstantiationManager() //метод получения врага
+    public EnemiesManager GetEnemyInstantiationManager() //метод получения врага
     {
         if (EnemyInstantiationManager == null)
         {

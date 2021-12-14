@@ -8,23 +8,24 @@ public class EnemyAttackScript : MonoBehaviour
 
     public float Damage = 2f;
 
-    private Transform target; //цель Медуза
-    private float targetRange = 25f; //диапозон где ищем медузу
+    protected Transform target; //цель Медуза
+    public float targetRange = 25f; //диапозон где ищем медузу
 
     //поиск Медузы
-    private float SearchTimer = 0;
-    private float SearchStep = 1;
+    protected float SearchTimer = 0;
+    protected float SearchStep = 1;
 
-    Animator animator;
+    protected Animator Animator;
 
     protected AudioManager AudioManager;
+    protected ResourceManager ResourceManager;
 
-    private void Start()
+    private void Awake()
     {
-        animator = GetComponent<Animator>(); //ищем на акуле       
+        Animator = GetComponent<Animator>(); //ищем на акуле       
     }
 
-    private void Update()
+    public virtual void Update()
     {
         //bool isAttack = animator.GetBool("isAttack");
         //if (Input.GetKeyDown(KeyCode.Space))
@@ -36,11 +37,9 @@ public class EnemyAttackScript : MonoBehaviour
         //    animator.SetBool("isAttack", false);
         //}
 
-
-
         if (target != null) //если цель не пуста то идём на цель
         { 
-            animator.SetBool("Attack", true);
+            Animator.SetBool("Attack", true);
             EnemyMovementScript.SetTargetPosition(target.position);
         }
         else
@@ -56,12 +55,13 @@ public class EnemyAttackScript : MonoBehaviour
 
     }
 
-    public void SetAudioManager(AudioManager audioManager)
+    public void Init(ResourceManager resourceManager, AudioManager audioManager)
     {
+        ResourceManager = resourceManager;
         AudioManager = audioManager;
     }
 
-    public void FoundJellyfish()
+    protected void FoundJellyfish()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, targetRange); //массив колайдеров вокруг
 

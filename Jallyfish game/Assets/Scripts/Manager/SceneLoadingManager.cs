@@ -14,6 +14,8 @@ public class SceneLoadingManager : MonoBehaviour
     {
         Scenes.Add(EScene.MainMenu, "MainMenu"); //добавляем сцену из энама в словарь
         Scenes.Add(EScene.Level1, "Level 1");
+        Scenes.Add(EScene.Level2, "Level 2");
+        Scenes.Add(EScene.Level3, "Level 3");
         Scenes.Add(EScene.GameOver, "GameOver");
     }
 

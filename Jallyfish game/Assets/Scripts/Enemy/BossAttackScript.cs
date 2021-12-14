@@ -4,34 +4,14 @@ using UnityEngine;
 
 public class BossAttackScript : EnemyAttackScript
 {
-    private float dis;
-    public float howClose;
+    public float AttackTimer = 5;
+    public float AttackCooldown = 5;
 
-    private Transform player;
-    Transform target; //цель Медуза
-
-    //поиск Медузы
-    private float SearchTimer = 0;
-    private float SearchStep = 1;
-
-    private EnemyInstantiationManager EnemyInstantiationManager;
-    protected AudioManager AudioManager;
-    private ResourceManager ResourceManager;
-    private CameraManager CameraManager;
-
-
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        EnemyInstantiationManager.Init(ResourceManager, AudioManager, CameraManager);
-    }
-
-    private void Update()
+    public override void Update()
     {
         if (target != null) //если цель не пуста то идём на цель
         {
-            transform.LookAt(player);
-
+            Attack();
         }
         else
         {
@@ -43,40 +23,34 @@ public class BossAttackScript : EnemyAttackScript
                 FoundJellyfish(); //нашёл медузу
             }
         }
-
     }
 
-    public void FoundJellyfish()
+    private void Attack()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f); //массив колайдеров вокруг
+        AttackTimer += Time.deltaTime;
 
-        Collider nearest = null; //рядом пока пусто с самого начала
-
-        foreach (Collider collider in colliders)
+        if (AttackTimer >= AttackCooldown)
         {
-            if (collider.gameObject.CompareTag("Player")) //если в этом массиве есть медуза
-            {
-                if (nearest == null) //если не очень близко то пофиг
-                {
-                    transform.LookAt(player);
+            AttackTimer = 0;
 
-                    nearest = collider;
-                    ShootWeaponForBoss();
+            EnemyMovementScript.Stop();
 
-                }
-                else
-                {
-                    //что то делать
-                }
-            }
-        }
+            transform.LookAt(target);
 
-        if (nearest != null) //цель станогвится ближе
-        {
-            target = nearest.transform;
+            StartCoroutine(AttackCoroutine());
         }
     }
 
+    private IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        ShootWeaponForBoss();
+
+        yield return new WaitForSeconds(1f);
+
+        EnemyMovementScript.Resume();
+    }
 
     //стреляем пулей
     private void ShootWeaponForBoss()
@@ -85,11 +59,11 @@ public class BossAttackScript : EnemyAttackScript
 
         if (bullet != null) //если пуля не пуста
         {
-
             WeaponForBoss weaponForBoss = bullet.GetComponent<WeaponForBoss>(); //то берём скрипт пули
+            weaponForBoss.target = target;
 
-            bullet.transform.position = target.position;
-            bullet.transform.rotation = target.rotation;
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);
         }
     }

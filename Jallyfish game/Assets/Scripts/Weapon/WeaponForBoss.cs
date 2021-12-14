@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class WeaponForBoss : MonoBehaviour
 {
-    //Пуля для босса
-   // private float damageEnemy = 4f; //урон
-    private float bulletForce = 30f; //скорость
-    private Rigidbody rb; //тело
+    public EnemyHealthScript EnemyHealthScript;
+
+    //Самонаводящееся акула c уроном 3
+    public float damageEnemy = 3f; //урон
+    public float bulletSpeed = 13f; //скорость
+    public Transform target; //цель
+    private Rigidbody rb;
 
     //таймер
     private float Timer;
-    public float defaultTime = 8f;
+    public float defaultTime = 10f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
+        EnemyHealthScript.HealthPercentageChanged += EnemyHealthScript_HealthPercentageChanged; ;
     }
 
-    private void Update()
+    private void EnemyHealthScript_HealthPercentageChanged(EnemyHealthScript arg1, float arg2)
     {
-        Timer -= Time.deltaTime;
-        if (Timer < 0)
+        if (arg2 <= 0)
         {
             ResourceManager.ReturnToPool(gameObject);
         }
@@ -33,18 +36,35 @@ public class WeaponForBoss : MonoBehaviour
         Timer = defaultTime;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        rb.velocity = transform.forward * bulletForce; //направление и скорость
+        if (target != null)
+        {
+            Vector3 targetdirection = target.position - transform.position;
+            transform.LookAt(target);
+            rb.velocity = targetdirection.normalized * bulletSpeed;
+        }
+
+        DeathCountdown();//пуля исчезает
     }
 
-    //если сталкиваемся с медузой
+    private void DeathCountdown()
+    {
+        Timer -= Time.deltaTime;
+
+        if (Timer < 0)
+        {
+            ResourceManager.ReturnToPool(gameObject);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //отнимаем жизнь у медузы
-            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-2);
+            collision.gameObject.GetComponent<PlayerHealthScript>().RecountArmorp(-damageEnemy);
+            ResourceManager.ReturnToPool(gameObject);
         }
     }
 }

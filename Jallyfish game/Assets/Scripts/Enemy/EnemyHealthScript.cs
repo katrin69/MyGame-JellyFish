@@ -55,8 +55,17 @@ public class EnemyHealthScript : MonoBehaviour
         {
             killrLevelSystem.GainExperienceFlatRate(ExperienceToGain); //передаём опыт в систему лэвлов
             //deadEnemy(); //убиваем врага
-            GetComponent<EnemyMovement>().Stop();
-            StartCoroutine(DeadEnemy());
+            EnemyMovement em = GetComponent<EnemyMovement>();
+
+            if (em != null)
+            {
+                em.Stop();
+            }
+
+            if (gameObject.activeSelf)
+            {
+                StartCoroutine(DeadEnemy());
+            }
         }
     }
 
@@ -73,7 +82,11 @@ public class EnemyHealthScript : MonoBehaviour
 
     private IEnumerator DeadEnemy()
     {
-        AudioManager.Play("SoundEnemyDead");
+        if (AudioManager != null)
+        {
+            AudioManager.Play("SoundEnemyDead");
+        }
+
         //animator.SetBool("Dead", true); //анимация смерти
         yield return new WaitForSeconds(0.5f);
 

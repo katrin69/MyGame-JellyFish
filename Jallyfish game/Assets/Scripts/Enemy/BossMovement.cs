@@ -4,39 +4,17 @@ using UnityEngine;
 
 public class BossMovement : EnemyMovement
 {
-    private float speed = 0.2f; // скорость врага
-
-    private float waitTime;
-    private float startWaitTime;
-
     public Transform[] moveSpots;
-    private int randomSpots;
+    private int spotIndex;
 
     private void Start()
     {
-        waitTime = startWaitTime;
-        randomSpots = Random.Range(0, moveSpots.Length);
+        SwitchTargets();
     }
-    private void Update()
+
+    public override void SwitchTargets()
     {
-        transform.position = Vector3.MoveTowards(transform.position, moveSpots[randomSpots].position, speed);
-        transform.LookAt(moveSpots[randomSpots]);
-
-
-        if (Vector3.Distance(transform.position,moveSpots[randomSpots].position) < 0.2f)
-        {
-            if (waitTime <= 0)
-            {
-                randomSpots = Random.Range(0, moveSpots.Length);
-            
-                waitTime = startWaitTime;
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
-            }
-
-        }
+        spotIndex = Random.Range(0, moveSpots.Length);
+        SetPatrollingPoint(moveSpots[spotIndex].position);
     }
-
 }
